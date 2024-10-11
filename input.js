@@ -1,6 +1,4 @@
-//Fri Oct 11 2024 13:42:14 GMT+0000 (Coordinated Universal Time)
-//Base:https://github.com/echo094/decode-js
-//Modify:https://github.com/smallfawn/decode_action
+
 var 哇哈哈_0x2b0a2f = "jsjiami.com.v7";
 function 哇哈哈_0x23381c(_0x4fe32f, _0x3b4b2a) {
   const _0x5c9094 = 哇哈哈_0x4e6a5a();
@@ -191,7 +189,7 @@ class 哇哈哈_0x52e34e {
     let _0x570724 = await $[_0x4ebee2(589, "[I$[")](_0x2af404[_0x4ebee2(509, "lYw&")], _0x4ebee2(800, "TTwJ"), _0x46bc44);
     if (_0x2af404[_0x4ebee2(670, "va7W")](_0x570724[_0x4ebee2(743, "cx[m")], 200)) {
       {
-        console[_0x4ebee2(365, "RRRU")]("【" + this.f + _0x4ebee2(731, "aB#l") + _0x570724[_0x4ebee2(622, "aaT&")][_0x4ebee2(488, "8Dpd")] + "次");
+        console[_0x4ebee2(365, "RRRU")]("\u3010" + this.f + _0x4ebee2(731, "aB#l") + _0x570724[_0x4ebee2(622, "aaT&")][_0x4ebee2(488, "8Dpd")] + "\u6B21");
         for (let _0x242ce3 of _0x570724[_0x4ebee2(595, "E*RM")][_0x4ebee2(893, "Y3hb")]) {
           _0x2af404[_0x4ebee2(463, "cx[m")](_0x242ce3.id, 2) && _0x2af404[_0x4ebee2(830, "$Y4H")](_0x242ce3[_0x4ebee2(414, "[I$[")], _0x242ce3[_0x4ebee2(487, "Anq5")]) && (await this[_0x4ebee2(699, "i7Qh")]());
           _0x2af404[_0x4ebee2(815, "XD4@")](_0x242ce3.id, 1) && _0x2af404[_0x4ebee2(376, "(*br")](_0x242ce3[_0x4ebee2(423, "b#(y")], _0x242ce3[_0x4ebee2(456, "fQsf")]) && (await this[_0x4ebee2(411, "i7Qh")]());
@@ -215,7 +213,7 @@ class 哇哈哈_0x52e34e {
     };
     let _0x28e278 = _0x433b74(440, "cx[m");
     let _0x355b63 = await $[_0x433b74(853, "GwMD")](_0x4a9118[_0x433b74(477, "mLxb")], _0x433b74(629, "TTwJ"), _0x6eafce, _0x28e278);
-    _0x4a9118[_0x433b74(732, "V6iN")](_0x355b63[_0x433b74(812, "QllD")], 200) && console[_0x433b74(541, "Y3hb")]("【" + this.f + _0x433b74(552, "MKRk"));
+    _0x4a9118[_0x433b74(732, "V6iN")](_0x355b63[_0x433b74(812, "QllD")], 200) && console[_0x433b74(541, "Y3hb")]("\u3010" + this.f + _0x433b74(552, "MKRk"));
   }
   async [哇哈哈_0x3c981a(393, "hxp*")]() {
     const _0x560ea3 = 哇哈哈_0x3c981a;
@@ -232,9 +230,9 @@ class 哇哈哈_0x52e34e {
     let _0x13186d = _0x560ea3(636, "r0LV");
     let _0x4aabd7 = await $[_0x560ea3(697, "@PiX")](_0x1373b8[_0x560ea3(845, "TTwJ")], _0x560ea3(370, "cu9&"), _0xb79a36, _0x13186d);
     if (_0x1373b8[_0x560ea3(369, "T7#$")](_0x4aabd7[_0x560ea3(500, "*8v#")], 200)) {
-      console[_0x560ea3(365, "RRRU")]("【" + this.f + _0x560ea3(525, "hxp*"));
+      console[_0x560ea3(365, "RRRU")]("\u3010" + this.f + _0x560ea3(525, "hxp*"));
       await $[_0x560ea3(742, "RRRU")](10000, 20000);
-      for (let _0x2f77cd of ["苹果", _0x1373b8[_0x560ea3(520, "GwMD")], "鸡蛋", "大麦"]) {
+      for (let _0x2f77cd of ["\u82F9\u679C", _0x1373b8[_0x560ea3(520, "GwMD")], "\u9E21\u86CB", "\u5927\u9EA6"]) {
         await this[_0x560ea3(470, "XD4@")](_0x2f77cd);
       }
     }
@@ -283,7 +281,7 @@ class 哇哈哈_0x52e34e {
         return _0x1630bd == _0x54a013;
       }
     };
-    if (_0x58a736[_0x64a8c8(784, "QllD")](_0x5dd522, "苹果")) {
+    if (_0x58a736[_0x64a8c8(784, "QllD")](_0x5dd522, "\u82F9\u679C")) {
       _0x58a736[_0x64a8c8(569, "Y7Fg")](_0x58a736[_0x64a8c8(739, "TTwJ")], _0x58a736[_0x64a8c8(613, "i7Qh")]) ? this[_0x64a8c8(787, "va7W")] = _0x58a736[_0x64a8c8(653, "Q[jw")] : _0x58a736[_0x64a8c8(446, "*8v#")](_0x64a8c8(700, "YsOf"));
     } else {
       if (_0x58a736[_0x64a8c8(628, "T7#$")](_0x5dd522, _0x58a736[_0x64a8c8(460, "QllD")])) {
@@ -320,10 +318,10 @@ class 哇哈哈_0x52e34e {
         }
       } else {
         {
-          if (_0x58a736[_0x64a8c8(851, "mLxb")](_0x5dd522, "鸡蛋")) {
+          if (_0x58a736[_0x64a8c8(851, "mLxb")](_0x5dd522, "\u9E21\u86CB")) {
             this[_0x64a8c8(601, "b#(y")] = _0x58a736[_0x64a8c8(842, "*8v#")];
           } else {
-            _0x58a736[_0x64a8c8(431, "$Y4H")](_0x5dd522, "大麦") && (_0x58a736[_0x64a8c8(443, "va7W")](_0x58a736[_0x64a8c8(481, "QllD")], _0x58a736[_0x64a8c8(594, "r0LV")]) ? this[_0x64a8c8(652, "wTlg")] = _0x58a736[_0x64a8c8(889, "c5hF")] : this[_0x64a8c8(709, "c5hF")] = _0x58a736[_0x64a8c8(432, "O*ho")]);
+            _0x58a736[_0x64a8c8(431, "$Y4H")](_0x5dd522, "\u5927\u9EA6") && (_0x58a736[_0x64a8c8(443, "va7W")](_0x58a736[_0x64a8c8(481, "QllD")], _0x58a736[_0x64a8c8(594, "r0LV")]) ? this[_0x64a8c8(652, "wTlg")] = _0x58a736[_0x64a8c8(889, "c5hF")] : this[_0x64a8c8(709, "c5hF")] = _0x58a736[_0x64a8c8(432, "O*ho")]);
           }
         }
       }
@@ -333,11 +331,11 @@ class 哇哈哈_0x52e34e {
     };
     let _0x2f9b56 = _0x64a8c8(825, "T7#$") + _0x5dd522 + _0x64a8c8(890, "X1LE") + _0x5dd522 + _0x64a8c8(619, "wTlg") + _0x5dd522 + _0x64a8c8(658, "GwMD");
     let _0x1be709 = await $[_0x64a8c8(809, "va7W")](_0x58a736[_0x64a8c8(823, "O*ho")], _0x64a8c8(612, "GwMD"), _0x194df1, _0x2f9b56);
-    if (_0x58a736[_0x64a8c8(765, "fQsf")](_0x1be709[_0x64a8c8(840, "Anq5")], 200) && _0x58a736[_0x64a8c8(522, "MKRk")](_0x5dd522, "大麦")) {
-      console[_0x64a8c8(829, "!qls")]("【" + this.f + _0x64a8c8(752, "O*ho") + this[_0x64a8c8(466, "Anq5")] + _0x64a8c8(820, "ZHJ1"));
+    if (_0x58a736[_0x64a8c8(765, "fQsf")](_0x1be709[_0x64a8c8(840, "Anq5")], 200) && _0x58a736[_0x64a8c8(522, "MKRk")](_0x5dd522, "\u5927\u9EA6")) {
+      console[_0x64a8c8(829, "!qls")]("\u3010" + this.f + _0x64a8c8(752, "O*ho") + this[_0x64a8c8(466, "Anq5")] + _0x64a8c8(820, "ZHJ1"));
       await $[_0x64a8c8(875, "[6wL")](25000, 55000);
     } else {
-      _0x58a736[_0x64a8c8(781, "i*DW")](_0x1be709[_0x64a8c8(582, "V6iN")], 200) && _0x58a736[_0x64a8c8(441, "hxp*")](_0x5dd522, "大麦") && (console[_0x64a8c8(829, "!qls")]("【" + this.f + _0x64a8c8(571, "TTwJ") + this[_0x64a8c8(860, "cx[m")] + _0x64a8c8(418, "mLxb")), await $[_0x64a8c8(495, "FIMh")](10000, 20000));
+      _0x58a736[_0x64a8c8(781, "i*DW")](_0x1be709[_0x64a8c8(582, "V6iN")], 200) && _0x58a736[_0x64a8c8(441, "hxp*")](_0x5dd522, "\u5927\u9EA6") && (console[_0x64a8c8(829, "!qls")]("\u3010" + this.f + _0x64a8c8(571, "TTwJ") + this[_0x64a8c8(860, "cx[m")] + _0x64a8c8(418, "mLxb")), await $[_0x64a8c8(495, "FIMh")](10000, 20000));
     }
   }
   async [哇哈哈_0x3c981a(682, "OktU")]() {
@@ -362,11 +360,11 @@ class 哇哈哈_0x52e34e {
     };
     let _0x5b5924 = await $[_0x458b07(735, "Y3hb")](_0x955844[_0x458b07(771, "$Y4H")], _0x458b07(633, "QllD"), _0x56ba75);
     if (_0x955844[_0x458b07(797, "TTwJ")](_0x5b5924[_0x458b07(606, "jzS2")], 200) && _0x955844[_0x458b07(807, "V6iN")](_0x5b5924[_0x458b07(507, "[I$[")][_0x458b07(576, "hxp*")], 0)) {
-      console[_0x458b07(747, "i7Qh")]("【" + this.f + _0x458b07(361, "aB#l") + _0x5b5924[_0x458b07(672, "RRRU")][_0x458b07(544, "cx[m")] + "元");
-      this[_0x458b07(408, "i7Qh")] += "【" + this.f + _0x458b07(634, "MKRk") + _0x5b5924[_0x458b07(562, "y4uA")][_0x458b07(430, "E*RM")] + "元";
+      console[_0x458b07(747, "i7Qh")]("\u3010" + this.f + _0x458b07(361, "aB#l") + _0x5b5924[_0x458b07(672, "RRRU")][_0x458b07(544, "cx[m")] + "\u5143");
+      this[_0x458b07(408, "i7Qh")] += "\u3010" + this.f + _0x458b07(634, "MKRk") + _0x5b5924[_0x458b07(562, "y4uA")][_0x458b07(430, "E*RM")] + "\u5143";
       await $[_0x458b07(884, "(*br")](8000, 15000);
     } else {
-      _0x955844[_0x458b07(551, "]nDe")](_0x5b5924[_0x458b07(604, "MKRk")], 200) && _0x955844[_0x458b07(814, "E*RM")](_0x5b5924[_0x458b07(857, "FIMh")][_0x458b07(596, "Anq5")], 0) && console[_0x458b07(773, "X1LE")]("【" + this.f + _0x458b07(444, "TTwJ"));
+      _0x955844[_0x458b07(551, "]nDe")](_0x5b5924[_0x458b07(604, "MKRk")], 200) && _0x955844[_0x458b07(814, "E*RM")](_0x5b5924[_0x458b07(857, "FIMh")][_0x458b07(596, "Anq5")], 0) && console[_0x458b07(773, "X1LE")]("\u3010" + this.f + _0x458b07(444, "TTwJ"));
     }
   }
 }
@@ -623,7 +621,7 @@ function 哇哈哈_0x2d414c() {
         }
         _0x112a56 = $[_0x3f964f(737, "va7W")][_0x3f964f(712, "y4uA")];
       } else {
-        console[_0x3f964f(409, "@PiX")]("\n【" + NAME + _0x3f964f(767, "[6wL") + VALY);
+        console[_0x3f964f(409, "@PiX")]("\n\u3010" + NAME + _0x3f964f(767, "[6wL") + VALY);
       }
       console[_0x3f964f(433, "va7W")](_0x3f964f(531, "rnZ3") + _0x112a56 + _0x3f964f(639, "c5hF"));
       return $[_0x3f964f(362, "4DoI")];
@@ -828,7 +826,7 @@ function 哇哈哈_0x2d414c() {
                               console[_0x3c27ce(514, "wTlg")](_0x3e13c2);
                             }
                           } else {
-                            _0x527543[_0x3c27ce(887, "cx[m")]("【" + this.f + _0x3c27ce(586, "E*RM"));
+                            _0x527543[_0x3c27ce(887, "cx[m")]("\u3010" + this.f + _0x3c27ce(586, "E*RM"));
                           }
                         }
                       }
