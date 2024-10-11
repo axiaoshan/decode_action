@@ -1,987 +1,613 @@
-//Fri Oct 11 2024 12:57:35 GMT+0000 (Coordinated Universal Time)
+//Fri Oct 11 2024 13:01:53 GMT+0000 (Coordinated Universal Time)
 //Base:https://github.com/echo094/decode-js
 //Modify:https://github.com/smallfawn/decode_action
-//Fri Oct 11 2024 12:54:47 GMT+0000 (Coordinated Universal Time)
-//Base:https://github.com/echo094/decode-js
-//Modify:https://github.com/smallfawn/decode_action
-const {
-  sign: x5,
-  getToken: x6,
-  checkCk: x7,
-  getCookies: x8,
-  getUserInfo: x9,
-  validateCarmeWithType: xx,
-  checkCarmeCount: xp,
-  tryCatchPromise: xZ
-} = require("./common.js");
-const xc = require("request");
-const {
-  wait: xu
-} = require("./common");
-const xP = 6;
-const xF = process.env.ELE_CARME;
-let xV = 0;
-let xi = 0;
-let xe = 0;
-let xX;
-const xR = require("crypto");
-function xE(p) {
-  const xS = xR.createHash("md5").update(p).digest("hex");
-  return xS;
-}
-function xW(p) {
-  return Object.values(p).length === 0;
-}
-async function xG(p) {
-  const pZ = {
-    authority: "shopping.ele.me",
-    accept: "application/json",
-    "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
-    "cache-control": "no-cache",
-    "content-type": "application/x-www-form-urlencoded",
-    origin: "https://r.ele.me",
-    pragma: "no-cache",
-    referer: "https://r.ele.me/linkgame/index.html?navType=3&spm-pre=a2ogi.13162730.zebra-ele-login-module-9089118186&spm=a13.b_activity_kb_m71293.0.0",
-    cookie: p
-  };
-  const pc = {
-    actId: "20221207144029906162546384",
-    collectionId: "20230224114656384938530468",
-    componentId: "20230224114825216373367998",
-    bizScene: "game_center",
-    bizCode: "LOTTERY",
-    longitude: "120.21993197500706",
-    latitude: "30.178378857672215",
-    asac: "2A232091VOX6SPEQYH6RG4",
-    extParams: "{\"bizType\":\"LOTTERY\"}",
-    ua: "140#CK1oj11hzzW9Szo2K52s+pN8s77HHUFmuM/UtDDs0Qi3WsJVBjgCRSpLBmwg1t45dolchfqRmKl1bALrrsgqlbzxhMT65/VGzzcSb1NVl3MzzPzbVXlqlYfWGwrfAdGuzF4SLIuKlpODzPzYVXEul+Fx3DH3uJBlzFzb2mD5lp1bojnSONdOHaU+WFtTI267wOPmhF8Lb1t1AGAMJzaUhlSZ37eoVlUxdJDMRuBaLMfDybLO0h1eFD9Bu8b+DVPhp0zq91yfNSAXB7K0jltKROauR0mY6uMsohEuI04aSewXLPQudoCKe4KTqOdcfQxcM7naN0frsSX8GkmfK7MJZvMjY1U5qUZ8S6B6etbmdFpXI71kiclSbDtLx68pvrlX+Fc4UR+S3Pe1djdcWkhUqAOMMF1UoPppTe48HVaz+8QLqCm5C+vFVcG/nR4fp/Nqr9zxZZ1BEF2cqauKj9rwh1wg0ciKSZHr7d7+iqSugixQcmeWHucfFqAnDSqbHS8s0IlgXzfyfX4mbjfwsHaceDK5eauu/HlurzK0IpFhTLNn95u4XaF2p+Vx7/iLXMyEDky/HPCNi8XALSXJrmIz7wz6xcq2coakOoMyCQhrEhtsCgKAdzI0tjMldN3kNPusrd2JYaqKN6tK0a3ntrBfPvKjkXqX7p9CYI7DIp40BjnHwQCDKd3fZl6Fu4aOYZlfXnVkuSnuL0gkYtscTU4hIBmZsaKOKXSJdWYdynhh29HJVvpLAptEkD8Lnvm9nXnk7GorF+NPoY/dpJ+S2eh8/XksaIyRH3zWcpW5Ua30Hn94YEcqMFI/gQVjPHTdGkzBbjU8oTiLJ5Y5qSIY5eDM6T7XYoSwhGbyAL+=",
-    umidtoken: "T2gA__C3-r3sSTF7ZzBUS-C0RcKNSn8q17hKFBPM5pcplOQGdIK15W9ScohgOWU8PE0="
-  };
-  const pu = new Date().getTime();
-  const pP = 12574478;
-  var pF = "data=" + encodeURIComponent(JSON.stringify(pc));
-  const pf = x6(p);
-  const pV = pf.split("_")[0];
-  const pi = await x5(pV + "&" + pu + "&" + pP + "&" + JSON.stringify(pc), xF);
-  const pe = {
-    url: "https://shopping.ele.me/h5/mtop.koubei.interactioncenter.platform.right.lottery/1.0/?jsv=2.6.1&appKey=12574478&t=" + pu + "&sign=" + pi + "&api=mtop.koubei.interactioncenter.platform.right.lottery&v=1.0&type=originaljson&dataType=json",
-    method: "POST",
-    headers: pZ,
-    body: pF
-  };
-  return xZ(pX => {
-    xc(pe, async (pE, pW, pG) => {
-      if (!pE && pW.statusCode === 200) {
-        try {
-          const ph = JSON.parse(pG);
-          if (xW(ph.data.data)) {
-            console.log(ph.ret[0]);
-            pX(false);
-          } else {
-            if (ph.data.data.errorMsg) {
-              console.log(ph.data.data.errorMsg);
-            } else {
-              let py = ph.data.data.sendRightList[0];
-              const pv = py.materialInfo.description + py.materialInfo.title;
-              console.log(pv);
-            }
-            pX(ph);
-          }
-        } catch (pk) {
-          pX(false);
+const _0xf1ea8 = new _0x299988("品赞HTTP签到");
+let _0x34f238 = "pzhttp",
+  _0x44155b = ["\n", "&"],
+  _0xa2efe3 = (_0xf1ea8.isNode() ? process.env[_0x34f238] : _0xf1ea8.getdata(_0x34f238)) || "",
+  _0xd941b5 = [],
+  _0x8a72a2 = 0;
+class _0x138232 {
+  constructor(_0x61bdcb) {
+    this.index = ++_0x8a72a2;
+    this.points = 0;
+    this.valid = false;
+    _0x61bdcb?.["includes"]("#") ? [this.account, this.password] = _0x61bdcb?.["split"]("#") : this.activedAuthToken = _0x61bdcb;
+  }
+  async ["taskApi"](_0x15938b, _0x2b4597, _0x292c45, _0x4b21ba) {
+    let _0x17737f = null;
+    try {
+      let _0x9d8394 = _0x292c45.replace("//", "/").split("/")[1],
+        _0x41ba2f = {
+          "url": _0x292c45,
+          "headers": {
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "zh-CN,zh;q=0.9",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36",
+            "Host": _0x9d8394,
+            "Connection": "Keep-Alive",
+            "Origin": "https://kip.ipzan.com",
+            "Authorization": "Bearer " + this.activedAuthToken,
+            "Referer": "https://kip.ipzan.com/",
+            "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
+            "Content-Type": "application/json"
+          },
+          "timeout": 60000
+        };
+      _0x4b21ba && (_0x41ba2f.body = _0x4b21ba, _0x41ba2f.headers["Content-Length"] = _0x4b21ba?.["length"]);
+      await _0x58c2e5(_0x2b4597, _0x41ba2f).then(async _0x1fce27 => {
+        if (_0x1fce27.resp?.["statusCode"] == 200) _0x1fce27.resp?.["body"] ? _0x17737f = JSON.parse(_0x1fce27.resp.body) : console.log("账号[" + this.index + "]调用" + _0x2b4597 + "[" + _0x15938b + "]出错，返回为空");else {
+          console.log("账号[" + this.index + "]调用" + _0x2b4597 + "[" + _0x15938b + "]出错，返回状态码[" + (_0x1fce27.resp?.["statusCode"] || "") + "]");
         }
-      } else {
-        pX(false);
-      }
-    });
-  });
-}
-async function xn(p) {
-  const p4 = await x7(p);
-  const p5 = {
-    authority: "mtop.ele.me",
-    accept: "application/json",
-    "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
-    asac: "2A21607NIIT1ND5C4YXJ6C",
-    "cache-control": "no-cache",
-    "content-type": "application/x-www-form-urlencoded",
-    origin: "https://tb.ele.me",
-    pragma: "no-cache",
-    referer: "https://tb.ele.me/wow/alsc/mod/b9ee9e6451bc8eda7a6afcbb?spm=a2ogi.13162730.zebra-ele-login-module-9089118186&spm=a2ogi.13162730.zebra-ele-login-module-9089118186&spm-pre=a13.b_activity_kb_m71293.ebridge.login",
-    cookie: p4,
-    "user-agent": "Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Mobile Safari/537.36"
-  };
-  const p6 = new Date().getTime();
-  const p7 = 12574478;
-  const p8 = {
-    bizScene: "game_center",
-    asac: "2A21607NIIT1ND5C4YXJ6C",
-    umidtoken: "defaultToken2_load_failed with timeout@@https://tb.ele.me/wow/alsc/mod/b9ee9e6451bc8eda7a6afcbb@@" + p6
-  };
-  var pV = "data=" + encodeURIComponent(JSON.stringify(p8));
-  const pi = x6(p4);
-  const pe = pi.split("_")[0];
-  const pX = await x5(pe + "&" + p6 + "&" + p7 + "&" + JSON.stringify(p8), xF);
-  const pR = {
-    url: "https://mtop.ele.me/h5/mtop.koubei.interactioncenter.sign.component.recordsignin/1.0/5.0/?jsv=2.6.1&appKey=" + p7 + "&t=" + p6 + "&sign=" + pX + "&api=mtop.koubei.interactioncenter.sign.component.recordsignin&v=1.0&ecode=1&type=json&valueType=string&needLogin=true&LoginRequest=true&dataType=jsonp&SV=5.0&asac=2A21607NIIT1ND5C4YXJ6C&secttid=h5%40android_chrome_87.0.4280.141",
-    method: "POST",
-    headers: p5,
-    body: pV
-  };
-  return xZ(pD => {
-    xc(pR, async (pG, pn, pg) => {
-      if (!pG && pn.statusCode == 200) {
-        const ph = JSON.parse(pg);
-        ph.data.errorMsg ? console.log(ph.data.errorMsg) : console.log("\u7B7E\u5230\u6210\u529F");
-        pD(ph);
-      } else {
-        pD(null);
-      }
-    });
-  });
-}
-async function xg(p) {
-  const p5 = {
-    bizScene: "LIANLIANKAN",
-    bizMethod: "login",
-    bizParam: "{\"inviterId\":null,\"gameId\":null,\"token\":\"token\"}",
-    longitude: 108.2048221292035,
-    latitude: 22.678892108345327
-  };
-  const p6 = await xr(p, p5);
-  return p6.data.token + "_" + p6.data.openId;
-}
-async function xU(p, xA) {
-  const p7 = {
-    gameId: null,
-    token: xA
-  };
-  const p8 = JSON.stringify(p7);
-  const px = {
-    bizScene: "LIANLIANKAN",
-    bizMethod: "startGameV2",
-    bizParam: p8,
-    longitude: 108.2048221292035,
-    latitude: 22.678892108345327
-  };
-  const pp = await xr(p, px);
-  if (pp.bizErrorMsg != "success") {
-    console.log(pp.bizErrorMsg);
-    return null;
-  }
-  return pp.data.gameCode;
-}
-async function xa(p, xA, xb) {
-  const p7 = {
-    name: "page_view",
-    obj: {}
-  };
-  p7.obj.sname = "GameExp";
-  p7.obj.level = xb;
-  const p9 = {
-    eventInfos: [p7],
-    gameId: null,
-    token: "_0x79d754"
-  };
-  const px = JSON.stringify(p9);
-  const pZ = {
-    bizScene: "LIANLIANKAN",
-    bizMethod: "reportLog",
-    bizParam: px,
-    longitude: 108.2048221292035,
-    latitude: 22.678892108345327
-  };
-  const pc = await xr(p, pZ, 2);
-  if (pc.bizErrorMsg != "success") {
-    console.log(pc.bizErrorMsg);
-    return null;
-  }
-  return pc.data.gameCode;
-}
-async function xQ(p, xA, xb) {
-  const p6 = {
-    sname: "ReviveExp",
-    failurereason: 0,
-    droptimes: xb
-  };
-  const p7 = {
-    name: "page_view",
-    obj: p6
-  };
-  const p9 = {
-    eventInfos: [p7],
-    gameId: null,
-    token: "_0x79d754"
-  };
-  const px = JSON.stringify(p9);
-  const pZ = {
-    bizScene: "LIANLIANKAN",
-    bizMethod: "reportLog",
-    bizParam: px,
-    longitude: 108.2048221292035,
-    latitude: 22.678892108345327
-  };
-  const pc = await xr(p, pZ);
-  if (pc.bizErrorMsg != "success") {
-    console.log(pc.bizErrorMsg);
-    return null;
-  }
-  return pc.data.gameCode;
-}
-async function xM(p, xA, xb) {
-  const p7 = {
-    name: "page_view",
-    obj: {}
-  };
-  p7.obj.sname = "GameFailExp";
-  p7.obj.failurereason = 0;
-  p7.obj.irise = 1;
-  p7.obj.droptimes = xb;
-  const p9 = {
-    eventInfos: [p7],
-    gameId: null,
-    token: "_0x79d754"
-  };
-  const px = JSON.stringify(p9);
-  const pZ = {
-    bizScene: "LIANLIANKAN",
-    bizMethod: "reportLog",
-    bizParam: px,
-    longitude: 108.2048221292035,
-    latitude: 22.678892108345327
-  };
-  const pc = await xr(p, pZ);
-  if (pc.bizErrorMsg != "success") {
-    console.log(pc.bizErrorMsg);
-    return null;
-  }
-  return pc.data.gameCode;
-}
-async function xH(p, xA, xb, xz) {
-  const p7 = new Date().getTime();
-  let p8 = p7 - xX;
-  xV = p8;
-  console.log(p8);
-  const p9 = "Game[" + xz + "]-" + xb + "|" + xA + p8;
-  const px = await xE(p9);
-  const pZ = {
-    gameCode: xA,
-    passLevelTime: p8,
-    sign: px,
-    gameId: null,
-    token: xb
-  };
-  const pc = JSON.stringify(pZ);
-  const pP = {
-    bizScene: "LIANLIANKAN",
-    bizMethod: "settlement",
-    bizParam: pc,
-    longitude: 108.2048221292035,
-    latitude: 22.678892108345327
-  };
-  const pF = await xr(p, pP, p7);
-  if (pF.bizErrorMsg != "success") {
-    console.log(pF.bizErrorMsg);
-    return null;
-  }
-  return pF.data.lastLevelId;
-}
-async function xr(p, xA, xb = 0) {
-  const p7 = {
-    authority: "shopping.ele.me",
-    accept: "application/json",
-    "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
-    "cache-control": "no-cache",
-    "content-type": "application/x-www-form-urlencoded",
-    origin: "https://r.ele.me",
-    pragma: "no-cache",
-    referer: "https://r.ele.me/linkgame/index.html?navType=3&spm-pre=a2ogi.13162730.zebra-ele-login-module-9089118186&spm=a13.b_activity_kb_m71293.0.0",
-    cookie: p,
-    "x-ele-ua": "RenderWay/H5 AppName/wap Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Mobile Safari/537.36",
-    "user-agent": "Mozilla/5.0 (Linux; Android 8.0.0; SM-G955U Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Mobile Safari/537.36"
-  };
-  let p8 = new Date().getTime();
-  let p9 = 12574478;
-  xi = p8;
-  xb == 2 && xe == 0 && (xX = xi, xe++);
-  xb != 0 && xb != 2 && (p8 = xb);
-  var px = "data=" + encodeURIComponent(JSON.stringify(xA));
-  let pp = x6(p);
-  let pZ = pp.split("_")[0];
-  let pc = await xE(pZ + "&" + p8 + "&" + p9 + "&" + JSON.stringify(xA), xF);
-  const pu = {
-    url: "https://shopping.ele.me/h5/mtop.alsc.playgame.mini.game.dispatch/1.0/?jsv=2.6.1&appKey=12574478&t=" + p8 + "&sign=" + pc + "&api=mtop.alsc.playgame.mini.game.dispatch&v=1.0&type=originaljson&dataType=json&timeout=5000&subDomain=shopping&mainDomain=ele.me&H5Request=true&pageDomain=ele.me&ttid=h5%40chrome_android_87.0.4280.141&SV=5.0",
-    method: "POST",
-    headers: p7,
-    body: px
-  };
-  return xZ(pP => {
-    xc(pu, async (pF, pf, pV) => {
-      if (!pF && pf.statusCode == 200) {
-        try {
-          const pG = JSON.parse(pV);
-          _0x25dc12 = JSON.parse(pG.data.data);
-          pP(_0x25dc12);
-        } catch (pn) {
-          console.log(pV);
-          pP(null);
-        }
-      } else {
-        pP(null);
-      }
-    });
-  });
-}
-async function xl(p, xA, xb = 0) {
-  console.log("\u53D1\u653E\u4E2D...");
-  const p7 = {
-    Host: "shopping.ele.me",
-    "x-ltraffic-src": "%7B%22afid%22%3A%22afc_launch%5Eme.ele%5E1012_Initiactive%5E3878ccd3-3646-4a80-a9cd-2186c602d4ae_1723134419515%22%2C%22pvid%22%3A%22a2ogi.bx903203__Zoq5ZZVQvj0DADRgLoZBLSGu__P4o%2FfxW_%22%7D",
-    "x-eleme-requestid": "ADEA5439FE8340A29040F669FCAD4C31|1723137437692",
-    "x-sid": "2e43b42b3e13e4d2a765e9791d7365aae",
-    "x-uid": "2214541497400",
-    "x-nettype": "UNKNOWN",
-    "x-server-ip": "180.76.0.0",
-    "x-pv": "6.3",
-    "x-nq": "5G",
-    "x-features": "1051",
-    "x-app-conf-v": "0",
-    "content-type": "application/x-www-form-urlencoded;charset=UTF-8",
-    cookie: p,
-    "x-bx-version": "6.6.240501.37153015",
-    "f-refer": "mtop",
-    "x-extdata": "openappkey%3DDEFAULT_AUTH",
-    "x-ttid": "1551089129819%40eleme_android_11.11.88",
-    "x-app-ver": "11.11.88",
-    "x-c-traceid": "Zoq5ZZVQvj0DADRgLoZBLSGu17231374376810241131437",
-    "x-elder-mode": "0",
-    "x-pgi-requestid": "5bce4caf-e493-4d94-b68c-4777ff0dc0c1",
-    "x-umt": "udcBrb5LPIYh7gKRMvGWBIPWh4fRziH0",
-    "x-utdid": "Zoq5ZZVQvj0DADRgLoZBLSGu",
-    "c-launch-info": "3,0,1723137437680,1723134439818,1",
-    asac: "2A23C08X4VP4SVOKFBKCA9",
-    "x-appkey": "24895413",
-    "x-falco-id": "696f8c1075a344b79b195d11edf7cf0d",
-    "x-page-url": "https%3A%2F%2Fr.ele.me%2Flinkgame%2Findex.html%3FnavType%3D3%26longitude%3D106.4976118505001%26latitude%3D26.36270485818386%26spm%3Da13.b_activity_kb_m71293.0.0",
-    "x-page-name": "me.ele.component.webcontainer.view.AppUCWebActivity",
-    "x-sufei-token": "BO_vGx8i1dIwhdHRl8VKN2L4dQH5lEO2iI4LbwF8bt5lUY5SCWX2BzIG1wZIFhsu",
-    "accept-encoding": "gzip"
-  };
-  const p9 = {
-    url: "https://shopping.ele.me/gw/mtop.alsc.playgame.mini.game.event.report/1.0/?wua=W28h_7yZ26hu1JwalIpn%2FcX%2BzfziRWkHYEHsdZmVqXeA2%2FwYUa%2B8bCP0ArVl3I6Gh%2F%2FZqmRdRrj4AjAJUfG%2B3oLrJivFwm63Kg7PpjAsW6VXjHIaMutgOxAOWOcPl6%2BqCMhOSEcqmPAKdCuKLfw1IsX1w%2Bl%2BAitNeCtzTcBQ62VSinUDNlE9u6PyJ%2BIfTDJ%2Fu%2B7iQoXsnE8Y5xIk%2BLbShF5csC%2FOseW6sXYruCygJZUPaB%2FObURmlJ66Ne%2FH2dG6q5NW4r9zMwQ%2FGbRggiD25B5UCTpZV6%2BAaUeFtkfv86LPF3q%2FbM8a%2BoPlvNIDknTIqiitKdpzIFAvRHD9E3KV13DG8ImkGu8bUXyoE9fuAmQc%2BwGlBGEXZ%2BObQTCFMfCxFIOlkP8ReaaqbxN7eAygPPlXq2w%3D%3D&data=%7B%22gameSource%22%3A%22ISV%22%2C%22gameOperateName%22%3A%22LIANLIANKAN%22%2C%22gameTaskId%22%3A%22%22%2C%22bizScene%22%3A%22LIANLIANKAN%22%2C%22gameStage%22%3A%22completeLevel2%22%2C%22gameName%22%3A%22LIANLIANKAN%22%2C%22ua%22%3A%22140%23FQbKI49pzzZ5Rzo2lztHbLBtc73bS2IMYbuJEeuqgRiXdaFM2Dz39221q3iA%2BzMtievkImG5TP6N9j%5C%2F%2BEGyMBLT7i4IY%5C%2FbjI29K%2B41W%2B4kyaDOR1I9pqwQyUSnDHzVcYxKoZkGCoBL0P46NCPD%2BGqVnDIIye7uAUUa%5C%2F4rsRCVqj7f8%5C%2FC7H%2Bxx3qByjcWbSBaxt2mPGie09o7It60HQpAa5bkYmQKrfxz9NU8uLWIEsrZ5EnTBXCRzYwv3hSoUMA77RUi28W83%5C%2FnBLR8DGQUHeJdVKwseB0E6zM6JRDP05n0P0UrYR86rb5Tvrm3uqwCGPFem8KIdRAuQYCSY9D%5C%2F2v%5C%2FhFUNXcDgIfU079T4gK2ZfT2jCIlFbZ6BxSW8WZJzOrZV0n8sLBf51kGiuQmOQPX2JjJmOx4HxpoCZHGs6nSAp%5C%2FfKD760TcCjs0%2BvB9UjApsqSdIN%2BwMzPiwoT2Kbom8qUUmlsF00GqOB1TK0haffuU1lBATdivazk65BzQlsUXpBW%5C%2FzF1Ik0pFlbqOA7g87oZcNskNY2OglrenfDFo7Njhx9viGfzMA%5C%2FdRS9AnqysjgHRwa08GK02dONhLQykvGI9kC1sHOVJ%2BoK9jRsqU2oi21yrNnwgqGse8Vaa7uspDEVBDYg%5C%2FJ122kdbYnrZS6w9UGq4Mba6lOmDH%2B3CPC72WWfqILu0AHbk3b8%2Bnsj8Yioy%5C%2FRj6N3wg0ocld9QGwX9VySatt%2B9KQ266l0WbiDFBdKCD8JaM37bVhGoCasQnYjKLJsvcCxXK%5C%2FzVGvAY5lWxGukuu%5C%2FayuhXOo4YJptmA7poaU2ZPP6yCJGknjMUzwwK4IjRzbPIcgBDc2Xlcs3jN0mh3YxOr5hC8Q89zr05BTsL0XU0mGkYA6C0FErtQT27HcVkTi3lw8zNkQYNX2LO3yjlVo%2BhvdIxcY3bZ48x3ibO9RhfQmLMgSLxOL9gBc8%5C%2FE6L5nPj%2B1VlxSKaTfyXUj0dqfYkhNO%2BNXuUq%2BUKeM3jhwrqydmIvYZnXRgbEAIoQLqi42rVVbqDEwR1ctD%2BMEtg%5C%2Fzvj2Oaa3s3nV%2BvMlmmCUSEyHAvovDRS%5C%2Flp1zzXdEnDgOYFrxvok%2B93Etzzrb22U3laNMHN9B3WeQIqfxRrEWSfT4Pi%5C%2FPaOMFvM5oF7OiA5ROHMHn24Ze3LluxS3VXhN1N7bnA02bisKuEzftQ0B28OJXDooDQLYsv4fKT8nD5s6SRMWV2ZJ%2BpG5izjpbZsTvlIAx5cdIr53Cd59ozP%2BfA83bFOSimQxxvwFxh8rwEOUUHFDCXcL%2BojCoFORbQhh6NLOXFv6Z2UKuMx2j5cgvTRJRKbhfCHlF0%2Bx%5C%2FduxVxFCJvfGnRpu6%5C%2Fq21zf2TXcRvXcd350%2BKVdJtyRGxfNDKEBwSoSC9Rnx5orkJLzsbho8qUSpILc4uMXmzXbXiXgo0I%2B9qnfGI0HYr5M3aH0m4QqIYPxpR5z3oPMNjzwftEKrQ%2BSD8XkY%2BB6NX6rdr92EKPMVyFX9S8W7uagLDXMY4UL8%5C%2FZDeIY%2B58lQSoFiyic5ssmS4YXAi1qGMfFRSbaXh%2BBIY4zKziEImqwMDWXU2rx0u0TftVV11UvQdDFVOb6ekqlz2s7PoWXLgJ8zdOLYQel95Dn5uiE7BLFFdDQvyiX2lIzE5I32lSDSyo08oGjI0tsGtzIw44DtYH8r3VfOsjv6MtrtRVesxAAfmtXuuxzLe3F1Sbv2g3cdaPzzTSEUHqDFoo20%2BT%5C%2F8b9MQZIhT8%5C%2FRcZo08njcAatDFmGXZg2I5Fw0SoyR%2B6plciz0cLIcxpNmpZDXVY3rRTGFf3Yj85svRxDuw%2B0vactOxpkXTHHntkBnFl6XTEM5XuxxM02fd3BsbH8OILZ0aO2lkui2X0mlpYazDcLV2eDFT1D2zTJGth%5C%2Fzcl9XXeHM62zzDzbV1h%5C%2FlQzzm8c3IWO1z2ry2X8%2Bl6TIzPxiE%2B5jwFrx2DD38phqfAbbD183lp1zzcFiVBYYN7Yl2Ic%2BV3g%5C%2FWQrbOXMCv9Y2zIriVXl%5C%2FbQrzeWV3EBcQzFzb2%2BBnlk1zzm1VV2lBUzxL2PoO0tTczbri21U30GOzJPDuV2QSLQrx2DD3lthq9Mdu2oOGlpTzzDxkV2Q8%2Bkxx2mwKV6hqzzxy2XlxU6J8x8rbVXl%5C%2FEQrz2DD3VphqyrDC2OMkUpsxzDzb8uV%5C%2FQRtz2mQ%5C%2Fnph%5C%2FzzzbE18%2BC5kJFDzEV1hqMr%2BzqIc3ZpY6zcOi2XU3lGrxzDaEE%2BQmnFrz2DD3vphqzzzb2O8%2BuEKxzIDZIOJqlbzzXPc3yS1Kz2DcL283lpOzEPriVWo%5C%2FjMzzh8P%2BVtg%5C%2Fznzi22yMv9hrz8riVXl%5C%2FbzrzLxn3EF1%2BzFrb22eulpTzMUnfVPnWMbrz2DoXUtg9ZQzh2183ltMzHDrbrZctvC1x2PD3VRcFznzi2ci7lpTzzDoWV2QltS2z7PH%2BVtg%5C%2Fzd%2Bi2mwelEQxzPrbVXl5TzxQwDo7YphqzzoD2XM6lYFz78riV2E%5C%2Fl8sx2KK%2BppTkxFri22U30GOzXNXVVABBUbrz2Do3E3gBaMrbi2Y4lp1zz3%2BiVCHqszDRLDc3Vtg%5C%2Fzbrb22I2e3fzbPzlVOGgqbrx2DD39thq%2BB3b2zwW8ubxzDzbNh7%5C%2FCfDHXDzZr6h%5C%2FzFzbQO8%2B1kFzF8riVXl%5C%2FyQrzU%5C%2Fc3t3EtzFSp23VRleuz4DogV2l%5C%2FlQx22PzXwrSLzLsv2X84lpGdzPzgVB4%5C%2FCQrx2PD3VX83zKdioul3tlrxzPzbVZVqlQziXPxpB3h%5C%2FzzzbR28%2BYHszSPriV2E%5C%2FlM2x2DsFr369zQri22U31KrzZNeiVZJtlzro2IoXUtgb4zzzL183l6TzAIrbUl0%5C%2FvGzD2PD3VtgtzFzb22UdlpG%5C%2FMI2b%5C%2FnJqlQzz2nj%2BV%2BxmFzDM11Y4lp1zz4FiVFU%5C%2FDf%2BzoDK%2BVtluzDbi2rG4GNBAz8riVXl%5C%2FTFrzhcc8sIbJzFrS2XUblpYRzHObVf4ulFrz2DDy936aFHRb2DSJlpTcx8xIV25HPNrx2Hc%2BVthqzzxb2XedvvtxzK2VV2lqlQxA2PzGKZSXz3TV2X8%2Bl66KzPzPEAq%5C%2FvhFd2Pc4V6kuzFDU2XKoZfFxzPFbVu4qlNyx0Pc3ttnFzFzb2m01lQ2xk0rbXUoqlQzz2%2BD%2BVdzFprzba2KDl6TzzD%2BiVXl%5C%2Fl5Tx2DxlttTAxQri22U36gXz34ObBrWqlQzz2%2BN%2BV%2BXaFQzY2O83U3TzHPrbsoW%5C%2FlUFx2PD3V%5C%2F7hzmdb9sl3n5MxzPzbVj4qlsMxa8D3P3EtzFzb2HPylMAxmDDrV1hqMbfzQPc3XtYRzL2V2X8%2Bl66xzPDJEP8qv7To2Pc3VtkFzFzu2xbRl8zrzPrbVXUIOQrz2QgGGHmijDapVrMn%5C%2F2I4jearIkM%2BIXKnqdqAtmQHpN6GrWj6F166bAdG8P3RYEV0xlyEiFLyn1TeFc78jJ4XXbeYkL0ea5XSsKKr8y2yHKuDJvJARVs%5C%2F8BXIYBZJ5RySEZGsQzgenKYPJw0QvCi3j8%2BhHS07aFcCMone5VD2rGPehDRDCyQFz7CnoDj%5C%2F2v8DL3Fp3o3hVjzbjy03B9P5IJWXjLwo%5C%2FAnAuXRI1njUveHm7P5Bz7Y1EAhKcxjQNma6t7pwE%5C%2FPKsyfMXKZSx8WI5mOUN%5C%2F%5C%2FAWEwDMfTuopNbNsYHmwpF%5C%2FIpDE1ZfqkqbQtkehGj%5C%2FhQxsWGn3waqTVjTGE8p3LAjStn778J4Qqicih%2BkHC9phvSLeUyuth3iiJE6c1w0pV%2Bt11OG0DzgT78WUbyI52Z7gNENLWbbDK0Oo2HzywJgLByqQXH%5C%2F1sD4NKSE%5C%2F%2BEZEkqU%5C%2FXuZlkua60ceFO8AqWPvN%5C%2FirmQ0gqs1tzKxg6LFyW%2Bil2JtElAQpqbDzEFc8adLjU%5C%2FzTesWAyrNT3C9XCBWa9JkUQBlE0AFDvHxeKDIhl2kFrtlnnDS8d276hlAp839hySd3MxhChdiZEYGyuYEXozQM60YXdScAOIZAB5D0L49iQq3psw02A9Shm6MiEVf0DYXvG7N%5C%2FmhlA0yJn24ezP7LOxeis%3D%22%2C%22umidtoken%22%3A%22T2gAaiSNjjeU6VQUQvMrWoSrYMAjIMiJisFmHSX_A-9Vcl_wwFRnHwH8HHdljFRGMqs%3D%22%7D&type=originaljson&asac=2A23C08X4VP4SVOKFBKCA9",
-    method: "GET",
-    headers: p7
-  };
-  return xZ(px => {
-    xc(p9, async (pc, pu, pP) => {
-      if (!pc && pu.statusCode == 200) {
-        try {
-          const pD = JSON.parse(pP);
-          _0x25dc12 = JSON.parse(pD.data.data);
-          px(_0x25dc12);
-        } catch (pE) {
-          console.log(pP);
-          px(null);
-        }
-      } else {
-        px(null);
-      }
-    });
-  });
-}
-async function xy(p, xA, xb = 0) {
-  console.log("\u5DF2\u53D1\u653E...");
-  const p7 = {
-    Host: "shopping.ele.me",
-    "x-ltraffic-src": "%7B%22afid%22%3A%22afc_launch%5Eme.ele%5E1012_Initiactive%5E3878ccd3-3646-4a80-a9cd-2186c602d4ae_1723134419515%22%2C%22pvid%22%3A%22a2ogi.bx903203__Zoq5ZZVQvj0DADRgLoZBLSGu__P4o%2FfxW_%22%7D",
-    "x-sid": "2e43b42b3e13e4d2a765e9791d7365aae",
-    "x-uid": "2214541497400",
-    "x-nettype": "UNKNOWN",
-    "x-server-ip": "180.76.0.0",
-    "x-pv": "6.3",
-    "x-nq": "5G",
-    "x-features": "1051",
-    "x-app-conf-v": "0",
-    "content-type": "application/x-www-form-urlencoded;charset=UTF-8",
-    cookie: p,
-    "x-bx-version": "6.6.240501.37153015",
-    "f-refer": "mtop",
-    "x-extdata": "openappkey%3DDEFAULT_AUTH",
-    "x-ttid": "1551089129819%40eleme_android_11.11.88",
-    "x-app-ver": "11.11.88",
-    "x-c-traceid": "Zoq5ZZVQvj0DADRgLoZBLSGu17231374376820242131437",
-    "x-elder-mode": "0",
-    "x-pgi-requestid": "d8d11dce-3ab2-48a6-8fdb-c0207e660902",
-    "x-umt": "udcBrb5LPIYh7gKRMvGWBIPWh4fRziH0",
-    "x-utdid": "Zoq5ZZVQvj0DADRgLoZBLSGu",
-    "c-launch-info": "3,0,1723137437682,1723134439818,1",
-    asac: "2A23C08X4VP4SVOKFBKCA9",
-    "x-appkey": "24895413",
-    "x-falco-id": "12d348ab6b414fb3887df15a233d651e",
-    "x-page-url": "https%3A%2F%2Fr.ele.me%2Flinkgame%2Findex.html%3FnavType%3D3%26longitude%3D106.4976118505001%26latitude%3D26.36270485818386%26spm%3Da13.b_activity_kb_m71293.0.0",
-    "x-page-name": "me.ele.component.webcontainer.view.AppUCWebActivity",
-    "x-sufei-token": "BHBwBYRP4sfbEL78fNjdAnltSjzCuVQDI_vkwmrB2UueJJHPEsgBkhkTeGvjiwzb",
-    "accept-encoding": "gzip"
-  };
-  const p9 = {
-    url: "https://shopping.ele.me/gw/mtop.alsc.playgame.mini.game.event.report/1.0/?wua=W28h_e%2BzbQ%2FZQwkxbgEEcvzOoeRqNbdJ07LYgNhrNzku0o%2Fzil8ScM4wjQiER4i%2FOXvnxj4IFjggxqVJTyJhKHkWlMrm1MvumBNTH244akkm2xOXwbMBCweqJfmood679mFYoLb0kJEY7LsQ4vw1%2BEDdcD3%2Fz%2FRvgpNuyPNwU9rGYvlZx8ksbt0NGo%2FnkbaDkt1Uf41a5IBApFuDMQwS1xnXtLYLOinEMznQR3otqacwNDKoDhdDKqpcRTqG1ZEjuHaPVo6GzrvmjWqK436n3Xn17gCsSE6FSSl1%2FxzIi3il4jfxrCQPi1mO3jEzilTlS6AlRzP%2FoSEsQVfrj4arlCF8PAMj0Ee2c4bi4LSaBscAQ%2F5rPvPDWhF4lQ537bDB1v0Yg&data=%7B%22gameSource%22%3A%22ISV%22%2C%22gameOperateName%22%3A%22LIANLIANKAN%22%2C%22gameTaskId%22%3A%22%22%2C%22bizScene%22%3A%22LIANLIANKAN%22%2C%22gameStage%22%3A%22completeAll%22%2C%22gameName%22%3A%22LIANLIANKAN%22%2C%22ua%22%3A%22140%23mM2KIJ7szzZg3zo2lztHbLBtc73bS2IMYbuJEeuqgRiXdaFM2Dz39221q3iA%2BzMtievkImG5TP6N9j%5C%2F%2BEGyMBLT7i4IY%5C%2FbjI29K%2B41W%2B4kyaDOR1I9pqwQyUSnDHzVcYxKoZkGCoBL0P46NCPD%2BGqVnDIIye7uAUUa%5C%2F4rsRCVqj7f8%5C%2FC7H%2Bxx3qByjcWbSBaxt2mPGie09o7It60HQpAa5bkYmQKrfxz9NU8uLWIEsrZ5EnTBXCRzYwv3hSoUMA77RUi28W83%5C%2FnBLR8DGQUHeJdVKwseB0E6zM6JRDP05n0P0UrYR86rb5Tvrm3uqwCGPFem8KIdRAuQYCSY9D%5C%2F2v%5C%2FhFUNXcDgIfU079T4gK2ZfT2jCIlFbZ6BxSW8WZJzOrZV0n8sLBf51kGiuQmOQPX2JjJmOx4HxpoCZHGs6nSAp%5C%2FfKD760TcCjs0%2BvB9UjApsqSdIN%2BwMzPiwoT2Kbom8qUUmlsF00GqOB1TK0haffuU1lBATdivazk65BzQlsUXpBW%5C%2FzF1Ik0pFlbqOA7g87oZcNskNY2OglrenfDFo7Njhx9viGfzMA%5C%2FdRS9AnqysjgHRwa08GK02dONhLQykvGI9kC1sHOVJ%2BoK9jRsqU2oi21yrNnwgqGse8Vaa7uspDEVBDYg%5C%2FJ122kdbYnrZS6w9UGq4Mba6lOmDH%2B3CPC72WWfqILu0AHbk3b8%2Bnsj8Yioy%5C%2FRj6N3wg0ocld9QGwX9VySatt%2B9KQ266l0WbiDFBdKCD8JaM37bVhGoCasQnYjKLJsvcCxXK%5C%2FzVGvAY5lWxGukuu%5C%2FayuhXOo4YJptmA7poaU2ZPP6yCJGknjMUzwwK4IjRzbPIcgBDc2Xlcs3jN0mh3YxOr5hC8Q89zr05BTsL0XU0mGkYA6C0FErtQT27HcVkTi3lw8zNkQYNX2LO3yjlVo%2BhvdIxcY3bZ48x3ibO9RhfQmLMgSLxOL9gBc8%5C%2FE6L5nPj%2B1VlxSKaTfyXUj0dqfYkhNO%2BNXuUq%2BUKeM3jhwrqydmIvYZnXRgbEAIoQLqi42rVVbqDEwR1ctD%2BMEtg%5C%2Fzvj2Oaa3s3nV%2BvMlmmCUSEyHAvoJDRASlp1zzXdEnDgOYFrx12jc7pEtzzrb22U3laNMHN9B3WeQIqfxRrEWSfT4Pi%5C%2FPaOMFvM5oF7OiA5ROHMHn24Ze3LluxS3VXhN1N7bnA02bisKuEzftQ0B28OJXDooDQLYsv4fKT8nD5s6SRMWV2ZJ%2BpG5izjpbZsTvlIAx5cdIr53Cd59ozP%2BfA83bFOSimQxxvwFxh8rwEOUUHFDCXcL%2BojCoFORbQhh6NLOXFv6Z2UKuMx2j5cgvTRJRKbhfCHlF0%2Bx%5C%2FduxVxFCJvfGnRpu6%5C%2Fq21zf2TXcRvXcd350%2BKVdJtyRGxfNDKEBwSoSC9Rnx5orkJLzsbho8qUSpILc4uMXmzXbXiXgo0I%2B9qnfGI0HYr5M3aH0m4QqIYPxpR5z3oPMNjzwftEKrQ%2BSD8XkY%2BB6NX6rdr92EKPMVyFX9S8W7uagLDXMY4UL8%5C%2FZDeIY%2B58lQSoFiyic5ssmS4YXAi1qGMfFRSbaXh%2BBIY4zKziEImqwMDWXU2rx0u0TftVV11UvQdDFVOb6ekqlz2s7PoWXLgJ8zdOLYQel95Dn5uiE7BLFFdDQvyiX2lIzE5I32lSDSyo08oGjI0tsGtzIw44DtYH8r3VfOsjv6MtrtRVesxAAfmtXuuxzLe3F1Sbv2g3cdaPzzTSEUHqDFoo20%2BT%5C%2F8b9MQZIhT8%5C%2FRcZo08njcAatDFmGXZg2I5Fw0SoyR%2B6plciz0cLIcxpNmpZDXVY3rRTGFf3Yj85svRxDuw%2B0vactOxpkXTHHntkBnFl6XTEM5XuxxS02fd3BsbH8OILZ0aO2lkui0yKMlpTrzIrbL8%5C%2FqxQrxoPdoFt6zOsOi2Xlbdyuz58QiVXl%5C%2FlQ2x2DD3VtoZzzPe2OM%2BUpsxzDzb7Yh%5C%2FvSrz9PK%2BVtg%5C%2Fzrui238rlMFxzPrbVXUB0bzE6PzEi3luzFzb2%2Bmole1z00rbxF%5C%2FqlQzz2%2B8%2BVHODFzok2X8%2Bl66mzPxZVXM5%2BbrxLDK353hqRCrbIXkKlpMzzcFiVWo%5C%2F2Qrz08K%2BVtg%5C%2Fzdzi2D971kKlz8riVXl%5C%2FTFrzJPdpm3TYzQri22U309szWDFb%5C%2FlVqlbzz2rD%2BV3g%5C%2Fzz%2Bi2xyRHDOzs8fiV2E%5C%2FlMFx2r1jwpTESbri2XU3l1zxzHxb20m%5C%2F%5C%2Fz2x2PhKEJCMz%2BsiT1lvlpTzzDxNV2EA3Srzirj%2BV3g%5C%2Fzx%2Bi22U3l6Mxzo5bozh%5C%2Fmbux2PD3VRY%5C%2FzxsxX2M3DFMxzPrSVfoqlQD62xW3EZzfzFrb22l6lp1rgwrbPf7qlQzz2%2Bk%2BV3paFzDx2O83l6TzMPriVAYqYbDsmDc%2BV3g%5C%2FAFrbAs7HtnuxzP2bVjCql9QzXIoETphqzzxN2Xl6lphyz8riVXl%5C%2F7zrzNcn4EeLFzFrb22lqlp11zDDEV2lqlbzz%5C%2FIc3gq%5C%2FvRbri22U3VXQzsDoBVPmqlQrz2DD096TuzWObsXILlp1zzcFiVqTRcboBLDc%2BV3g%5C%2FFzrbLDRvlQsozPrbVXUs7FogXCY3d3Jjzzzb22kKl6TdzDsiVFE%5C%2Fqz%2Bz%2BDw%2BVtg%5C%2FzDbi2mQ4vGk2ySXiV2E%5C%2FlEXx2Hm3ZGk%5C%2Fvz2i2X8%2Bl1MxzdQvVuhqlQzz2cI%2BVHBnz4SV2X8dMpLAzPDOVBn%5C%2Fszrx2DD35thqyfzcX2MwU3Sxz8rb8%2Bv%5C%2Fuzzk2HD%2BVthqzzoo2Xesvb3zzob0V2l%5C%2FlQDA2Pc37LYq1zri2XU3lGsxzdtVVZEqlQrz2Do4EpgfvFzbdOY4lp1zzdTiVusPfQDw2Ic%2BV6ltAFrbChc5WMbxzPzbVtJqlyjIXDztn6hqzzzb2O8%2Bl6TzDDrbMbotl%5C%2Frn2Pc3VtgGzFx4aTl3KgbozPrbVXUhNbDzXzBKES3zzFrI2XUylphozASbwdJqlQzz2nY%2BVx3P4QDCL183U6OzmPrbdxZAAFoK28c%2BV3g%5C%2FHzrbdue7vGkSxIriI1E%5C%2FvFrzxPxsBt6qzFri22U3vG1z8ccGE%2BQtnbrx2Pc3U3hqpzo02XePl3MxzDzbQTm%5C%2FBfDjXDzG43h%5C%2FzbzbX18%2BKWbKzzOiV2lBUQxK2PxSLPXvz4bN2X8%2Bl6TMzPD3VnjqvN1o2Pc3Vtk4zFDJXoyGleuKzPzbVXlulFzz2DDPS6g%5C%2Fkb2bYOamlp1zznbiVB0epqrO2Pc3VtkrzFxLJ%2BhKtCuxzPuvVjWqlVUr2Do9Y3hqzzxe2XMTv5yzzKzIV2l%5C%2FlQzN2PxzFAZfz%2BfV2X8%2Bl6T9zPzHEKo%5C%2FDQ2x2P82I2Y4zKQiR1M%5C%2Fl3MxzDzbE%2Bl%5C%2FfroiXPz8%2Bth%5C%2FzzzbB18%2BXUKAzPD%5C%2FIXVqlbzzlPc%2BVD%2B4kqPI1wba7X53xl82VUpji2Jpo20oiliCyCPTD7BJqZrUJfK4%5C%2FXdZquSVwqs1GbtGu1FD5KK43fxaT07EUc23qJIRpjswLmoVi%2B9PLPVvz7GhewXhnT0U2N0MBTwRR%2BMqB%2Bz46ZENS7e9sLe1WwsVK89LaYSxy6z56uXQIxKfpqQ0FyGurzHe5QQ0v8LTbIWfmWFEq1Ub2c9RVwYfsX7MUcIAbleZeCccXNxUp96PIYMswQHkN%2BeqEibwsmIYJCjhAslMV7LA3coSRzuS1sPY37vlefTebpd4nzhBOm7KIIe7fn17FskrAnJvO%2Bn%5C%2FpqkwvkTzBrkZERJtkPDOduKnP24bUqWXUa3EEFvZ6gFpSa4qGZCzeBB%5C%2FfGEtxJesCu72tWtYA6IA%5C%2FYOWP9VyVFsE4CGZ95CrbZpRQIeFh3ILdYIMspTHeToBG1uzV%2BmTINkl9CizN7yGSc7COYWzYn%2BxN9OW7hmo4h7L6tVcLPI5N8wv%2BbbUC2Vz1oZVDpHJ%2BdZPyy28Pm5zZCdQFdvL%2BQsjVY0WD53ZIatccZH0iPyPgggn3992Wn%5C%2FXmN4TAwsN1iMckz%5C%2Fwxr4nP%2BnqMuD3ghsuimIt5kg6Ei1s2lD%5C%2Fo99Rhm00m%2BTq%5C%2FcN%2BIO4y0m5llcPU3MbgFXsJhyuOBaOd8KHNQ7czp30oMzM%3D%22%2C%22umidtoken%22%3A%22T2gAaiSNjjeU6VQUQvMrWoSrYMAjIMiJisFmHSX_A-9Vcl_wwFRnHwH8HHdljFRGMqs%3D%22%7D&type=originaljson&asac=2A23C08X4VP4SVOKFBKCA9",
-    method: "GET",
-    headers: p7
-  };
-  return xZ(px => {
-    xc(p9, async (pu, pP, pF) => {
-      if (!pu && pP.statusCode == 200) {
-        try {
-          const pR = JSON.parse(pF);
-          _0x25dc12 = JSON.parse(pR.data.data);
-          px(_0x25dc12);
-        } catch (pD) {
-          console.log(pF);
-          px(null);
-        }
-      } else {
-        px(null);
-      }
-    });
-  });
-}
-async function xv(p, xA, xb) {
-  let p6 = await xU(p, xA);
-  if (p6) {
-    let p8 = await xa(p, xA, 1);
-    console.log("\u5EF6\u8FDF10\u79D2");
-    await xu(10);
-    console.log("\u518D\u5EF6\u8FDF15\u79D2");
-    await xu(15);
-    p8 = await xQ(p, xA, 1);
-    console.log("\u518D\u5EF6\u8FDF15\u79D2\u5C31\u7A33\u4E86");
-    await xu(15);
-    let p9 = await xl(p, "2");
-    _0x10e546 = await xH(p, p6, xA, xb);
-    if (_0x10e546 == 3) {
-      console.log("\u73A9\u8FDE\u8FDE\u770B\u9886\u53D6300\u4E50\u56ED\u5E01\u6210\u529F\uFF0C\u8FDB\u5165\u997F\u4E86\u4E48\u8BB0\u5F55\u67E5\u770B");
-    } else {
-      _0x10e546 == 2 ? console.log("\u53EA\u8FC7\u4E86\u7B2C\u4E8C\u5173\uFF0C\u91CD\u65B0\u8FD0\u884C\u4E00\u904D\u811A\u672C\u5C31\u80FD\u6210\u529F") : console.log("\u672C\u6B21\u8FD0\u884C\u4E0D\u6B63\u5E38\uFF0C\u4F46\u6211\u8FD0\u884C\u65F6\u80FD\u6210\u529F");
+      });
+    } catch (_0x2abedd) {
+      console.log(_0x2abedd);
+    } finally {
+      return Promise.resolve(_0x17737f);
     }
   }
-  let p7 = await xy(p, "3");
-  return;
-}
-async function xk(p) {
-  const p2 = {
-    bizScene: "WATER_SORT",
-    bizParam: "{\"type\":\"login\"}",
-    bizMethod: "login"
-  };
-  const p3 = await xr(p, p2);
-  return p3;
-}
-async function xd(p) {
-  const p2 = {
-    bizScene: "WATER_SORT",
-    bizParam: "{\"type\":\"gameSuccess\"}",
-    bizMethod: "gameSuccess"
-  };
-  const p3 = await xr(p, p2);
-  return p3;
-}
-async function xL(p, xA) {
-  const p6 = {
-    bizScene: "WATER_SORT",
-    bizParam: "{\"type\":\"getPassPrize\",\"data\":{\"addNum\":\"" + xA + "\",\"type\":1}}",
-    bizMethod: "getPassPrize"
-  };
-  const p7 = await xr(p, p6);
-  return p7;
-}
-async function xm(p) {
-  const p4 = await xk(p);
-  const p5 = p4.passConf;
-  const p6 = [];
-  for (let px of Object.values(p5)) {
-    p6.push(px.passNum);
-  }
-  var p7 = await xd(p);
-  var p8 = p7.info.todayPass;
-  var p9 = 0;
-  while (p8 <= p6[p6.length - 1]) {
-    p7 = await xd(p);
-    p8 = p7.info.todayPass;
-    console.log("\u6B22\u4E50\u5012\u6C34\u7B2C" + p8 + "\u5173\u95EF\u5173\u6210\u529F");
-    if (p6.includes(p8)) {
-      p9 = p6.indexOf(p8) + 1;
-      const pp = await xL(p, p9);
-      console.log("\u83B7\u5F97\uFF1A" + pp.goldnum + "\u4E50\u56ED\u5E01");
+  async ["GetUserBalance"]() {
+    try {
+      let _0x181f92 = "GetUserBalance",
+        _0x567f03 = "get",
+        _0x23d272 = "https://service.ipzan.com/home/userWallet-find",
+        _0x3f986e = "";
+      await this.taskApi(_0x181f92, _0x567f03, _0x23d272, _0x3f986e).then(async _0x40fe24 => {
+        if (_0x40fe24.code === 0) this.valid = true, this.points = _0x40fe24.data.balance, console.log("账号[" + this.index + "] 当前金币: " + this.points);else {
+          _0xf1ea8.logAndNotify("账号[" + this.index + "]查询金币失败，可能Token无效");
+        }
+      });
+    } catch (_0xc67e18) {
+      console.log(_0xc67e18);
+    } finally {
+      return Promise.resolve(1);
     }
   }
-  console.log("\u5FEB\u4E50\u5012\u6C34\u95EF\u5173\u5B8C\u6210");
-}
-async function xo() {
-  await xx(xF, 1);
-  const p3 = x8();
-  for (let p4 = 0; p4 < p3.length; p4++) {
-    xV = 0;
-    xi = 0;
-    xe = 0;
-    xX = 0;
-    const p5 = p3[p4];
-    if (!p5) {
-      console.log(" \u274C\u65E0\u6548\u7528\u6237\u4FE1\u606F, \u8BF7\u91CD\u65B0\u83B7\u53D6ck");
-    } else {
-      try {
-        let p6 = await x7(p5, p4);
-        if (!p6) {
-          continue;
+  async ["Login"]() {
+    try {
+      let _0x1f2260 = "Login",
+        _0x459f03 = "post",
+        _0x3d2b06 = "https://service.ipzan.com/users-login",
+        _0x3e4a5c = JSON.stringify(_0x3771fa(this.account, this.password));
+      await this.taskApi(_0x1f2260, _0x459f03, _0x3d2b06, _0x3e4a5c).then(async _0x480963 => {
+        if (_0x480963.code === 0) console.log("账号[" + this.index + "] 登录成功"), this.activedAuthToken = _0x480963?.["data"];else {
+          console.log("账号[" + this.index + "] 登录失败：" + _0x480963?.["message"]);
         }
-        let p7 = await x9(p6);
-        if (!p7.username) {
-          console.log("\u7B2C", p4 + 1, "\u8D26\u53F7\u5931\u6548\uFF01\u8BF7\u91CD\u65B0\u767B\u5F55\uFF01\uFF01\uFF01\uD83D\uDE2D");
-          continue;
-        }
-        const p8 = p7.user_id;
-        await xp(xF, p8, xP);
-        console.log("******\u5F00\u59CB\u3010\u997F\u4E86\u4E48\u8D26\u53F7", p4 + 1, "\u3011", p7.username, "*********");
-        console.log("\u5F00\u59CB\u7B7E\u5230");
-        await xn(p6);
-        console.log("\u9632\u6B62\u9ED1\u53F7\u5EF6\u65F63-4\u79D2");
-        await xu(xN(3, 4));
-        console.log("\u5F00\u59CB\u62BD\u5956");
-        await xG(p6);
-        console.log("\u9632\u6B62\u9ED1\u53F7\u5EF6\u65F63-4\u79D2");
-        await xu(xN(3, 4));
-        console.log("\u5F00\u59CB\u5012\u6C34");
-        await xm(p6);
-        console.log("\u9632\u6B62\u9ED1\u53F7\u5EF6\u65F610-15\u79D2");
-        await xu(xN(10, 15));
-      } catch (p9) {
-        console.log(p9);
-      }
+      });
+    } catch (_0x573284) {
+      console.log(_0x573284);
+    } finally {
+      return Promise.resolve(1);
     }
   }
-  process.exit(0);
+  async ["SignInDaily"]() {
+    try {
+      let _0x28765f = "SignInDaily",
+        _0x4735c6 = "get",
+        _0x42ed00 = "https://service.ipzan.com/home/userWallet-receive",
+        _0x299e34 = "";
+      await this.taskApi(_0x28765f, _0x4735c6, _0x42ed00, _0x299e34).then(async _0x3f3169 => {
+        if (_0x3f3169.code === 0) {
+          console.log("账号[" + this.index + "] 签到成功：", _0x3f3169?.["data"]);
+        } else console.log("账号[" + this.index + "] 签到失败：" + _0x3f3169?.["message"]);
+      });
+    } catch (_0x568f80) {
+      console.log(_0x568f80);
+    } finally {
+      return Promise.resolve(1);
+    }
+  }
+  async ["doTask"]() {
+    try {
+      await _0x241982(1000);
+      console.log("\n============= 账号[" + this.index + "] 开始签到=============");
+      await this.SignInDaily();
+    } catch (_0x23c68c) {
+      console.log(_0x23c68c);
+    }
+  }
 }
 !(async () => {
-  await xo();
-})().catch(p => {
-  xY.log(p);
-}).finally(() => {
-  xY.done({});
-});
-function xN(p, xA) {
-  return Math.floor(Math.random() * (xA - p + 1) + p);
+  if (typeof $request !== "undefined") {
+    await _0x5e22b6();
+  } else {
+    if (!(await _0x76f888())) return;
+    console.log("\n================ 开始执行 ================");
+    for (let _0x59d06c of _0xd941b5) {
+      console.log("----------- 执行 第 [" + _0x59d06c.index + "] 个账号 -----------");
+      !_0x59d06c?.["activedAuthToken"] && (await _0x59d06c?.["Login"]());
+      await _0x59d06c.GetUserBalance();
+    }
+    let _0x3737e6 = _0xd941b5.filter(_0x2aad38 => _0x2aad38.valid);
+    if (_0x3737e6.length > 0) {
+      {
+        console.log("\n================ 任务队列构建完毕 ================");
+        for (let _0x434b43 of _0x3737e6) {
+          console.log("----------- 账号[" + _0x434b43.index + "] -----------");
+          await _0x434b43.doTask();
+        }
+      }
+    } else console.log("\n================ 未检测到帐号，请先注册：https://www.ipzan.com?pid=oviuk6128 ================");
+    await _0xf1ea8.showmsg();
+  }
+})().catch(_0x4c4062 => console.log(_0x4c4062)).finally(() => _0xf1ea8.done());
+function _0x416dc5(_0x3a97a0) {
+  const _0x414c4d = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+  return _0x414c4d.test(_0x3a97a0);
 }
-function xC(p, xA) {
-  "undefined" != typeof process && JSON.stringify(process.env).indexOf("GITHUB") > -1 && process.exit(0);
-  class p5 {
-    constructor(p6) {
-      this.env = p6;
+function _0xb417d8(_0x2829c6 = true) {
+  const _0x2334d0 = _0x2829c6 ? "1.1.1.1" : "0.0.0.0",
+    _0x44facb = _0x2829c6 ? "223.255.255.255" : "255.255.255.255",
+    _0xd9f504 = _0x2334d0.split(".").map(Number),
+    _0x275c26 = _0x44facb.split(".").map(Number),
+    _0x556be6 = _0xd9f504.map((_0xbf46cc, _0x2a9d1c) => {
+      const _0x1ab328 = _0x275c26[_0x2a9d1c];
+      return Math.floor(Math.random() * (_0x1ab328 - _0xbf46cc + 1)) + _0xbf46cc;
+    });
+  return _0x556be6.join(".");
+}
+function _0x157dd3(_0x2d7503, _0x42788a, _0x2e1e85) {
+  const _0x36ac8a = {};
+  _0x36ac8a[_0x42788a] = _0x2e1e85;
+  const _0x1f7e27 = JSON.stringify(_0x36ac8a);
+  try {
+    fs.writeFileSync(_0x2d7503 + ".json", _0x1f7e27);
+  } catch (_0x2fd9c9) {
+    _0x2fd9c9.code === "ENOENT" ? fs.writeFileSync(_0x2d7503 + ".json", _0x1f7e27) : console.error("保存文件时发生错误：", _0x2fd9c9);
+  }
+}
+function _0x35c695(_0x188ff0, _0x1924d1) {
+  try {
+    {
+      const _0x206e18 = fs.readFileSync(_0x188ff0 + ".json", "utf8"),
+        _0x4e7920 = JSON.parse(_0x206e18);
+      return _0x4e7920[_0x1924d1];
     }
-    send(p6, p7 = "GET") {
-      p6 = "string" == typeof p6 ? {
-        url: p6
-      } : p6;
-      let pc = this.get;
-      "POST" === p7 && (pc = this.post);
-      return new Promise((pu, pP) => {
-        pc.call(this, p6, (pV, pi, pe) => {
-          pV ? pP(pV) : pu(pi);
-        });
-      });
-    }
-    get(p6) {
-      return this.send.call(this.env, p6);
-    }
-    post(p6) {
-      return this.send.call(this.env, p6, "POST");
+  } catch (_0x527dd9) {
+    if (_0x527dd9.code === "ENOENT") return undefined;else {
+      console.error("读取文件时发生错误：", _0x527dd9);
     }
   }
-  return new class {
-    constructor(p6, p7) {
-      this.name = p6;
-      this.http = new p5(this);
-      this.data = null;
-      this.dataFile = "box.dat";
-      this.logs = [];
-      this.isMute = false;
-      this.isNeedRewrite = false;
-      this.logSeparator = "\n";
-      this.startTime = new Date().getTime();
-      Object.assign(this, p7);
-      this.log("", "\uD83D\uDD14" + this.name + ", \u5F00\u59CB!");
+}
+function _0x3771fa(_0x256ced, _0x59add5) {
+  var _0x3b0e44 = {
+    "table": ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "/"],
+    "UTF16ToUTF8": function (_0x164874) {
+      {
+        for (var _0x22d31c = [], _0x34b5d0 = _0x164874.length, _0x12ffe3 = 0; _0x12ffe3 < _0x34b5d0; _0x12ffe3++) {
+          var _0x60360,
+            _0x57e360,
+            _0x243264 = _0x164874.charCodeAt(_0x12ffe3);
+          0 < _0x243264 && _0x243264 <= 127 ? _0x22d31c.push(_0x164874.charAt(_0x12ffe3)) : 128 <= _0x243264 && _0x243264 <= 2047 ? (_0x60360 = 192 | _0x243264 >> 6 & 31, _0x57e360 = 128 | 63 & _0x243264, _0x22d31c.push(String.fromCharCode(_0x60360), String.fromCharCode(_0x57e360))) : 2048 <= _0x243264 && _0x243264 <= 65535 && (_0x60360 = 224 | _0x243264 >> 12 & 15, _0x57e360 = 128 | _0x243264 >> 6 & 63, _0x243264 = 128 | 63 & _0x243264, _0x22d31c.push(String.fromCharCode(_0x60360), String.fromCharCode(_0x57e360), String.fromCharCode(_0x243264)));
+        }
+        return _0x22d31c.join("");
+      }
+    },
+    "UTF8ToUTF16": function (_0x2f5e6d) {
+      {
+        for (var _0x2e1ff5 = [], _0x1fe47c = _0x2f5e6d.length, _0x36c899 = 0, _0x36c899 = 0; _0x36c899 < _0x1fe47c; _0x36c899++) {
+          {
+            var _0xddba5e,
+              _0x1c66d1,
+              _0x4e11bc = _0x2f5e6d.charCodeAt(_0x36c899);
+            0 == (_0x4e11bc >> 7 & 255) ? _0x2e1ff5.push(_0x2f5e6d.charAt(_0x36c899)) : 6 == (_0x4e11bc >> 5 & 255) ? (_0x1c66d1 = (31 & _0x4e11bc) << 6 | 63 & (_0xddba5e = _0x2f5e6d.charCodeAt(++_0x36c899)), _0x2e1ff5.push(Sting.fromCharCode(_0x1c66d1))) : 14 == (_0x4e11bc >> 4 & 255) && (_0x1c66d1 = (255 & (_0x4e11bc << 4 | (_0xddba5e = _0x2f5e6d.charCodeAt(++_0x36c899)) >> 2 & 15)) << 8 | ((3 & _0xddba5e) << 6 | 63 & _0x2f5e6d.charCodeAt(++_0x36c899)), _0x2e1ff5.push(String.fromCharCode(_0x1c66d1)));
+          }
+        }
+        return _0x2e1ff5.join("");
+      }
+    },
+    "encode": function (_0x4440be) {
+      {
+        if (!_0x4440be) return "";
+        for (var _0x44c43a = this.UTF16ToUTF8(_0x4440be), _0xa978b5 = 0, _0x4f9c35 = _0x44c43a.length, _0x59ac5c = []; _0xa978b5 < _0x4f9c35;) {
+          {
+            var _0x4a5bc7 = 255 & _0x44c43a.charCodeAt(_0xa978b5++);
+            if (_0x59ac5c.push(this.table[_0x4a5bc7 >> 2]), _0xa978b5 == _0x4f9c35) {
+              {
+                _0x59ac5c.push(this.table[(3 & _0x4a5bc7) << 4]);
+                _0x59ac5c.push("==");
+                break;
+              }
+            }
+            var _0x77e2fc = _0x44c43a.charCodeAt(_0xa978b5++);
+            if (_0xa978b5 == _0x4f9c35) {
+              {
+                _0x59ac5c.push(this.table[(3 & _0x4a5bc7) << 4 | _0x77e2fc >> 4 & 15]);
+                _0x59ac5c.push(this.table[(15 & _0x77e2fc) << 2]);
+                _0x59ac5c.push("=");
+                break;
+              }
+            }
+            var _0xdaed0e = _0x44c43a.charCodeAt(_0xa978b5++);
+            _0x59ac5c.push(this.table[(3 & _0x4a5bc7) << 4 | _0x77e2fc >> 4 & 15]);
+            _0x59ac5c.push(this.table[(15 & _0x77e2fc) << 2 | (192 & _0xdaed0e) >> 6]);
+            _0x59ac5c.push(this.table[63 & _0xdaed0e]);
+          }
+        }
+        return _0x59ac5c.join("");
+      }
+    },
+    "decode": function (_0x4de779) {
+      if (!_0x4de779) return "";
+      for (var _0x44177d = _0x4de779.length, _0x3286ef = 0, _0x5afdd4 = []; _0x3286ef < _0x44177d;) code1 = this.table.indexOf(_0x4de779.charAt(_0x3286ef++)), code2 = this.table.indexOf(_0x4de779.charAt(_0x3286ef++)), code3 = this.table.indexOf(_0x4de779.charAt(_0x3286ef++)), code4 = this.table.indexOf(_0x4de779.charAt(_0x3286ef++)), c1 = code1 << 2 | code2 >> 4, _0x5afdd4.push(String.fromCharCode(c1)), -1 != code3 && (c2 = (15 & code2) << 4 | code3 >> 2, _0x5afdd4.push(String.fromCharCode(c2))), -1 != code4 && (c3 = (3 & code3) << 6 | code4, _0x5afdd4.push(String.fromCharCode(c3)));
+      return this.UTF8ToUTF16(_0x5afdd4.join(""));
     }
-    isNode() {
+  };
+  function _0x52233c(_0x5136e2, _0xe0d60f) {
+    for (var _0x2ab4f3 = _0x3b0e44.encode("".concat(_0x5136e2, "QWERIPZAN1290QWER").concat(_0xe0d60f)), _0x4cc15c = "", _0x1675cf = 0; _0x1675cf < 80; _0x1675cf++) _0x4cc15c += Math.random().toString(16).slice(2);
+    _0x2ab4f3 = "".concat(_0x4cc15c.slice(0, 100)).concat(_0x2ab4f3.slice(0, 8)).concat(_0x4cc15c.slice(100, 200)).concat(_0x2ab4f3.slice(8, 20)).concat(_0x4cc15c.slice(200, 300)).concat(_0x2ab4f3.slice(20)).concat(_0x4cc15c.slice(300, 400));
+    return _0x2ab4f3;
+  }
+  return {
+    "account": _0x52233c(_0x256ced, _0x59add5),
+    "source": "ipzan-home-one"
+  };
+}
+async function _0x241982(_0x100501 = 3000) {
+  console.log("----------- 延迟 " + _0x100501 / 1000 + " s，请稍等 -----------");
+  return await new Promise(_0x5783a5 => setTimeout(_0x5783a5, _0x100501));
+}
+async function _0x5e22b6() {}
+async function _0x76f888() {
+  if (_0xa2efe3) {
+    let _0x57de73 = _0x44155b[0];
+    for (let _0x2979c7 of _0x44155b) {
+      {
+        if (_0xa2efe3.indexOf(_0x2979c7) > -1) {
+          _0x57de73 = _0x2979c7;
+          break;
+        }
+      }
+    }
+    for (let _0xf9d291 of _0xa2efe3.split(_0x57de73)) {
+      if (_0xf9d291) _0xd941b5.push(new _0x138232(_0xf9d291));
+    }
+    userCount = _0xd941b5.length;
+  } else {
+    console.log("未找到 配置信息，请检查是否配置 变量：", _0x34f238);
+    return;
+  }
+  console.log("共找到" + userCount + "个账号");
+  return true;
+}
+async function _0x58c2e5(_0x542f7d, _0x5679cd) {
+  httpErr = null;
+  httpReq = null;
+  httpResp = null;
+  return new Promise(_0x2ef8a3 => {
+    _0xf1ea8.send(_0x542f7d, _0x5679cd, async (_0xb83695, _0x271317, _0x41aed5) => {
+      httpErr = _0xb83695;
+      httpReq = _0x271317;
+      httpResp = _0x41aed5;
+      _0x2ef8a3({
+        "err": _0xb83695,
+        "req": _0x271317,
+        "resp": _0x41aed5
+      });
+    });
+  });
+}
+function _0x299988(_0x35c70e, _0xb9b557) {
+  "undefined" != typeof process && JSON.stringify(process.env).indexOf("GITHUB") > -1 && process.exit(0);
+  return new class {
+    constructor(_0x26381d, _0x43202e) {
+      this.name = _0x26381d;
+      this.notifyStr = "";
+      this.startTime = new Date().getTime();
+      Object.assign(this, _0x43202e);
+      console.log(this.name + " 开始运行：\n");
+    }
+    ["isNode"]() {
       return "undefined" != typeof module && !!module.exports;
     }
-    isQuanX() {
+    ["isQuanX"]() {
       return "undefined" != typeof $task;
     }
-    isSurge() {
+    ["isSurge"]() {
       return "undefined" != typeof $httpClient && "undefined" == typeof $loon;
     }
-    isLoon() {
+    ["isLoon"]() {
       return "undefined" != typeof $loon;
     }
-    toObj(p6, p7 = null) {
-      try {
-        return JSON.parse(p6);
-      } catch {
-        return p7;
-      }
-    }
-    toStr(p6, p7 = null) {
-      try {
-        return JSON.stringify(p6);
-      } catch {
-        return p7;
-      }
-    }
-    getjson(p6, p7) {
-      let p9 = p7;
-      const px = this.getdata(p6);
-      if (px) {
-        try {
-          p9 = JSON.parse(this.getdata(p6));
-        } catch {}
-      }
-      return p9;
-    }
-    setjson(p6, p7) {
-      try {
-        return this.setdata(JSON.stringify(p6), p7);
-      } catch {
-        return false;
-      }
-    }
-    getScript(p6) {
-      return new Promise(p8 => {
-        const pp = {
-          url: p6
-        };
-        this.get(pp, (pZ, pc, pu) => p8(pu));
-      });
-    }
-    runScript(p6, p7) {
-      return new Promise(pp => {
-        let pe = this.getdata("@chavy_boxjs_userCfgs.httpapi");
-        pe = pe ? pe.replace(/\n/g, "").trim() : pe;
-        let pX = this.getdata("@chavy_boxjs_userCfgs.httpapi_timeout");
-        pX = pX ? 1 * pX : 20;
-        pX = p7 && p7.timeout ? p7.timeout : pX;
-        const [pR, pD] = pe.split("@");
-        const pE = {
-          url: "http://" + pD + "/v1/scripting/evaluate",
-          body: {
-            script_text: p6,
-            mock_type: "cron",
-            timeout: pX
-          },
-          headers: {
-            "X-Key": pR,
-            Accept: "*/*"
-          }
-        };
-        this.post(pE, (pW, pG, pn) => pp(pn));
-      }).catch(pp => this.logErr(pp));
-    }
-    loaddata() {
-      if (!this.isNode()) {
-        return {};
-      }
+    ["getdata"](_0x2d117f) {
       {
-        this.fs = this.fs ? this.fs : require("fs");
-        this.path = this.path ? this.path : require("path");
-        const pP = this.path.resolve(this.dataFile);
-        const pF = this.path.resolve(process.cwd(), this.dataFile);
-        const pf = this.fs.existsSync(pP);
-        const pV = !pf && this.fs.existsSync(pF);
-        if (!pf && !pV) {
-          return {};
-        }
-        {
-          const pi = pf ? pP : pF;
-          try {
-            return JSON.parse(this.fs.readFileSync(pi));
-          } catch (pe) {
-            return {};
+        let _0x30f15c = this.getval(_0x2d117f);
+        if (/^@/.test(_0x2d117f)) {
+          {
+            const [, _0x1c3665, _0x103309] = /^@(.*?)\.(.*?)$/.exec(_0x2d117f),
+              _0x2a7cde = _0x1c3665 ? this.getval(_0x1c3665) : "";
+            if (_0x2a7cde) try {
+              const _0x594976 = JSON.parse(_0x2a7cde);
+              _0x30f15c = _0x594976 ? this.lodash_get(_0x594976, _0x103309, "") : _0x30f15c;
+            } catch (_0x26da6d) {
+              _0x30f15c = "";
+            }
           }
         }
+        return _0x30f15c;
       }
     }
-    writedata() {
-      if (this.isNode()) {
-        this.fs = this.fs ? this.fs : require("fs");
-        this.path = this.path ? this.path : require("path");
-        const pu = this.path.resolve(this.dataFile);
-        const pP = this.path.resolve(process.cwd(), this.dataFile);
-        const pF = this.fs.existsSync(pu);
-        const pf = !pF && this.fs.existsSync(pP);
-        const pV = JSON.stringify(this.data);
-        pF ? this.fs.writeFileSync(pu, pV) : pf ? this.fs.writeFileSync(pP, pV) : this.fs.writeFileSync(pu, pV);
-      }
-    }
-    lodash_get(p6, p7, p8) {
-      const pc = p7.replace(/\[(\d+)\]/g, ".$1").split(".");
-      let pu = p6;
-      for (const pP of pc) if (pu = Object(pu)[pP], undefined === pu) {
-        return p8;
-      }
-      return pu;
-    }
-    lodash_set(p6, p7, p8) {
-      return Object(p6) !== p6 ? p6 : (Array.isArray(p7) || (p7 = p7.toString().match(/[^.[\]]+/g) || []), p7.slice(0, -1).reduce((pf, pV, pi) => Object(pf[pV]) === pf[pV] ? pf[pV] : pf[pV] = Math.abs(p7[pi + 1]) >> 0 == +p7[pi + 1] ? [] : {}, p6)[p7[p7.length - 1]] = p8, p6);
-    }
-    getdata(p6) {
-      let pZ = this.getval(p6);
-      if (/^@/.test(p6)) {
-        const [, pc, pu] = /^@(.*?)\.(.*?)$/.exec(p6);
-        const pP = pc ? this.getval(pc) : "";
-        if (pP) {
-          try {
-            const pF = JSON.parse(pP);
-            pZ = pF ? this.lodash_get(pF, pu, "") : pZ;
-          } catch (pf) {
-            pZ = "";
-          }
-        }
-      }
-      return pZ;
-    }
-    setdata(p6, p7) {
-      let pf = false;
-      if (/^@/.test(p7)) {
-        const [, pV, pi] = /^@(.*?)\.(.*?)$/.exec(p7);
-        const pe = this.getval(pV);
-        const pX = pV ? "null" === pe ? null : pe || "{}" : "{}";
+    ["setdata"](_0x411712, _0x5b20be) {
+      let _0x170076 = false;
+      if (/^@/.test(_0x5b20be)) {
+        const [, _0x223398, _0x52b97d] = /^@(.*?)\.(.*?)$/.exec(_0x5b20be),
+          _0x62b663 = this.getval(_0x223398),
+          _0x57cf24 = _0x223398 ? "null" === _0x62b663 ? null : _0x62b663 || "{}" : "{}";
         try {
-          const pR = JSON.parse(pX);
-          this.lodash_set(pR, pi, p6);
-          pf = this.setval(JSON.stringify(pR), pV);
-        } catch (pD) {
-          const pE = {};
-          this.lodash_set(pE, pi, p6);
-          pf = this.setval(JSON.stringify(pE), pV);
-        }
-      } else {
-        pf = this.setval(p6, p7);
-      }
-      return pf;
-    }
-    getval(p6) {
-      return this.isSurge() || this.isLoon() ? $persistentStore.read(p6) : this.isQuanX() ? $prefs.valueForKey(p6) : this.isNode() ? (this.data = this.loaddata(), this.data[p6]) : this.data && this.data[p6] || null;
-    }
-    setval(p6, p7) {
-      return this.isSurge() || this.isLoon() ? $persistentStore.write(p6, p7) : this.isQuanX() ? $prefs.setValueForKey(p6, p7) : this.isNode() ? (this.data = this.loaddata(), this.data[p7] = p6, this.writedata(), true) : this.data && this.data[p7] || null;
-    }
-    initGotEnv(p6) {
-      this.got = this.got ? this.got : require("got");
-      this.cktough = this.cktough ? this.cktough : require("tough-cookie");
-      this.ckjar = this.ckjar ? this.ckjar : new this.cktough.CookieJar();
-      p6 && (p6.headers = p6.headers ? p6.headers : {}, undefined === p6.headers.Cookie && undefined === p6.cookieJar && (p6.cookieJar = this.ckjar));
-    }
-    get(p6, p7 = () => {}) {
-      p6.headers && (delete p6.headers["Content-Type"], delete p6.headers["Content-Length"]);
-      const pi = {
-        "X-Surge-Skip-Scripting": false
-      };
-      const pe = {
-        hints: false
-      };
-      this.isSurge() || this.isLoon() ? (this.isSurge() && this.isNeedRewrite && (p6.headers = p6.headers || {}, Object.assign(p6.headers, pi)), $httpClient.get(p6, (pX, pR, pD) => {
-        !pX && pR && (pR.body = pD, pR.statusCode = pR.status);
-        p7(pX, pR, pD);
-      })) : this.isQuanX() ? (this.isNeedRewrite && (p6.opts = p6.opts || {}, Object.assign(p6.opts, pe)), $task.fetch(p6).then(pX => {
-        const {
-          statusCode: pn,
-          statusCode: pg,
-          headers: pU,
-          body: pa
-        } = pX;
-        const pQ = {
-          status: pn,
-          statusCode: pg,
-          headers: pU,
-          body: pa
-        };
-        p7(null, pQ, pa);
-      }, pX => p7(pX))) : this.isNode() && (this.initGotEnv(p6), this.got(p6).on("redirect", (pX, pR) => {
-        try {
-          if (pX.headers["set-cookie"]) {
-            const pa = pX.headers["set-cookie"].map(this.cktough.Cookie.parse).toString();
-            pa && this.ckjar.setCookieSync(pa, null);
-            pR.cookieJar = this.ckjar;
+          {
+            const _0x1a909a = JSON.parse(_0x57cf24);
+            this.lodash_set(_0x1a909a, _0x52b97d, _0x411712);
+            _0x170076 = this.setval(JSON.stringify(_0x1a909a), _0x223398);
           }
-        } catch (pQ) {
-          this.logErr(pQ);
+        } catch (_0x2da117) {
+          const _0x5c5c9f = {};
+          this.lodash_set(_0x5c5c9f, _0x52b97d, _0x411712);
+          _0x170076 = this.setval(JSON.stringify(_0x5c5c9f), _0x223398);
         }
-      }).then(pX => {
-        const {
-          statusCode: pn,
-          statusCode: pg,
-          headers: pU,
-          body: pa
-        } = pX;
-        const pQ = {
-          status: pn,
-          statusCode: pg,
-          headers: pU,
-          body: pa
-        };
-        p7(null, pQ, pa);
-      }, pX => {
-        const {
-          message: pD,
-          response: pE
-        } = pX;
-        p7(pD, pE, pE && pE.body);
-      }));
+      } else _0x170076 = this.setval(_0x411712, _0x5b20be);
+      return _0x170076;
     }
-    post(p6, p7 = () => {}) {
-      const pi = {
-        "X-Surge-Skip-Scripting": false
-      };
-      if (p6.body && p6.headers && !p6.headers["Content-Type"] && (p6.headers["Content-Type"] = "application/x-www-form-urlencoded"), p6.headers && delete p6.headers["Content-Length"], this.isSurge() || this.isLoon()) {
-        this.isSurge() && this.isNeedRewrite && (p6.headers = p6.headers || {}, Object.assign(p6.headers, pi));
-        $httpClient.post(p6, (pe, pX, pR) => {
-          !pe && pX && (pX.body = pR, pX.statusCode = pX.status);
-          p7(pe, pX, pR);
-        });
-      } else {
-        const pe = {
-          hints: false
-        };
-        if (this.isQuanX()) {
-          p6.method = "POST";
-          this.isNeedRewrite && (p6.opts = p6.opts || {}, Object.assign(p6.opts, pe));
-          $task.fetch(p6).then(pX => {
-            const {
-              statusCode: pW,
-              statusCode: pG,
-              headers: pn,
-              body: pg
-            } = pX;
-            const pU = {
-              status: pW,
-              statusCode: pG,
-              headers: pn,
-              body: pg
+    ["getval"](_0x5f389a) {
+      return this.isSurge() || this.isLoon() ? $persistentStore.read(_0x5f389a) : this.isQuanX() ? $prefs.valueForKey(_0x5f389a) : this.isNode() ? (this.data = this.loaddata(), this.data[_0x5f389a]) : this.data && this.data[_0x5f389a] || null;
+    }
+    ["setval"](_0x1b34bf, _0x28cdab) {
+      return this.isSurge() || this.isLoon() ? $persistentStore.write(_0x1b34bf, _0x28cdab) : this.isQuanX() ? $prefs.setValueForKey(_0x1b34bf, _0x28cdab) : this.isNode() ? (this.data = this.loaddata(), this.data[_0x28cdab] = _0x1b34bf, this.writedata(), true) : this.data && this.data[_0x28cdab] || null;
+    }
+    ["send"](_0x38991d, _0x10122b, _0xf72ed5 = () => {}) {
+      {
+        if (_0x38991d != "get" && _0x38991d != "post" && _0x38991d != "put" && _0x38991d != "delete") {
+          {
+            console.log("无效的http方法：" + _0x38991d);
+            return;
+          }
+        }
+        if (_0x38991d == "get" && _0x10122b.headers) delete _0x10122b.headers["Content-Type"], delete _0x10122b.headers["Content-Length"];else {
+          if (_0x10122b.body && _0x10122b.headers) {
+            if (!_0x10122b.headers["Content-Type"]) _0x10122b.headers["Content-Type"] = "application/x-www-form-urlencoded";
+          }
+        }
+        if (this.isSurge() || this.isLoon()) {
+          {
+            this.isSurge() && this.isNeedRewrite && (_0x10122b.headers = _0x10122b.headers || {}, Object.assign(_0x10122b.headers, {
+              "X-Surge-Skip-Scripting": false
+            }));
+            let _0x2f0893 = {
+              "method": _0x38991d,
+              "url": _0x10122b.url,
+              "headers": _0x10122b.headers,
+              "timeout": _0x10122b.timeout,
+              "data": _0x10122b.body
             };
-            p7(null, pU, pg);
-          }, pX => p7(pX));
+            if (_0x38991d == "get") delete _0x2f0893.data;
+            $axios(_0x2f0893).then(_0x39a13c => {
+              {
+                const {
+                  status: _0x53aa82,
+                  request: _0x141a34,
+                  headers: _0x2979d9,
+                  data: _0x2262bf
+                } = _0x39a13c;
+                _0xf72ed5(null, _0x141a34, {
+                  "statusCode": _0x53aa82,
+                  "headers": _0x2979d9,
+                  "body": _0x2262bf
+                });
+              }
+            }).catch(_0x3a5bbb => console.log(_0x3a5bbb));
+          }
         } else {
-          if (this.isNode()) {
-            this.initGotEnv(p6);
-            const {
-              url: pX,
-              ...pR
-            } = p6;
-            this.got.post(pX, pR).then(pD => {
-              const {
-                statusCode: pU,
-                statusCode: pa,
-                headers: pQ,
-                body: pM
-              } = pD;
-              const pH = {
-                status: pU,
-                statusCode: pa,
-                headers: pQ,
-                body: pM
-              };
-              p7(null, pH, pM);
-            }, pD => {
-              const {
-                message: pG,
-                response: pn
-              } = pD;
-              p7(pG, pn, pn && pn.body);
-            });
-          }
-        }
-      }
-    }
-    time(p6, p7 = null) {
-      const pf = p7 ? new Date(p7) : new Date();
-      let pV = {
-        "M+": pf.getMonth() + 1,
-        "d+": pf.getDate(),
-        "H+": pf.getHours(),
-        "m+": pf.getMinutes(),
-        "s+": pf.getSeconds(),
-        "q+": Math.floor((pf.getMonth() + 3) / 3),
-        S: pf.getMilliseconds()
-      };
-      /(y+)/.test(p6) && (p6 = p6.replace(RegExp.$1, (pf.getFullYear() + "").substr(4 - RegExp.$1.length)));
-      for (let pi in pV) new RegExp("(" + pi + ")").test(p6) && (p6 = p6.replace(RegExp.$1, 1 == RegExp.$1.length ? pV[pi] : ("00" + pV[pi]).substr(("" + pV[pi]).length)));
-      return p6;
-    }
-    msg(p6 = p, p7 = "", p8 = "", p9) {
-      const pe = pX => {
-        if (!pX) {
-          return pX;
-        }
-        if ("string" == typeof pX) {
-          return this.isLoon() ? pX : this.isQuanX() ? {
-            "open-url": pX
-          } : this.isSurge() ? {
-            url: pX
-          } : undefined;
-        }
-        if ("object" == typeof pX) {
-          if (this.isLoon()) {
-            let pQ = pX.openUrl || pX.url || pX["open-url"];
-            let pM = pX.mediaUrl || pX["media-url"];
-            const pH = {
-              openUrl: pQ,
-              mediaUrl: pM
-            };
-            return pH;
-          }
           if (this.isQuanX()) {
-            let pr = pX["open-url"] || pX.url || pX.openUrl;
-            let pl = pX["media-url"] || pX.mediaUrl;
-            const ph = {
-              "open-url": pr
-            };
-            ph["open-url"] = pr;
-            ph["media-url"] = pl;
-            return ph;
-          }
-          if (this.isSurge()) {
-            let py = pX.url || pX.openUrl || pX["open-url"];
-            const pv = {
-              url: py
-            };
-            return pv;
+            _0x10122b.method = _0x38991d.toUpperCase();
+            this.isNeedRewrite && (_0x10122b.opts = _0x10122b.opts || {}, Object.assign(_0x10122b.opts, {
+              "hints": false
+            }));
+            $task.fetch(_0x10122b).then(_0x538157 => {
+              {
+                const {
+                  statusCode: _0x2101fb,
+                  request: _0x186259,
+                  headers: _0x452945,
+                  body: _0x5eb9cc
+                } = _0x538157;
+                _0xf72ed5(null, _0x186259, {
+                  "statusCode": _0x2101fb,
+                  "headers": _0x452945,
+                  "body": _0x5eb9cc
+                });
+              }
+            }, _0x467989 => _0xf72ed5(_0x467989));
+          } else {
+            if (this.isNode()) {
+              {
+                this.got = this.got ? this.got : require("got");
+                const {
+                  url: _0x5ee2a9,
+                  ..._0x2ff382
+                } = _0x10122b;
+                this.instance = this.got.extend({
+                  "followRedirect": false
+                });
+                this.instance[_0x38991d](_0x5ee2a9, _0x2ff382).then(_0x5b094d => {
+                  {
+                    const {
+                      statusCode: _0x2e12ae,
+                      request: _0x52d154,
+                      headers: _0x3a7327,
+                      body: _0x3cfb53
+                    } = _0x5b094d;
+                    _0xf72ed5(null, _0x52d154, {
+                      "statusCode": _0x2e12ae,
+                      "headers": _0x3a7327,
+                      "body": _0x3cfb53
+                    });
+                  }
+                }, _0x596487 => {
+                  {
+                    const {
+                      message: _0x5e8d76,
+                      request: _0x115f17,
+                      response: _0x3fbe55
+                    } = _0x596487;
+                    _0xf72ed5(_0x5e8d76, _0x115f17, _0x3fbe55);
+                  }
+                });
+              }
+            }
           }
         }
-      };
-      if (this.isMute || (this.isSurge() || this.isLoon() ? $notification.post(p6, p7, p8, pe(p9)) : this.isQuanX() && $notify(p6, p7, p8, pe(p9))), !this.isMuteLog) {
-        let pX = ["", "==============\uD83D\uDCE3\u7CFB\u7EDF\u901A\u77E5\uD83D\uDCE3=============="];
-        pX.push(p6);
-        p7 && pX.push(p7);
-        p8 && pX.push(p8);
-        console.log(pX.join("\n"));
-        this.logs = this.logs.concat(pX);
       }
     }
-    log(...p6) {
-      p6.length > 0 && (this.logs = [...this.logs, ...p6]);
-      console.log(p6.join(this.logSeparator));
+    ["time"](_0x348195, _0x5bc6db = null) {
+      let _0x4dac7b = _0x5bc6db ? new Date(_0x5bc6db) : new Date(),
+        _0x587f4c = {
+          "M+": _0x4dac7b.getMonth() + 1,
+          "d+": _0x4dac7b.getDate(),
+          "h+": _0x4dac7b.getHours(),
+          "m+": _0x4dac7b.getMinutes(),
+          "s+": _0x4dac7b.getSeconds(),
+          "q+": Math.floor((_0x4dac7b.getMonth() + 3) / 3),
+          "S": _0x4dac7b.getMilliseconds()
+        };
+      /(y+)/.test(_0x348195) && (_0x348195 = _0x348195.replace(RegExp.$1, (_0x4dac7b.getFullYear() + "").substr(4 - RegExp.$1.length)));
+      for (let _0x5f41dc in _0x587f4c) new RegExp("(" + _0x5f41dc + ")").test(_0x348195) && (_0x348195 = _0x348195.replace(RegExp.$1, 1 == RegExp.$1.length ? _0x587f4c[_0x5f41dc] : ("00" + _0x587f4c[_0x5f41dc]).substr(("" + _0x587f4c[_0x5f41dc]).length)));
+      return _0x348195;
     }
-    logErr(p6, p7) {
-      const pP = !this.isSurge() && !this.isQuanX() && !this.isLoon();
-      pP ? this.log("", "\u2757\uFE0F" + this.name + ", \u9519\u8BEF!", p6.stack) : this.log("", "\u2757\uFE0F" + this.name + ", \u9519\u8BEF!", p6);
+    async ["showmsg"]() {
+      {
+        if (!this.notifyStr) return;
+        let _0x28fba3 = this.name + " 运行通知\n\n" + this.notifyStr;
+        if (_0xf1ea8.isNode()) {
+          {
+            var _0x419448 = require("./sendNotify");
+            console.log("\n============== 推送 ==============");
+            await _0x419448.sendNotify(this.name, _0x28fba3);
+          }
+        } else this.msg(_0x28fba3);
+      }
     }
-    wait(p6) {
-      return new Promise(p7 => setTimeout(p7, p6));
+    ["logAndNotify"](_0x59ff05) {
+      console.log(_0x59ff05);
+      this.notifyStr += _0x59ff05;
+      this.notifyStr += "\n";
     }
-    done(p6 = {}) {
-      const pF = new Date().getTime();
-      const pf = (pF - this.startTime) / 1000;
-      this.log("", "\uD83D\uDD14" + this.name + ", \u7ED3\u675F! \uD83D\uDD5B " + pf + " \u79D2");
-      this.log();
-      (this.isSurge() || this.isQuanX() || this.isLoon()) && $done(p6);
+    ["logAndNotifyWithTime"](_0x4a4431) {
+      let _0x16db0f = "[" + this.time("hh:mm:ss.S") + "]" + _0x4a4431;
+      console.log(_0x16db0f);
+      this.notifyStr += _0x16db0f;
+      this.notifyStr += "\n";
     }
-  }(p, xA);
+    ["logWithTime"](_0x248e8e) {
+      console.log("[" + this.time("hh:mm:ss.S") + "]" + _0x248e8e);
+    }
+    ["msg"](_0x5ccbaf = t, _0x5f2ea9 = "", _0x33a21d = "", _0x15d370) {
+      {
+        const _0x26bf99 = _0x479142 => {
+          if (!_0x479142) return _0x479142;
+          if ("string" == typeof _0x479142) return this.isLoon() ? _0x479142 : this.isQuanX() ? {
+            "open-url": _0x479142
+          } : this.isSurge() ? {
+            "url": _0x479142
+          } : undefined;
+          if ("object" == typeof _0x479142) {
+            if (this.isLoon()) {
+              let _0x1298eb = _0x479142.openUrl || _0x479142.url || _0x479142["open-url"],
+                _0x21c7dc = _0x479142.mediaUrl || _0x479142["media-url"];
+              return {
+                "openUrl": _0x1298eb,
+                "mediaUrl": _0x21c7dc
+              };
+            }
+            if (this.isQuanX()) {
+              {
+                let _0x599a1c = _0x479142["open-url"] || _0x479142.url || _0x479142.openUrl,
+                  _0x11d41a = _0x479142["media-url"] || _0x479142.mediaUrl;
+                return {
+                  "open-url": _0x599a1c,
+                  "media-url": _0x11d41a
+                };
+              }
+            }
+            if (this.isSurge()) {
+              let _0x526793 = _0x479142.url || _0x479142.openUrl || _0x479142["open-url"];
+              return {
+                "url": _0x526793
+              };
+            }
+          }
+        };
+        this.isMute || (this.isSurge() || this.isLoon() ? $notification.post(_0x5ccbaf, _0x5f2ea9, _0x33a21d, _0x26bf99(_0x15d370)) : this.isQuanX() && $notify(_0x5ccbaf, _0x5f2ea9, _0x33a21d, _0x26bf99(_0x15d370)));
+        let _0x5b72bc = ["", "============== 系统通知 =============="];
+        _0x5b72bc.push(_0x5ccbaf);
+        _0x5f2ea9 && _0x5b72bc.push(_0x5f2ea9);
+        _0x33a21d && _0x5b72bc.push(_0x33a21d);
+        console.log(_0x5b72bc.join("\n"));
+      }
+    }
+    ["getMin"](_0x1e4c28, _0x1b3fed) {
+      return _0x1e4c28 < _0x1b3fed ? _0x1e4c28 : _0x1b3fed;
+    }
+    ["getMax"](_0x44257e, _0x5e7519) {
+      return _0x44257e < _0x5e7519 ? _0x5e7519 : _0x44257e;
+    }
+    ["padStr"](_0x42eadb, _0x4722e0, _0x520994 = "0") {
+      let _0x325005 = String(_0x42eadb),
+        _0x33179d = _0x4722e0 > _0x325005.length ? _0x4722e0 - _0x325005.length : 0,
+        _0x15c189 = "";
+      for (let _0xfe43c4 = 0; _0xfe43c4 < _0x33179d; _0xfe43c4++) {
+        _0x15c189 += _0x520994;
+      }
+      _0x15c189 += _0x325005;
+      return _0x15c189;
+    }
+    ["json2str"](_0x300f3f, _0x2c0636, _0x37b9a0 = false) {
+      let _0x2f13c4 = [];
+      for (let _0xd689e of Object.keys(_0x300f3f).sort()) {
+        {
+          let _0x546626 = _0x300f3f[_0xd689e];
+          if (_0x546626 && _0x37b9a0) _0x546626 = encodeURIComponent(_0x546626);
+          _0x2f13c4.push(_0xd689e + "=" + _0x546626);
+        }
+      }
+      return _0x2f13c4.join(_0x2c0636);
+    }
+    ["str2json"](_0x407b63, _0x270666 = false) {
+      let _0xd85dc6 = {};
+      for (let _0x23e13a of _0x407b63.split("&")) {
+        {
+          if (!_0x23e13a) continue;
+          let _0x2388ac = _0x23e13a.indexOf("=");
+          if (_0x2388ac == -1) continue;
+          let _0x189560 = _0x23e13a.substr(0, _0x2388ac),
+            _0x37af9c = _0x23e13a.substr(_0x2388ac + 1);
+          if (_0x270666) _0x37af9c = decodeURIComponent(_0x37af9c);
+          _0xd85dc6[_0x189560] = _0x37af9c;
+        }
+      }
+      return _0xd85dc6;
+    }
+    ["randomString"](_0x58daa1, _0x2792a6 = "abcdef0123456789") {
+      {
+        let _0x27ce4a = "";
+        for (let _0x11c145 = 0; _0x11c145 < _0x58daa1; _0x11c145++) {
+          _0x27ce4a += _0x2792a6.charAt(Math.floor(Math.random() * _0x2792a6.length));
+        }
+        return _0x27ce4a;
+      }
+    }
+    ["randomList"](_0x2b61e8) {
+      {
+        let _0xeea55d = Math.floor(Math.random() * _0x2b61e8.length);
+        return _0x2b61e8[_0xeea55d];
+      }
+    }
+    ["wait"](_0x2724d1) {
+      return new Promise(_0x3418cd => setTimeout(_0x3418cd, _0x2724d1));
+    }
+    ["done"](_0x37d9be = {}) {
+      const _0x3487fc = new Date().getTime(),
+        _0x58b1e9 = (_0x3487fc - this.startTime) / 1000;
+      console.log("\n" + this.name + " 运行结束，共运行了 " + _0x58b1e9 + " 秒！");
+      if (this.isSurge() || this.isQuanX() || this.isLoon()) $done(_0x37d9be);
+    }
+  }(_0x35c70e, _0xb9b557);
 }
-const xY = new xC("\u997F\u4E86\u4E48\u4E50\u56ED\u5E01");
