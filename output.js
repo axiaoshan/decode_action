@@ -1,3 +1,6 @@
+//Fri Oct 11 2024 12:57:35 GMT+0000 (Coordinated Universal Time)
+//Base:https://github.com/echo094/decode-js
+//Modify:https://github.com/smallfawn/decode_action
 //Fri Oct 11 2024 12:54:47 GMT+0000 (Coordinated Universal Time)
 //Base:https://github.com/echo094/decode-js
 //Modify:https://github.com/smallfawn/decode_action
@@ -129,7 +132,7 @@ async function xn(p) {
     xc(pR, async (pG, pn, pg) => {
       if (!pG && pn.statusCode == 200) {
         const ph = JSON.parse(pg);
-        ph.data.errorMsg ? console.log(ph.data.errorMsg) : console.log("签到成功");
+        ph.data.errorMsg ? console.log(ph.data.errorMsg) : console.log("\u7B7E\u5230\u6210\u529F");
         pD(ph);
       } else {
         pD(null);
@@ -330,7 +333,7 @@ async function xr(p, xA, xb = 0) {
   });
 }
 async function xl(p, xA, xb = 0) {
-  console.log("发放中...");
+  console.log("\u53D1\u653E\u4E2D...");
   const p7 = {
     Host: "shopping.ele.me",
     "x-ltraffic-src": "%7B%22afid%22%3A%22afc_launch%5Eme.ele%5E1012_Initiactive%5E3878ccd3-3646-4a80-a9cd-2186c602d4ae_1723134419515%22%2C%22pvid%22%3A%22a2ogi.bx903203__Zoq5ZZVQvj0DADRgLoZBLSGu__P4o%2FfxW_%22%7D",
@@ -387,7 +390,7 @@ async function xl(p, xA, xb = 0) {
   });
 }
 async function xy(p, xA, xb = 0) {
-  console.log("已发放...");
+  console.log("\u5DF2\u53D1\u653E...");
   const p7 = {
     Host: "shopping.ele.me",
     "x-ltraffic-src": "%7B%22afid%22%3A%22afc_launch%5Eme.ele%5E1012_Initiactive%5E3878ccd3-3646-4a80-a9cd-2186c602d4ae_1723134419515%22%2C%22pvid%22%3A%22a2ogi.bx903203__Zoq5ZZVQvj0DADRgLoZBLSGu__P4o%2FfxW_%22%7D",
@@ -446,19 +449,19 @@ async function xv(p, xA, xb) {
   let p6 = await xU(p, xA);
   if (p6) {
     let p8 = await xa(p, xA, 1);
-    console.log("延迟10秒");
+    console.log("\u5EF6\u8FDF10\u79D2");
     await xu(10);
-    console.log("再延迟15秒");
+    console.log("\u518D\u5EF6\u8FDF15\u79D2");
     await xu(15);
     p8 = await xQ(p, xA, 1);
-    console.log("再延迟15秒就稳了");
+    console.log("\u518D\u5EF6\u8FDF15\u79D2\u5C31\u7A33\u4E86");
     await xu(15);
     let p9 = await xl(p, "2");
     _0x10e546 = await xH(p, p6, xA, xb);
     if (_0x10e546 == 3) {
-      console.log("玩连连看领取300乐园币成功，进入饿了么记录查看");
+      console.log("\u73A9\u8FDE\u8FDE\u770B\u9886\u53D6300\u4E50\u56ED\u5E01\u6210\u529F\uFF0C\u8FDB\u5165\u997F\u4E86\u4E48\u8BB0\u5F55\u67E5\u770B");
     } else {
-      _0x10e546 == 2 ? console.log("只过了第二关，重新运行一遍脚本就能成功") : console.log("本次运行不正常，但我运行时能成功");
+      _0x10e546 == 2 ? console.log("\u53EA\u8FC7\u4E86\u7B2C\u4E8C\u5173\uFF0C\u91CD\u65B0\u8FD0\u884C\u4E00\u904D\u811A\u672C\u5C31\u80FD\u6210\u529F") : console.log("\u672C\u6B21\u8FD0\u884C\u4E0D\u6B63\u5E38\uFF0C\u4F46\u6211\u8FD0\u884C\u65F6\u80FD\u6210\u529F");
     }
   }
   let p7 = await xy(p, "3");
@@ -504,14 +507,14 @@ async function xm(p) {
   while (p8 <= p6[p6.length - 1]) {
     p7 = await xd(p);
     p8 = p7.info.todayPass;
-    console.log("欢乐倒水第" + p8 + "关闯关成功");
+    console.log("\u6B22\u4E50\u5012\u6C34\u7B2C" + p8 + "\u5173\u95EF\u5173\u6210\u529F");
     if (p6.includes(p8)) {
       p9 = p6.indexOf(p8) + 1;
       const pp = await xL(p, p9);
-      console.log("获得：" + pp.goldnum + "乐园币");
+      console.log("\u83B7\u5F97\uFF1A" + pp.goldnum + "\u4E50\u56ED\u5E01");
     }
   }
-  console.log("快乐倒水闯关完成");
+  console.log("\u5FEB\u4E50\u5012\u6C34\u95EF\u5173\u5B8C\u6210");
 }
 async function xo() {
   await xx(xF, 1);
@@ -523,7 +526,7 @@ async function xo() {
     xX = 0;
     const p5 = p3[p4];
     if (!p5) {
-      console.log(" ❌无效用户信息, 请重新获取ck");
+      console.log(" \u274C\u65E0\u6548\u7528\u6237\u4FE1\u606F, \u8BF7\u91CD\u65B0\u83B7\u53D6ck");
     } else {
       try {
         let p6 = await x7(p5, p4);
@@ -532,23 +535,23 @@ async function xo() {
         }
         let p7 = await x9(p6);
         if (!p7.username) {
-          console.log("第", p4 + 1, "账号失效！请重新登录！！！😭");
+          console.log("\u7B2C", p4 + 1, "\u8D26\u53F7\u5931\u6548\uFF01\u8BF7\u91CD\u65B0\u767B\u5F55\uFF01\uFF01\uFF01\uD83D\uDE2D");
           continue;
         }
         const p8 = p7.user_id;
         await xp(xF, p8, xP);
-        console.log("******开始【饿了么账号", p4 + 1, "】", p7.username, "*********");
-        console.log("开始签到");
+        console.log("******\u5F00\u59CB\u3010\u997F\u4E86\u4E48\u8D26\u53F7", p4 + 1, "\u3011", p7.username, "*********");
+        console.log("\u5F00\u59CB\u7B7E\u5230");
         await xn(p6);
-        console.log("防止黑号延时3-4秒");
+        console.log("\u9632\u6B62\u9ED1\u53F7\u5EF6\u65F63-4\u79D2");
         await xu(xN(3, 4));
-        console.log("开始抽奖");
+        console.log("\u5F00\u59CB\u62BD\u5956");
         await xG(p6);
-        console.log("防止黑号延时3-4秒");
+        console.log("\u9632\u6B62\u9ED1\u53F7\u5EF6\u65F63-4\u79D2");
         await xu(xN(3, 4));
-        console.log("开始倒水");
+        console.log("\u5F00\u59CB\u5012\u6C34");
         await xm(p6);
-        console.log("防止黑号延时10-15秒");
+        console.log("\u9632\u6B62\u9ED1\u53F7\u5EF6\u65F610-15\u79D2");
         await xu(xN(10, 15));
       } catch (p9) {
         console.log(p9);
@@ -604,7 +607,7 @@ function xC(p, xA) {
       this.logSeparator = "\n";
       this.startTime = new Date().getTime();
       Object.assign(this, p7);
-      this.log("", "🔔" + this.name + ", 开始!");
+      this.log("", "\uD83D\uDD14" + this.name + ", \u5F00\u59CB!");
     }
     isNode() {
       return "undefined" != typeof module && !!module.exports;
@@ -953,7 +956,7 @@ function xC(p, xA) {
         }
       };
       if (this.isMute || (this.isSurge() || this.isLoon() ? $notification.post(p6, p7, p8, pe(p9)) : this.isQuanX() && $notify(p6, p7, p8, pe(p9))), !this.isMuteLog) {
-        let pX = ["", "==============📣系统通知📣=============="];
+        let pX = ["", "==============\uD83D\uDCE3\u7CFB\u7EDF\u901A\u77E5\uD83D\uDCE3=============="];
         pX.push(p6);
         p7 && pX.push(p7);
         p8 && pX.push(p8);
@@ -967,7 +970,7 @@ function xC(p, xA) {
     }
     logErr(p6, p7) {
       const pP = !this.isSurge() && !this.isQuanX() && !this.isLoon();
-      pP ? this.log("", "❗️" + this.name + ", 错误!", p6.stack) : this.log("", "❗️" + this.name + ", 错误!", p6);
+      pP ? this.log("", "\u2757\uFE0F" + this.name + ", \u9519\u8BEF!", p6.stack) : this.log("", "\u2757\uFE0F" + this.name + ", \u9519\u8BEF!", p6);
     }
     wait(p6) {
       return new Promise(p7 => setTimeout(p7, p6));
@@ -975,10 +978,10 @@ function xC(p, xA) {
     done(p6 = {}) {
       const pF = new Date().getTime();
       const pf = (pF - this.startTime) / 1000;
-      this.log("", "🔔" + this.name + ", 结束! 🕛 " + pf + " 秒");
+      this.log("", "\uD83D\uDD14" + this.name + ", \u7ED3\u675F! \uD83D\uDD5B " + pf + " \u79D2");
       this.log();
       (this.isSurge() || this.isQuanX() || this.isLoon()) && $done(p6);
     }
   }(p, xA);
 }
-const xY = new xC("饿了么乐园币");
+const xY = new xC("\u997F\u4E86\u4E48\u4E50\u56ED\u5E01");
