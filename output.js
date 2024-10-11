@@ -1,7 +1,10 @@
+//Fri Oct 11 2024 13:04:18 GMT+0000 (Coordinated Universal Time)
+//Base:https://github.com/echo094/decode-js
+//Modify:https://github.com/smallfawn/decode_action
 //Fri Oct 11 2024 13:01:53 GMT+0000 (Coordinated Universal Time)
 //Base:https://github.com/echo094/decode-js
 //Modify:https://github.com/smallfawn/decode_action
-const _0xf1ea8 = new _0x299988("品赞HTTP签到");
+const _0xf1ea8 = new _0x299988("\u54C1\u8D5EHTTP\u7B7E\u5230");
 let _0x34f238 = "pzhttp",
   _0x44155b = ["\n", "&"],
   _0xa2efe3 = (_0xf1ea8.isNode() ? process.env[_0x34f238] : _0xf1ea8.getdata(_0x34f238)) || "",
@@ -36,8 +39,8 @@ class _0x138232 {
         };
       _0x4b21ba && (_0x41ba2f.body = _0x4b21ba, _0x41ba2f.headers["Content-Length"] = _0x4b21ba?.["length"]);
       await _0x58c2e5(_0x2b4597, _0x41ba2f).then(async _0x1fce27 => {
-        if (_0x1fce27.resp?.["statusCode"] == 200) _0x1fce27.resp?.["body"] ? _0x17737f = JSON.parse(_0x1fce27.resp.body) : console.log("账号[" + this.index + "]调用" + _0x2b4597 + "[" + _0x15938b + "]出错，返回为空");else {
-          console.log("账号[" + this.index + "]调用" + _0x2b4597 + "[" + _0x15938b + "]出错，返回状态码[" + (_0x1fce27.resp?.["statusCode"] || "") + "]");
+        if (_0x1fce27.resp?.["statusCode"] == 200) _0x1fce27.resp?.["body"] ? _0x17737f = JSON.parse(_0x1fce27.resp.body) : console.log("\u8D26\u53F7[" + this.index + "]\u8C03\u7528" + _0x2b4597 + "[" + _0x15938b + "]\u51FA\u9519\uFF0C\u8FD4\u56DE\u4E3A\u7A7A");else {
+          console.log("\u8D26\u53F7[" + this.index + "]\u8C03\u7528" + _0x2b4597 + "[" + _0x15938b + "]\u51FA\u9519\uFF0C\u8FD4\u56DE\u72B6\u6001\u7801[" + (_0x1fce27.resp?.["statusCode"] || "") + "]");
         }
       });
     } catch (_0x2abedd) {
@@ -53,8 +56,8 @@ class _0x138232 {
         _0x23d272 = "https://service.ipzan.com/home/userWallet-find",
         _0x3f986e = "";
       await this.taskApi(_0x181f92, _0x567f03, _0x23d272, _0x3f986e).then(async _0x40fe24 => {
-        if (_0x40fe24.code === 0) this.valid = true, this.points = _0x40fe24.data.balance, console.log("账号[" + this.index + "] 当前金币: " + this.points);else {
-          _0xf1ea8.logAndNotify("账号[" + this.index + "]查询金币失败，可能Token无效");
+        if (_0x40fe24.code === 0) this.valid = true, this.points = _0x40fe24.data.balance, console.log("\u8D26\u53F7[" + this.index + "] \u5F53\u524D\u91D1\u5E01: " + this.points);else {
+          _0xf1ea8.logAndNotify("\u8D26\u53F7[" + this.index + "]\u67E5\u8BE2\u91D1\u5E01\u5931\u8D25\uFF0C\u53EF\u80FDToken\u65E0\u6548");
         }
       });
     } catch (_0xc67e18) {
@@ -70,8 +73,8 @@ class _0x138232 {
         _0x3d2b06 = "https://service.ipzan.com/users-login",
         _0x3e4a5c = JSON.stringify(_0x3771fa(this.account, this.password));
       await this.taskApi(_0x1f2260, _0x459f03, _0x3d2b06, _0x3e4a5c).then(async _0x480963 => {
-        if (_0x480963.code === 0) console.log("账号[" + this.index + "] 登录成功"), this.activedAuthToken = _0x480963?.["data"];else {
-          console.log("账号[" + this.index + "] 登录失败：" + _0x480963?.["message"]);
+        if (_0x480963.code === 0) console.log("\u8D26\u53F7[" + this.index + "] \u767B\u5F55\u6210\u529F"), this.activedAuthToken = _0x480963?.["data"];else {
+          console.log("\u8D26\u53F7[" + this.index + "] \u767B\u5F55\u5931\u8D25\uFF1A" + _0x480963?.["message"]);
         }
       });
     } catch (_0x573284) {
@@ -88,8 +91,8 @@ class _0x138232 {
         _0x299e34 = "";
       await this.taskApi(_0x28765f, _0x4735c6, _0x42ed00, _0x299e34).then(async _0x3f3169 => {
         if (_0x3f3169.code === 0) {
-          console.log("账号[" + this.index + "] 签到成功：", _0x3f3169?.["data"]);
-        } else console.log("账号[" + this.index + "] 签到失败：" + _0x3f3169?.["message"]);
+          console.log("\u8D26\u53F7[" + this.index + "] \u7B7E\u5230\u6210\u529F\uFF1A", _0x3f3169?.["data"]);
+        } else console.log("\u8D26\u53F7[" + this.index + "] \u7B7E\u5230\u5931\u8D25\uFF1A" + _0x3f3169?.["message"]);
       });
     } catch (_0x568f80) {
       console.log(_0x568f80);
@@ -100,7 +103,7 @@ class _0x138232 {
   async ["doTask"]() {
     try {
       await _0x241982(1000);
-      console.log("\n============= 账号[" + this.index + "] 开始签到=============");
+      console.log("\n============= \u8D26\u53F7[" + this.index + "] \u5F00\u59CB\u7B7E\u5230=============");
       await this.SignInDaily();
     } catch (_0x23c68c) {
       console.log(_0x23c68c);
@@ -112,22 +115,22 @@ class _0x138232 {
     await _0x5e22b6();
   } else {
     if (!(await _0x76f888())) return;
-    console.log("\n================ 开始执行 ================");
+    console.log("\n================ \u5F00\u59CB\u6267\u884C ================");
     for (let _0x59d06c of _0xd941b5) {
-      console.log("----------- 执行 第 [" + _0x59d06c.index + "] 个账号 -----------");
+      console.log("----------- \u6267\u884C \u7B2C [" + _0x59d06c.index + "] \u4E2A\u8D26\u53F7 -----------");
       !_0x59d06c?.["activedAuthToken"] && (await _0x59d06c?.["Login"]());
       await _0x59d06c.GetUserBalance();
     }
     let _0x3737e6 = _0xd941b5.filter(_0x2aad38 => _0x2aad38.valid);
     if (_0x3737e6.length > 0) {
       {
-        console.log("\n================ 任务队列构建完毕 ================");
+        console.log("\n================ \u4EFB\u52A1\u961F\u5217\u6784\u5EFA\u5B8C\u6BD5 ================");
         for (let _0x434b43 of _0x3737e6) {
-          console.log("----------- 账号[" + _0x434b43.index + "] -----------");
+          console.log("----------- \u8D26\u53F7[" + _0x434b43.index + "] -----------");
           await _0x434b43.doTask();
         }
       }
-    } else console.log("\n================ 未检测到帐号，请先注册：https://www.ipzan.com?pid=oviuk6128 ================");
+    } else console.log("\n================ \u672A\u68C0\u6D4B\u5230\u5E10\u53F7\uFF0C\u8BF7\u5148\u6CE8\u518C\uFF1Ahttps://www.ipzan.com?pid=oviuk6128 ================");
     await _0xf1ea8.showmsg();
   }
 })().catch(_0x4c4062 => console.log(_0x4c4062)).finally(() => _0xf1ea8.done());
@@ -153,7 +156,7 @@ function _0x157dd3(_0x2d7503, _0x42788a, _0x2e1e85) {
   try {
     fs.writeFileSync(_0x2d7503 + ".json", _0x1f7e27);
   } catch (_0x2fd9c9) {
-    _0x2fd9c9.code === "ENOENT" ? fs.writeFileSync(_0x2d7503 + ".json", _0x1f7e27) : console.error("保存文件时发生错误：", _0x2fd9c9);
+    _0x2fd9c9.code === "ENOENT" ? fs.writeFileSync(_0x2d7503 + ".json", _0x1f7e27) : console.error("\u4FDD\u5B58\u6587\u4EF6\u65F6\u53D1\u751F\u9519\u8BEF\uFF1A", _0x2fd9c9);
   }
 }
 function _0x35c695(_0x188ff0, _0x1924d1) {
@@ -165,7 +168,7 @@ function _0x35c695(_0x188ff0, _0x1924d1) {
     }
   } catch (_0x527dd9) {
     if (_0x527dd9.code === "ENOENT") return undefined;else {
-      console.error("读取文件时发生错误：", _0x527dd9);
+      console.error("\u8BFB\u53D6\u6587\u4EF6\u65F6\u53D1\u751F\u9519\u8BEF\uFF1A", _0x527dd9);
     }
   }
 }
@@ -244,7 +247,7 @@ function _0x3771fa(_0x256ced, _0x59add5) {
   };
 }
 async function _0x241982(_0x100501 = 3000) {
-  console.log("----------- 延迟 " + _0x100501 / 1000 + " s，请稍等 -----------");
+  console.log("----------- \u5EF6\u8FDF " + _0x100501 / 1000 + " s\uFF0C\u8BF7\u7A0D\u7B49 -----------");
   return await new Promise(_0x5783a5 => setTimeout(_0x5783a5, _0x100501));
 }
 async function _0x5e22b6() {}
@@ -264,10 +267,10 @@ async function _0x76f888() {
     }
     userCount = _0xd941b5.length;
   } else {
-    console.log("未找到 配置信息，请检查是否配置 变量：", _0x34f238);
+    console.log("\u672A\u627E\u5230 \u914D\u7F6E\u4FE1\u606F\uFF0C\u8BF7\u68C0\u67E5\u662F\u5426\u914D\u7F6E \u53D8\u91CF\uFF1A", _0x34f238);
     return;
   }
-  console.log("共找到" + userCount + "个账号");
+  console.log("\u5171\u627E\u5230" + userCount + "\u4E2A\u8D26\u53F7");
   return true;
 }
 async function _0x58c2e5(_0x542f7d, _0x5679cd) {
@@ -295,7 +298,7 @@ function _0x299988(_0x35c70e, _0xb9b557) {
       this.notifyStr = "";
       this.startTime = new Date().getTime();
       Object.assign(this, _0x43202e);
-      console.log(this.name + " 开始运行：\n");
+      console.log(this.name + " \u5F00\u59CB\u8FD0\u884C\uFF1A\n");
     }
     ["isNode"]() {
       return "undefined" != typeof module && !!module.exports;
@@ -357,7 +360,7 @@ function _0x299988(_0x35c70e, _0xb9b557) {
       {
         if (_0x38991d != "get" && _0x38991d != "post" && _0x38991d != "put" && _0x38991d != "delete") {
           {
-            console.log("无效的http方法：" + _0x38991d);
+            console.log("\u65E0\u6548\u7684http\u65B9\u6CD5\uFF1A" + _0x38991d);
             return;
           }
         }
@@ -475,11 +478,11 @@ function _0x299988(_0x35c70e, _0xb9b557) {
     async ["showmsg"]() {
       {
         if (!this.notifyStr) return;
-        let _0x28fba3 = this.name + " 运行通知\n\n" + this.notifyStr;
+        let _0x28fba3 = this.name + " \u8FD0\u884C\u901A\u77E5\n\n" + this.notifyStr;
         if (_0xf1ea8.isNode()) {
           {
             var _0x419448 = require("./sendNotify");
-            console.log("\n============== 推送 ==============");
+            console.log("\n============== \u63A8\u9001 ==============");
             await _0x419448.sendNotify(this.name, _0x28fba3);
           }
         } else this.msg(_0x28fba3);
@@ -536,7 +539,7 @@ function _0x299988(_0x35c70e, _0xb9b557) {
           }
         };
         this.isMute || (this.isSurge() || this.isLoon() ? $notification.post(_0x5ccbaf, _0x5f2ea9, _0x33a21d, _0x26bf99(_0x15d370)) : this.isQuanX() && $notify(_0x5ccbaf, _0x5f2ea9, _0x33a21d, _0x26bf99(_0x15d370)));
-        let _0x5b72bc = ["", "============== 系统通知 =============="];
+        let _0x5b72bc = ["", "============== \u7CFB\u7EDF\u901A\u77E5 =============="];
         _0x5b72bc.push(_0x5ccbaf);
         _0x5f2ea9 && _0x5b72bc.push(_0x5f2ea9);
         _0x33a21d && _0x5b72bc.push(_0x33a21d);
@@ -606,7 +609,7 @@ function _0x299988(_0x35c70e, _0xb9b557) {
     ["done"](_0x37d9be = {}) {
       const _0x3487fc = new Date().getTime(),
         _0x58b1e9 = (_0x3487fc - this.startTime) / 1000;
-      console.log("\n" + this.name + " 运行结束，共运行了 " + _0x58b1e9 + " 秒！");
+      console.log("\n" + this.name + " \u8FD0\u884C\u7ED3\u675F\uFF0C\u5171\u8FD0\u884C\u4E86 " + _0x58b1e9 + " \u79D2\uFF01");
       if (this.isSurge() || this.isQuanX() || this.isLoon()) $done(_0x37d9be);
     }
   }(_0x35c70e, _0xb9b557);
