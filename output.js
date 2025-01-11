@@ -1,21 +1,57 @@
-//Sat Jan 11 2025 16:22:36 GMT+0000 (Coordinated Universal Time)
+//Sat Jan 11 2025 16:25:54 GMT+0000 (Coordinated Universal Time)
 //Base:https://github.com/echo094/decode-js
 //Modify:https://github.com/smallfawn/decode_action
-eval(function (p, a, c, k, e, r) {
-  e = function (c) {
-    return (c < a ? "" : e(parseInt(c / a))) + ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36));
-  };
-  if (!"".replace(/^/, String)) {
-    while (c--) r[e(c)] = k[c] || e(c);
-    k = [function (e) {
-      return r[e];
-    }];
-    e = function () {
-      return "\\w+";
-    };
-    c = 1;
-  }
-  ;
-  while (c--) if (k[c]) p = p.replace(new RegExp("\\b" + e(c) + "\\b", "g"), k[c]);
-  return p;
-}("k L(a){1i 1j((M N-M N(a))/1k)}k g(a){l b=$(\"#g\");b.h(a).1l();b.1m();j.1n(\"g\");b.1o();1p({1q:\"\\u\\v\\1r\\1s\",1t:\"m\",1u:1v,1w:!1})}k w(a){a.1x===1&&j.x(\"O\").y(\"1y\",`<5 2=\"9-P-4 9-z-6 9-1z-12 9-1A-3 o-4\"><5 2=\"A-m q o-3\"><5 2=\"A-m 1B-1C A-1D-0 q-1E\"><Q 2=\"1F-0 h-m\"><i 2=\"R R-1G-S 1H-3\"></i>${a.T}<U 2=V-W><i 2=\"Y Y-${({\"\\1I\\B\":\"1J\",\"\\Z\\C\\1K\\D\":\"1L\",\"\\1M\\B\\C\\1N\":\"1O\",\"\\1P\\1Q\":\"1R\",\"\\1S\\1T\":\"1U\",\n\"\\1V\\B\":\"1W\",\"\\1X\\1Y\":\"1Z\",\"\\20\\21\\10\\22\\D\":\"23\",\"\\24\\25\\26\":\"27\",\"\\28\\29\":\"2a\",\"\\2b\\2c\\11\\2d\\2e\":\"2f\",\"\\11\\2g\\2h\\10\\D\":\"2i\",\"\\2j\\2k\\C\":\"2l\",\"\\Z\\2m\":\"2n\"})[a.13]||\"2o\"} 2p 2q-2r\"></i>${a.13||\"\"}</U></Q></5><5 2=q-14><p 2=q-h>\\2s\\2t\\2u\\2v\\2w${a.15}<16 2=V-W>${L(a.15)}\\2x\\2y\\2z</16></p><r 2=\"7 7-E-F 17-18\"19=\"g('${a.T}')\">\\u\\v\\2A\\2B</r><r 2=\"7 7-E-F 17-18\"19=\"g('${a.2C}')\">\\u\\v\\2D\\2E</r></5></5></5>`)}k 1a(a){j.2F(\"2G\").y(\"2H\",'<5 2=\"2I 2J-2K-2L\"><5 2=\"9-z-8\"><2M 2=\"1b 1b-2N\"></5><5 2=\"9-z-8\"><p>2O 2P 2Q 2R 2S 2T.</p><p><a G=\"H://I.J/\" K=\"1c\">\\2U\\2V\\1d\\2W\\2X\\2Y\\1d\\2Z\\30\\31</a></p></5></5><p 2=\"o-3 h-14-F\">32~33\\34&35;<a G=\"H://I.J/\" K=\"1c\">\\36\\37\\38</a></p>');j.x(\"O\").y(\"39\",`<5 2=\"o-3\"><a 2=\"7 7-E-3a 7-P\"G=\"H://3b.I.J/3c?3d=${a||\"3e\"}\"K=\"3f\">\\3g\\3h\\3i\\3j\\3k\\3l\\3m\\3n\\3o\\3p\\3q</a></5>`);a=t(\"3r\").1e(\"\\n\").1f(e=>$.3s(t(e)).3t(c=>{c.1g(d=>w(d))}));l b=t(\"3u\").1e(\"\\n\").1f(3v e=>{3w{l c=1h 3x(t(e));3y(c.3z){l d=(1h c.h()).3A(/3B\\s*=\\s*'([^']+)'/);d&&3C.3D(d[1]).1g(f=>w(f))}}3E(c){}});3F.S([...a,...b]).3G(()=>{j.x(\"3H\").3I()})}3J.X=1a;", 62, 232, "||class|||div||btn||col|||||||copy|text||document|function|const|success||mb||card|button||atob|u590d|u5236|load|getElementById|insertAdjacentHTML|md|border|u56fd|u5927|u4e9a|outline|secondary|href|https|otakuyun|net|target|minsDiff|new|Date|apple|lg|h5|bi|all|username|span|float|end||fi|u6fb3|u5c3c|u963f||country|body|time|code|waves|effect|onclick|initialize|devider|blank|u63a5|split|map|forEach|await|return|parseInt|6E4|show|select|execCommand|hide|swal|title|u6210|u529f|icon|timer|1E3|buttons|status|afterbegin|sm|xxl|bg|transparent|bottom|header|my|check2|me|u7f8e|us|u5229|au|u4e2d|u9646|cn|u53f0|u6e7e|tw|u9999|u6e2f|hk|u97e9|kr|u65e5|u672c|jp|u5370|u5ea6|u897f|id|u571f|u8033|u5176|tr|u8d8a|u5357|vn|u6c99|u7279|u62c9|u4f2f|sa|u5c14|u5df4|al|u52a0|u62ff|ca|u95e8|mo|un|fis|rounded|circle|u68c0|u6d4b|u65f6|u95f4|uff1a|u5206|u949f|u524d|u5e10|u53f7|password|u5bc6|u7801|querySelector|main|beforeend|row|justify|content|center|hr|dotted|Designed|to|protect|your|Internet|traffic|u4e00|u9375|u5165|uff0c|u93c8|u5168|u7403|uff01|2019|2024|u00a9|nbsp|u5fa1|u5b85|u4e91|beforebegin|primary|ssr|register|aff|qJD41GJv|_blank|u8d2d|u4e70|u9ad8|u901f|u5c0f|u706b|u7bad|u8282|u70b9|ud83d|ude80|YUhSMGNITTZMeTlwYldkdllpNXphR0V1WTNndk1qUXpObVZrTW1WaE56VmxPR0UwWVRNM05tWTBaRFkyTURJMllXVmpNbVE9CmFIUjBjSE02THk5M1puUTRaeTV6YUdFdVkzZ3ZabU5pWVRJNU1qZ3lOV0pqTW1Zd1lqVTNOV1ZoWm1GbU9EUTNOMlkyWW1NPQ|getJSON|then|YUhSMGNITTZMeTlvWlhoeVp5NXphR0V1WTNndllqSmlNekF4WW1ZM1l6QTRNVGxpWm1NNVpqVTNaV1V3WldSbE5qVmpaVFEKYUhSMGNITTZMeTgzYkhVek5pNXphR0V1WTNndk5HWTNZalF6WmpJME1qWmlaRE5oTm1Ga09HTXpZakkyTVdVMk9UVm1OMlkKYUhSMGNITTZMeTh6Wm1NNVpTNXphR0V1WTNndk56SXhaRE0wWkRWbE4yVTVPVGhqWmpGbU9UTmhZV0U0TjJWbFlUUTVORE0KYUhSMGNITTZMeTh5TmpoMmJ5NXphR0V1WTNndlpXRTBZVFV6TlRJd01HSmxaVFl4WlROaU4yWXhZekZpTlRSaVptWTNZek0KYUhSMGNITTZMeTl0ZVdWaFp5NXphR0V1WTNndk56Z3laREF4WXpsbFltWTROemN6T1RnMk56UXpNek5sWkdFelpqY3hZVFEKYUhSMGNITTZMeTluTW5sdU9TNXphR0V1WTNndk16Tm1OemsxTldFMU5qSTBZamd3T0ROaVpUVXhOamcxWkRRNU5UVmtOakUKYUhSMGNITTZMeTlzTWpZMk5pNXphR0V1WTNndk5tRTRNVGhrTURWaFpUSXpOemMxTUROaFpqSTJNMlU0TnpkbE1XRTVNV1UKYUhSMGNITTZMeTlrWVRGd2FDNXphR0V1WTNndk16ZzRNRFJrTXpoa1pEaGxNbU14T0RVMFpXVXhNR1ZsTXpGbE1qWTJaV1kKYUhSMGNITTZMeTk1T0djelp5NXphR0V1WTNndk5HWTFOelUxT0RFeFl6WmhOVGcwTW1ZM01qZzNOREZtWkRrd1pUSTNaakEKYUhSMGNITTZMeTlqWmpNemJTNXphR0V1WTNndk1XRmhaVE5sTlRrME5HSTFabVUyTlRBMlpqRmpZek13TldJellUQmlPVE0KYUhSMGNITTZMeTlqZUdJNWNpNXphR0V1WTNndk5EaGhNall6TTJVd05XUTFPRE13TlRoak1qRmhNRE16WWpReVpUbGlORGcKYUhSMGNITTZMeTlvTnpGMmJpNXphR0V1WTNndk9EaGhZamd3TWpReE5qWmxPREk1WXprNVl6QTBPVFUxWVRRM1ptVTNNMk0KYUhSMGNITTZMeTh5TkhkcmJDNXphR0V1WTNndlpHRXlPRE5rTVdKaE5XUTJNalJqTkdGaU1UVTBOakl5TnpOaU5HTXhOV00KYUhSMGNITTZMeTh4Wm1Ka2JTNXphR0V1WTNndk9ETmtNVFZpWVRJd01qRmxNMlZtT0RWbE5EaGtNemRrTmpaa05UQTNORFEKYUhSMGNITTZMeTk0YUhSMmRpNXphR0V1WTNndllqUmxPVE5pTkRNM1pqVTRZV00yTjJNeVpqRm1ZemsxWTJaaU1USXlaR0kKYUhSMGNITTZMeTlpWTNReVpDNXphR0V1WTNndk56RTJOVFV5WWpOa1l6a3hZek13TXprM05HRmhNR000TkRNeFpXUTVNRFUKYUhSMGNITTZMeTg1WW1obk9DNXphR0V1WTNndk9XWmpOekJsWW1JellXTTFPVFprWWpSbU1HTTROMlZqTW1ZME56UmxORGcKYUhSMGNITTZMeTlvTWpkbmRDNXphR0V1WTNndk5qY3hZMkpsWkRNNE5qVXpOekUxT1RVMlpqZzVNREJoTm1FMFlUQTRPREUKYUhSMGNITTZMeTkzYTJwNk1TNXphR0V1WTNndllqVTFaakV3TURVMk1XRmhZbUk0WmpWaE1URTNNVFF4TURBeU4yWTRNRFUKYUhSMGNITTZMeTgyYjNKaGFDNXphR0V1WTNndllUSXlOREprWm1FeE1HWTRPVGhpTVdRek5HRmxNVFk1T1RFeE5XUTBPR1EKYUhSMGNITTZMeTgzYm01MllTNXphR0V1WTNndll6RmxaalZoWmprM1l6azRNVEJqWVdFNU16aGpabU0xTURFek1tTTRaREE|async|try|fetch|if|ok|match|ad|JSON|parse|catch|Promise|finally|loading|remove|window".split("|"), 0, {}));
+function minsDiff(a) {
+  return parseInt((new Date() - new Date(a)) / 60000);
+}
+function copy(a) {
+  const b = $("#copy");
+  b.text(a).show();
+  b.select();
+  document.execCommand("copy");
+  b.hide();
+  swal({
+    title: "\u590D\u5236\u6210\u529F",
+    icon: "success",
+    timer: 1000,
+    buttons: false
+  });
+}
+function load(a) {
+  a.status === 1 && document.getElementById("apple").insertAdjacentHTML("afterbegin", `<div class="col-lg-4 col-md-6 col-sm-12 col-xxl-3 mb-4"><div class="border-success card mb-3"><div class="border-success bg-transparent border-bottom-0 card-header"><h5 class="my-0 text-success"><i class="bi bi-check2-all me-3"></i>${a.username}<span class=float-end><i class="fi fi-${{
+    "\u7F8E\u56FD": "us",
+    "\u6FB3\u5927\u5229\u4E9A": "au",
+    "\u4E2D\u56FD\u5927\u9646": "cn",
+    "\u53F0\u6E7E": "tw",
+    "\u9999\u6E2F": "hk",
+    "\u97E9\u56FD": "kr",
+    "\u65E5\u672C": "jp",
+    "\u5370\u5EA6\u5C3C\u897F\u4E9A": "id",
+    "\u571F\u8033\u5176": "tr",
+    "\u8D8A\u5357": "vn",
+    "\u6C99\u7279\u963F\u62C9\u4F2F": "sa",
+    "\u963F\u5C14\u5DF4\u5C3C\u4E9A": "al",
+    "\u52A0\u62FF\u5927": "ca",
+    "\u6FB3\u95E8": "mo"
+  }[a.country] || "un"} fis rounded-circle"></i>${a.country || ""}</span></h5></div><div class=card-body><p class=card-text>检测时间：${a.time}<code class=float-end>${minsDiff(a.time)}分钟前</code></p><button class="btn btn-outline-secondary waves-effect"onclick="copy('${a.username}')">复制帐号</button><button class="btn btn-outline-secondary waves-effect"onclick="copy('${a.password}')">复制密码</button></div></div></div>`);
+}
+function initialize(a) {
+  document.querySelector("main").insertAdjacentHTML("beforeend", "<div class=\"row justify-content-center\"><div class=\"col-md-8\"><hr class=\"devider devider-dotted\"></div><div class=\"col-md-8\"><p>Designed to protect your Internet traffic.</p><p><a href=\"https://otakuyun.net/\" target=\"blank\">\u4E00\u9375\u63A5\u5165\uFF0C\u93C8\u63A5\u5168\u7403\uFF01</a></p></div></div><p class=\"mb-3 text-body-secondary\">2019~2024\xA9&nbsp;<a href=\"https://otakuyun.net/\" target=\"blank\">\u5FA1\u5B85\u4E91</a></p>");
+  document.getElementById("apple").insertAdjacentHTML("beforebegin", `<div class="mb-3"><a class="btn btn-outline-primary btn-lg"href="https://ssr.otakuyun.net/register?aff=${a || "qJD41GJv"}"target="_blank">购买高速小火箭节点🚀</a></div>`);
+  a = atob("YUhSMGNITTZMeTlwYldkdllpNXphR0V1WTNndk1qUXpObVZrTW1WaE56VmxPR0UwWVRNM05tWTBaRFkyTURJMllXVmpNbVE9CmFIUjBjSE02THk5M1puUTRaeTV6YUdFdVkzZ3ZabU5pWVRJNU1qZ3lOV0pqTW1Zd1lqVTNOV1ZoWm1GbU9EUTNOMlkyWW1NPQ").split("\n").map(e => $.getJSON(atob(e)).then(c => {
+    c.forEach(d => load(d));
+  }));
+  const b = atob("YUhSMGNITTZMeTlvWlhoeVp5NXphR0V1WTNndllqSmlNekF4WW1ZM1l6QTRNVGxpWm1NNVpqVTNaV1V3WldSbE5qVmpaVFEKYUhSMGNITTZMeTgzYkhVek5pNXphR0V1WTNndk5HWTNZalF6WmpJME1qWmlaRE5oTm1Ga09HTXpZakkyTVdVMk9UVm1OMlkKYUhSMGNITTZMeTh6Wm1NNVpTNXphR0V1WTNndk56SXhaRE0wWkRWbE4yVTVPVGhqWmpGbU9UTmhZV0U0TjJWbFlUUTVORE0KYUhSMGNITTZMeTh5TmpoMmJ5NXphR0V1WTNndlpXRTBZVFV6TlRJd01HSmxaVFl4WlROaU4yWXhZekZpTlRSaVptWTNZek0KYUhSMGNITTZMeTl0ZVdWaFp5NXphR0V1WTNndk56Z3laREF4WXpsbFltWTROemN6T1RnMk56UXpNek5sWkdFelpqY3hZVFEKYUhSMGNITTZMeTluTW5sdU9TNXphR0V1WTNndk16Tm1OemsxTldFMU5qSTBZamd3T0ROaVpUVXhOamcxWkRRNU5UVmtOakUKYUhSMGNITTZMeTlzTWpZMk5pNXphR0V1WTNndk5tRTRNVGhrTURWaFpUSXpOemMxTUROaFpqSTJNMlU0TnpkbE1XRTVNV1UKYUhSMGNITTZMeTlrWVRGd2FDNXphR0V1WTNndk16ZzRNRFJrTXpoa1pEaGxNbU14T0RVMFpXVXhNR1ZsTXpGbE1qWTJaV1kKYUhSMGNITTZMeTk1T0djelp5NXphR0V1WTNndk5HWTFOelUxT0RFeFl6WmhOVGcwTW1ZM01qZzNOREZtWkRrd1pUSTNaakEKYUhSMGNITTZMeTlqWmpNemJTNXphR0V1WTNndk1XRmhaVE5sTlRrME5HSTFabVUyTlRBMlpqRmpZek13TldJellUQmlPVE0KYUhSMGNITTZMeTlqZUdJNWNpNXphR0V1WTNndk5EaGhNall6TTJVd05XUTFPRE13TlRoak1qRmhNRE16WWpReVpUbGlORGcKYUhSMGNITTZMeTlvTnpGMmJpNXphR0V1WTNndk9EaGhZamd3TWpReE5qWmxPREk1WXprNVl6QTBPVFUxWVRRM1ptVTNNMk0KYUhSMGNITTZMeTh5TkhkcmJDNXphR0V1WTNndlpHRXlPRE5rTVdKaE5XUTJNalJqTkdGaU1UVTBOakl5TnpOaU5HTXhOV00KYUhSMGNITTZMeTh4Wm1Ka2JTNXphR0V1WTNndk9ETmtNVFZpWVRJd01qRmxNMlZtT0RWbE5EaGtNemRrTmpaa05UQTNORFEKYUhSMGNITTZMeTk0YUhSMmRpNXphR0V1WTNndllqUmxPVE5pTkRNM1pqVTRZV00yTjJNeVpqRm1ZemsxWTJaaU1USXlaR0kKYUhSMGNITTZMeTlpWTNReVpDNXphR0V1WTNndk56RTJOVFV5WWpOa1l6a3hZek13TXprM05HRmhNR000TkRNeFpXUTVNRFUKYUhSMGNITTZMeTg1WW1obk9DNXphR0V1WTNndk9XWmpOekJsWW1JellXTTFPVFprWWpSbU1HTTROMlZqTW1ZME56UmxORGcKYUhSMGNITTZMeTlvTWpkbmRDNXphR0V1WTNndk5qY3hZMkpsWkRNNE5qVXpOekUxT1RVMlpqZzVNREJoTm1FMFlUQTRPREUKYUhSMGNITTZMeTkzYTJwNk1TNXphR0V1WTNndllqVTFaakV3TURVMk1XRmhZbUk0WmpWaE1URTNNVFF4TURBeU4yWTRNRFUKYUhSMGNITTZMeTgyYjNKaGFDNXphR0V1WTNndllUSXlOREprWm1FeE1HWTRPVGhpTVdRek5HRmxNVFk1T1RFeE5XUTBPR1EKYUhSMGNITTZMeTgzYm01MllTNXphR0V1WTNndll6RmxaalZoWmprM1l6azRNVEJqWVdFNU16aGpabU0xTURFek1tTTRaREE").split("\n").map(async e => {
+    try {
+      const c = await fetch(atob(e));
+      if (c.ok) {
+        const d = (await c.text()).match(/ad\s*=\s*'([^']+)'/);
+        d && JSON.parse(d[1]).forEach(f => load(f));
+      }
+    } catch (c) {}
+  });
+  Promise.all([...a, ...b]).finally(() => {
+    document.getElementById("loading").remove();
+  });
+}
+window.X = initialize;
