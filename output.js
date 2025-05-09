@@ -1,4 +1,4 @@
-//Mon Mar 17 2025 10:29:26 GMT+0000 (Coordinated Universal Time)
+//Fri May 09 2025 14:48:02 GMT+0000 (Coordinated Universal Time)
 //Base:https://github.com/echo094/decode-js
 //Modify:https://github.com/smallfawn/decode_action
 const $ = new Env("发送验证码");
