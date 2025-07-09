@@ -1,871 +1,1862 @@
-//Wed Jul 02 2025 06:17:12 GMT+0000 (Coordinated Universal Time)
+//Wed Jul 09 2025 18:09:14 GMT+0000 (Coordinated Universal Time)
 //Base:https://github.com/echo094/decode-js
 //Modify:https://github.com/smallfawn/decode_action
-const _0x394785 = new _0x2895c9("喜番");
-const _0x3aa3e8 = "xf";
-let _0x572cc3 = ["@", "\n"];
-msg = "";
-let _0x1e9244 = msg;
-let _0x1ebc51 = (_0x394785.isNode() ? process.env[_0x3aa3e8] : _0x394785.getdata(_0x3aa3e8)) || "";
-let _0x4ee2de = [];
-let _0x489ae0 = 0;
-let _0x722626 = 0;
-async function _0x972199() {
-  console.log("\n================== 喜番开始 ==================\n");
-  taskall = [];
-  for (let _0xfccdc9 of _0x4ee2de) {
-    {
-      taskall.push(await _0xfccdc9.dm("messag"));
+process.noDeprecation = true;
+NAME = "恐龙打工日记";
+VALY = ["kldgrj"];
+CK = "";
+let m = process.env.qyweixin;
+let R = process.env[VALY[0] + "bf"];
+let G = process.env[VALY[0] + "ys"] || "";
+let O = process.env[VALY[0] + "dl"] || "";
+let e = process.env.WECHAT_SERVER || "";
+let f = "vip.dsrhkj.cn";
+let h = "/app/index.php?i=3&t=0&v=1.15&from=wxapp&c=entry&a=wxapp&do=distribute&m=bh_cat";
+let w = "https://" + f;
+const Y = ["\n", "@"];
+const b0 = 0;
+usid = 0;
+class b1 {
+  constructor(b) {
+    this.num = ++usid;
+    this.one = 0;
+    this.strck = b;
+    this.token = b.split("#")[0];
+  }
+  async moshi() {
+    const P = {
+      cfDuo: function (Q, k) {
+        return Q * k;
+      },
+      tsIhW: "wxid",
+      AjeDX: function (Q, k) {
+        return Q !== k;
+      },
+      fzafw: "lWMMD",
+      UeBiI: "AFHVj",
+      TijSB: "当前使用CK模式",
+      TojUx: function (Q, k) {
+        return Q !== k;
+      },
+      CNbHE: "GnEbH",
+      XDnxW: "ZZDAT",
+      CxegT: "3|2|1|4|0"
+    };
+    if (!this.token.startsWith("wxid")) {
+      console.log("当前使用CK模式");
+      this.wxcode = 0;
+    } else {
+      {
+        console.log("当前使用code模式");
+        this.wxid = this.token;
+        await this.readck();
+        this.wxcode = 1;
+        this.token = this.ck;
+      }
     }
   }
-  await Promise.all(taskall);
-}
-class _0x89aecd {
-  constructor(_0x40710e) {
-    this.index = ++_0x489ae0;
-    this.ck = _0x40710e.split("#");
-    this.cookie = this.ck[0];
-    this.bu = this.ck[1];
-    this.ua = this.ck[2];
-    this.su = this.ck[3];
-    this.kp = this.ck[4];
-    this.message = this.ck[5];
-    const _0x2f69ca = this.cookie.match(/userId=([^;]+)/);
-    this.userId = _0x2f69ca ? _0x2f69ca[1] : "未知";
-    this.stopped = false;
+  headers() {
+    let E = {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 MicroMessenger/7.0.20.1781(0x6700143B) NetType/WIFI MiniProgramEnv/Windows WindowsWechat/WMPF WindowsWechat(0x63090b13) XWEB/9129",
+      xweb_xhr: "1",
+      referer: "https://servicewechat.com/wxebc856cb722e51d1/2/page-frame.html",
+      "accept-language": "zh-CN,zh;q=0.9"
+    };
+    return E;
   }
-  async task(_0xad56ae, _0x403f4b, _0x10cbdc, _0x836548) {
-    if (this.stopped) {
-      console.log("账号[" + this.index + "][" + this.userId + "]  已停止，跳过执行");
-      return;
+  async hqdl() {
+    let Q = await $.task("get", O, {
+      "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Mobile Safari/537.36"
+    });
+    this.dlip = Q.split("\n")[0];
+    console.log("账号" + this.num + "：代理IP：" + this.dlip);
+  }
+  async user_task_list() {
+    await $.wait($.RT(1000, 3000));
+    await this.list();
+    await $.wait($.RT(1000, 3000));
+    await this.gxqk();
+    await $.wait($.RT(3000, 5000));
+    await this.hyxtqk();
+  }
+  async huoqucode() {
+    const P = {
+      upfiH: "info",
+      NFCDK: "capacity",
+      gFcQZ: "warehouse",
+      dDgJK: "code",
+      XfteZ: "post",
+      orozj: "application/json",
+      DrMpl: function (Z, V) {
+        return Z == V;
+      },
+      GUUyX: function (Z, V) {
+        return Z === V;
+      },
+      VJgCr: "fAyIC",
+      NdEDu: "WLyJh"
+    };
+    this.one = 1;
+    const k = Object.keys(this.headers()).find(Z => Z.toLowerCase() === "referer");
+    const E = this.headers()[k];
+    const p = new URL(E).pathname.split("/")[1];
+    let F = await $.task("post", e + "/wx/app/code", {
+      "Content-Type": "application/json"
+    }, "{\"wxid\": \"" + this.wxid + "\",\"appid\": \"" + p + "\"}");
+    if (F.Code == 0) {
+      {
+        let Z = F.Data.code;
+        await this.logintoken(Z);
+      }
+    } else {
+      {
+        return;
+      }
+    }
+  }
+  async logintoken(A) {
+    const Q = {
+      SViRj: "获取ck",
+      CJwdq: "get",
+      hfltb: function (p, F) {
+        return p == F;
+      },
+      cJQaz: function (p, F) {
+        return p !== F;
+      },
+      JptIy: "vtMzy",
+      HsyIb: "UqRnn",
+      MzqoI: "dFILm",
+      MMKxa: "HIymO",
+      ZVCkC: function (p, F) {
+        return p !== F;
+      },
+      CKpuW: function (p, F) {
+        return p === F;
+      },
+      zNaEx: "pOPxM"
+    };
+    let k = "获取ck";
+    await $.wait($.RT(1000, 3000));
+    let E = await this.task("get", "" + w + h + "&code=" + A + "&parent_id=&contr=noLogin&action=login&version=1.0.43", this.headers());
+    if (E.status == 1) {
+      {
+        this.token = E.info;
+        this.ck = this.token;
+        await this.writeck();
+        await $.wait($.RT(3000, 5000));
+      }
+    } else {
+      {
+        let F = E.msg;
+        console.log(this.num + " " + k + "：" + F);
+        if (m !== undefined) {
+          {
+            await this.wxpusher(F);
+          }
+        }
+        return;
+      }
+    }
+  }
+  async login() {
+    let A = "用户信息";
+    let P = await this.task("get", "" + w + h + "&action=home&contr=index&parent_id=0&token=" + this.token + "&is_new=1&version=1.0.43", this.headers());
+    if (P.status == 1) {
+      {
+        this.isLogin = true;
+        let {
+          nickname: k,
+          currency: E,
+          foodstuff: p,
+          money: F,
+          warehouse_level: Z
+        } = P.info.member;
+        let V = P.info.look_num;
+        this.num = "|" + k + "|";
+        console.log(this.num + " 金币：" + E + " 💰：" + F + " 食物：" + p);
+        !P.info.daily_food.status && (await $.wait($.RT(3000, 5000)), await this.shiwu());
+        if (!P.info.is_sign) {
+          {
+            await $.wait($.RT(3000, 5000));
+            await this.qiandao();
+          }
+        }
+        let C = P.info.config.daily_video_num;
+        for (let c = V; c < C; c++) {
+          {
+            await $.wait($.RT(3000, 5000));
+            await this.shu();
+          }
+        }
+      }
+    } else {
+      {
+        this.isLogin = false;
+        let W = P.info;
+        console.log(this.num + " " + A + "：" + W);
+        if (W.includes("login") && this.wxcode && !this.one) {
+          {
+            await this.huoqucode();
+            await $.wait($.RT(3000, 5000));
+            await this.login();
+          }
+        } else {
+          m && (await this.wxpusher(W));
+        }
+      }
+    }
+  }
+  async qiandao() {
+    let Q = "签到";
+    let k = await this.task("get", "" + w + h + "&action=sign&contr=my&token=" + this.token + "&version=1.0.43", this.headers());
+    if (k.status == 1) {
+      {
+        console.log(this.num + " " + Q + "：成功！");
+      }
+    } else {
+      {
+        let p = k.info;
+        console.log(this.num + " " + Q + "：" + p);
+      }
+    }
+  }
+  async shu() {
+    let Q = "📚";
+    let k = await this.task("get", "" + w + h + "&action=video&contr=food&token=" + this.token + "&version=1.0.43", this.headers());
+    if (k.status == 1) {
+      {
+        console.log(this.num + " " + Q + "：" + k.info.video_currency + "食物");
+      }
+    } else {
+      {
+        let p = k.info;
+        console.log(this.num + " " + Q + "：" + p);
+      }
+    }
+  }
+  async gxqk() {
+    let A = "贡献情况";
+    let P = await this.task("get", "" + w + h + "&action=upcurrency&contr=my&token=" + this.token + "&collect=2&version=1.0.43", this.headers());
+    if (P.status == 1) {
+      {
+        if (P.info.warehouse_currency > 10) {
+          {
+            await $.wait($.RT(3000, 5000));
+            await this.qiandaofanbei();
+          }
+        }
+      }
+    } else {
+      {
+        let p = P.info;
+        console.log(this.num + " " + A + "：" + p);
+      }
+    }
+  }
+  async qiandaofanbei() {
+    let Q = "贡献";
+    let k = await this.task("get", "" + w + h + "&action=upcurrency&contr=my&token=" + this.token + "&collect=1&version=1.0.43", this.headers());
+    if (k.status == 1) {
+      {
+        console.log(this.num + " " + Q + "：" + k.info.collect_currency + "金币");
+      }
+    } else {
+      {
+        let F = k.info;
+        console.log(this.num + " " + Q + "：" + F);
+      }
+    }
+  }
+  async hyxtqk() {
+    let A = "好友系统情况";
+    let P = await this.task("get", "" + w + h + "&action=warehouse&contr=my&token=" + this.token + "&version=1.0.43", this.headers());
+    if (P.status == 1) {
+      {
+        let Q = P.info.capacity.warehouse.share_num;
+        let k = P.info.capacity.all_share;
+        if (Q <= k) {
+          {
+            await $.wait($.RT(3000, 5000));
+            await this.hyxt();
+          }
+        }
+      }
+    } else {
+      {
+        let Z = P.info;
+        console.log(this.num + " " + A + "：" + Z);
+      }
+    }
+  }
+  async hyxt() {
+    let A = "🍀";
+    let P = await this.task("get", "" + w + h + "&action=open_capacity&contr=my&token=" + this.token + "&version=1.0.43", this.headers());
+    if (P.status == 1) {
+      {
+        let Q = P.info.capacity.warehouse.warehouse;
+        console.log(this.num + " " + A + "：✅ 可容纳" + Q + "金币");
+      }
+    } else {
+      {
+        let E = P.info;
+        console.log(this.num + " " + A + "：" + E);
+      }
+    }
+  }
+  async shiwu() {
+    let Q = "食物";
+    let k = await this.task("get", "" + w + h + "&action=daily&contr=food&token=" + this.token + "&version=1.0.43", this.headers());
+    if (k.status == 1) {
+      {
+        console.log(this.num + " " + Q + "：领取成功！");
+      }
+    } else {
+      {
+        let p = k.info;
+        console.log(this.num + " " + Q + "：" + p);
+      }
+    }
+  }
+  async list() {
+    let Q = "广告id";
+    let k = await this.task("get", "" + w + h + "&action=index&contr=task&token=" + this.token + "&version=1.0.43", this.headers());
+    if (k.status == 1) {
+      {
+        let E = k.info.task.s;
+        for (let p of E) {
+          {
+            let {
+              id: Z
+            } = p;
+            await $.wait($.RT(23000, 23500));
+            await this.guangao(Z);
+          }
+        }
+      }
+    } else {
+      {
+        let J = k.info;
+        console.log(this.num + " " + Q + "：" + J);
+      }
+    }
+  }
+  async weishi() {
+    const P = {
+      xoGzC: "喂食龙群",
+      qMWBs: "get",
+      PJGso: function (E, p) {
+        return E == p;
+      },
+      eBlFR: function (E, p) {
+        return E !== p;
+      },
+      xOBaf: "aajXB",
+      DvqOu: "pYgIB"
+    };
+    let Q = "喂食龙群";
+    let k = await this.task("get", "" + w + h + "&action=feed&contr=my&token=" + this.token + "&is_remind=1&version=1.0.43", this.headers());
+    if (k.status == 1) {
+      console.log(this.num + " " + Q + "：加" + k.info.percentage + "体力");
+    } else {
+      {
+        let F = k.info;
+        console.log(this.num + " " + Q + "：" + F);
+      }
+    }
+  }
+  async guangao(A) {
+    const Q = {
+      WZSdp: "Content-Length",
+      YKHAW: "get",
+      HdcWx: function (p, F) {
+        return p == F;
+      },
+      xjHli: function (p, F) {
+        return p === F;
+      },
+      iYEtZ: "cXjnJ",
+      YeZwP: function (p, F) {
+        return p !== F;
+      },
+      rMBfy: "iJWof",
+      bjofX: "EnRnN"
+    };
+    let k = "📺";
+    let E = await this.task("get", "" + w + h + "&action=complete&contr=task&task_id=" + A + "&token=" + this.token + "&version=1.0.43", this.headers());
+    if (E.status == 1) {
+      {
+        console.log(this.num + " " + k + "：" + E.info.msg);
+      }
+    } else {
+      {
+        let F = E.info;
+        console.log(this.num + " " + k + "：" + F);
+      }
+    }
+  }
+  async xinxi() {
+    const P = {
+      EDfQW: "用户信息",
+      ebTjY: "get",
+      OLlce: function (E, p) {
+        return E == p;
+      },
+      uLGPt: function (E, p) {
+        return E !== p;
+      },
+      sqfiL: "sBNWz",
+      JZpKd: function (E, p) {
+        return E > p;
+      },
+      fwKMT: function (E, p) {
+        return E === p;
+      },
+      wBHYB: "zmBLZ",
+      ryFSs: function (E, p) {
+        return E !== p;
+      },
+      bmFeU: "kFkEC"
+    };
+    let Q = "用户信息";
+    let k = await this.task("get", "" + w + h + "&action=index&contr=my&token=" + this.token + "&version=1.0.43 ", this.headers());
+    if (k.status == 1) {
+      {
+        let {
+          currency: p,
+          foodstuff: F,
+          bonus_level: Z,
+          money: V
+        } = k.info.member;
+        console.log(this.num + " 金币：" + p + " 💰：" + V + " 食物：" + F);
+        if (F > 0) {
+          {
+            await $.wait($.RT(3000, 5000));
+            await this.weishi();
+          }
+        }
+      }
+    } else {
+      {
+        this.isLogin = false;
+        let n = k.info;
+        console.log(this.num + " " + Q + "：" + n);
+      }
+    }
+  }
+  async fenhong() {
+    const A;
+    let Q = "📺";
+    let k = await this.task("get", "" + w + h + "&action=upgrade&contr=index&token=" + this.token + "&version=1.0.43", this.headers());
+    if (k.status == 1) {
+      {
+        console.log(this.num + " " + Q + "：" + k.info.msg);
+      }
+    } else {
+      {
+        let p = k.info;
+        console.log(this.num + " " + Q + "：" + p);
+      }
+    }
+  }
+  async wxpusher(A) {
+    let k = "{\"msgtype\": \"text\",\"text\": {\"content\": \"" + NAME + "\n[" + this.num + "]:" + A + "\n" + m.split("#")[1] + "\"}}";
+    let E = await $.task("post", "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=" + m.split("#")[0], {}, k);
+    if (E.errcode == 0) {
+      console.log("微信通知" + E.errmsg);
+    } else {
+      {
+        console.log("微信通知失败");
+      }
+    }
+  }
+  async writeck() {
+    let A = "写入";
+    const P = require("fs");
+    const Q = "xg_" + VALY + ".json";
+    let k = {};
+    if (P.existsSync(Q)) {
+      {
+        try {
+          {
+            const p = P.readFileSync(Q, "utf8");
+            k = JSON.parse(p);
+          }
+        } catch (Z) {
+          {
+            console.log(A + "：读取文件失败", Z);
+            return;
+          }
+        }
+      }
+    }
+    k[this.wxid] = {
+      ck: this.ck
+    };
+    try {
+      P.writeFileSync(Q, JSON.stringify(k, null, 2));
+      console.log(A + "：成功写入CK");
+    } catch (J) {
+      {
+        console.log(A + "：写入文件失败", J);
+      }
+    }
+  }
+  async readck() {
+    let A = "读取ck";
+    const P = require("fs");
+    const Q = "xg_" + VALY + ".json";
+    if (!P.existsSync(Q)) {
+      {
+        console.log(A + "：文件不存在，需要获取code");
+        await this.huoqucode();
+        return;
+      }
     }
     try {
       {
-        const _0x298fb8 = {
-          "User-Agent": this.ua,
-          Connection: "Keep-Alive",
-          "Content-Type": "application/json; application/json; charset=utf-8",
-          "Ks-Sig3": _0x10cbdc,
-          "Ks-Encoding": "2",
-          BrowserUa: this.bu,
-          SystemUa: this.su,
-          "Ks-PkgId": this.kp,
-          Cookie: this.cookie
-        };
-        let _0x2b12d5 = {
-          method: "post",
-          url: "https://tube.e.kuaishou.com/rest/e/tube/inspire/task/report",
-          headers: _0x298fb8,
-          body: "{\"version\":\"3.3.55.2.8\",\"appVersion\":\"2.6.3.2\",\"appId\":\"1091400011\",\"message\":\"" + _0x403f4b + "\"}"
-        };
-        let _0x49358a = await _0x547347(_0x2b12d5, _0x836548);
-        if (_0x49358a.result == 1) {
-          _0x513ddc("账号[" + this.index + "][" + this.userId + "]  等待解密响应体");
-          if (this.stopped) {
-            console.log("账号[" + this.index + "][" + this.userId + "]  已停止，跳过后续执行");
-            return;
-          }
-          await this.dmd(_0x49358a.data);
-        } else {
-          _0x513ddc("账号[" + this.index + "][" + this.userId + "]  请求失败 ❌ 了呢,原因" + _0x49358a.msg);
-          console.log(_0x49358a);
-        }
-      }
-    } catch (_0x120d5e) {
-      {
-        console.log(_0x120d5e);
-      }
-    }
-  }
-  async e(_0x41d4b0, _0x390ca7) {
-    if (this.stopped) {
-      console.log("账号[" + this.index + "][" + this.userId + "]  已停止，跳过执行");
-      return;
-    }
-    try {
-      {
-        const _0x3dcbad = {
-          "Content-Type": "application/json"
-        };
-        let _0x47f59f = {
-          method: "post",
-          url: "http://111.231.107.4:6689/e",
-          headers: _0x3dcbad,
-          body: "{\"data\":" + _0x41d4b0 + "}"
-        };
-        let _0x244d5b = await _0x547347(_0x47f59f, _0x390ca7);
-        if (_0x244d5b) {
-          let _0x1f1772 = _0x244d5b;
-          let _0x83fa0a = "/rest/e/tube/inspire/task/report&&{\"version\":\"3.3.55.2.8\",\"appVersion\":\"2.6.3.2\",\"appId\":\"1091400011\",\"message\":\"" + _0x1f1772 + "\"}";
-          let _0x4ca6fc = JSON.stringify(_0x83fa0a);
-          if (this.stopped) {
-            console.log("账号[" + this.index + "][" + this.userId + "]  已停止，跳过后续执行");
-            return;
-          }
-          await this.sign(_0x4ca6fc, _0x1f1772);
-        } else {
-          _0x513ddc("账号[" + this.index + "][" + this.userId + "]  加密失败 ❌ 了呢,原因" + _0x244d5b.msg);
-          console.log(_0x244d5b);
-        }
-      }
-    } catch (_0x45b230) {
-      {
-        console.log(_0x45b230);
-      }
-    }
-  }
-  async dm(_0x1c4d08) {
-    if (this.stopped) {
-      console.log("账号[" + this.index + "][" + this.userId + "]  已停止，跳过执行");
-      return;
-    }
-    try {
-      {
-        const _0x495240 = {
-          "Content-Type": "application/json"
-        };
-        let _0x75762f = {
-          method: "post",
-          url: "http://111.231.107.4:6689/d",
-          headers: _0x495240,
-          body: "{\"data\": \"" + this.message + "\"}"
-        };
-        let _0x53e93a = await _0x547347(_0x75762f, _0x1c4d08);
-        if (_0x53e93a) {
-          console.log("账号[" + this.index + "][" + this.userId + "]  message解密成功咯");
-          let _0x27a616 = _0x53e93a.deviceInfo.deviceId;
-          let _0x1c06ae = _0x53e93a.deviceInfo.eGid;
-          let _0x292148 = "{\"appVersion\":\"2.6.3.2\",\"kpn\":\"XIFAN\",\"channel\":\"ANDROID_VIVO_BA_XFDJXM_NSET_XIFAN_VIVO\",\"originChannel\":\"ANDROID_VIVO_BA_XFDJXM_NSET_XIFAN_VIVO\",\"protocolVersion\":\"2.0\",\"kwaiMerchantSdkVersion\":\"1.0.0\",\"SDKVersion\":\"3.3.55.2.8\",\"SDKVersionCode\":3035502,\"sdkApiVersion\":\"3.3.55.2\",\"sdkApiVersionCode\":3035502,\"sdkType\":2,\"deviceInfo\":{\"oaid\":\"\",\"romName\":\"VIVO\",\"osType\":1,\"osBit\":64,\"osApi\":34,\"osVersion\":\"14\",\"language\":\"zh\",\"screenWidth\":1080,\"screenHeight\":2313,\"deviceWidth\":360,\"deviceHeight\":771,\"androidId\":\"\",\"deviceId\":\"" + _0x27a616 + "\",\"randomDeviceId\":\"\",\"deviceIdTag\":0,\"cloudIdTag\":7,\"deviceVendor\":\"vivo\",\"platform\":3,\"deviceModel\":\"V2172A\",\"deviceBrand\":\"vivo\",\"eGid\":\"" + _0x1c06ae + "\",\"deviceBit\":1,\"arch\":\"aarch64\",\"kwaiNebulaVersionName\":\"12.2.20.7490\",\"wechatVersionName\":\"8.0.60\",\"systemBootTime\":\"626f584d-3a5d-4e1f-a413-f03e3fe90e2d\",\"systemUpdateTime\":\"1750913072.215024123\",\"abi\":\"arm64\",\"socName\":\"Unknown\",\"boardPlatform\":\"taro\",\"firstInstallOpen\":true},\"clientFunction\":{\"enableUserFission\":true},\"appInfo\":{\"appId\":\"1091400011\",\"name\":\"喜番免费短剧\",\"packageName\":\"com.kwai.theater\",\"version\":\"2.6.3.2\",\"sha1\":\"E8:7A:F7:8A:50:EC:4F:48:75:83:D5:EA:D8:AC:6A:5C:DA:29:BA:F0\"},\"tkVersion\":\"5.1.4\",\"adSdkVersion\":\"3.3.55.2\",\"networkInfo\":{\"connectionType\":100,\"operatorType\":3},\"clientDynamicType\":\"0\",\"abi\":\"arm64\",\"socName\":\"Unknown\",\"boardPlatform\":\"taro\",\"kGeoInfo\":{},\"ext\":{\"modeInfo\":{\"cpuCount\":8,\"cpuAbi\":\"arm64-v8a\",\"batteryPercent\":50,\"totalMemorySize\":11823714304,\"availableMemorySize\":4358930432,\"totalDiskSize\":238189031424,\"availableDiskSize\":57468551168,\"imsi\":\"\",\"iccid\":\"\",\"bootTime\":233857,\"romName\":\"VIVO\",\"romVersion\":\"14.1\",\"romBuildTimestamp\":1732676038000,\"ringerMode\":2,\"audioStreamInfo\":[{\"maxVolume\":6,\"minVolume\":1,\"currentVolume\":6},{\"streamType\":1,\"maxVolume\":7,\"currentVolume\":7},{\"streamType\":2,\"maxVolume\":7,\"currentVolume\":7},{\"streamType\":3,\"maxVolume\":15,\"currentVolume\":2},{\"streamType\":4,\"maxVolume\":7,\"currentVolume\":7},{\"streamType\":5,\"maxVolume\":7,\"currentVolume\":6}],\"baseBandVersion\":\"SS.DE.2.0-00780.7-WAIPIO_GEN_PACK-1.10720.323,SS.DE.2.0-00780.7-WAIPIO_GEN_PACK-1.10720.323\",\"fingerPrint\":\"vivo/PD2172/PD2172:14/UP1A.231005.007/compiler11271053:user/release-keys\",\"screenBrightness\":-1,\"isCharging\":false,\"chargeType\":0,\"simCardInfo\":{\"phoneCount\":2,\"activePhoneCount\":0},\"environmentInfo\":{\"isRoot\":2,\"isXPosed\":2,\"isFrameworkHooked\":2,\"isVirtual\":0,\"isAdbEnabled\":1,\"isEmulator\":2,\"isGroupControl\":2},\"sensorEventInfoList\":[{\"sensorType\":1,\"timestamp\":" + Math.floor(Date.now() / 1000) + ",\"values\":[-0.09696517139673233,0.10235211998224258,9.832687377929688]},{\"sensorType\":4,\"timestamp\":" + Math.floor(Date.now() / 1000) + ",\"values\":[0,1.5271181473508477E-4,-1.5271181473508477E-4]},{\"sensorType\":9,\"timestamp\":" + Math.floor(Date.now() / 1000) + ",\"values\":[-0.10635516047477722,0.11213109642267227,9.805432319641113]}]}},\"appUserInfo\":{\"userRecoBit\":1},\"timestamp\":" + Date.now() + ",\"inspireTaskReportParam\":{\"posId\":10914000012,\"ecpm\":41670,\"neoInfos\":[{\"extParam\":{\"taskType\":1,\"llsId\":\"4\",\"creativeId\":" + _0x588679() + ",\"taskToken\":\"\"},\"idempotentId\":\"4_" + _0x588679() + "\"}],\"taskSessionId\":" + Date.now() + ",\"continuousTimes\":0,\"taskId\":6005}}";
-          let _0x5e5175 = JSON.stringify(_0x292148);
-          if (this.stopped) {
-            console.log("账号[" + this.index + "][" + this.userId + "]  已停止，跳过后续执行");
-            return;
-          }
-          await this.e(_0x5e5175);
-        } else {
-          _0x513ddc("账号[" + this.index + "][" + this.userId + "]  解密失败 ❌ 了呢,原因" + _0x53e93a.msg);
-          console.log(_0x53e93a);
-        }
-      }
-    } catch (_0x2e5b2e) {
-      {
-        console.log(_0x2e5b2e);
-      }
-    }
-  }
-  async dmd(_0x5d2ffb, _0x49cca4) {
-    if (this.stopped) {
-      console.log("账号[" + this.index + "][" + this.userId + "]  已停止，跳过执行");
-      return;
-    }
-    try {
-      {
-        const _0xdfd16a = {
-          "Content-Type": "application/json"
-        };
-        let _0x3f3251 = {
-          method: "post",
-          url: "http://111.231.107.4:6689/d",
-          headers: _0xdfd16a,
-          body: "{\"data\": \"" + _0x5d2ffb + "\"}"
-        };
-        let _0x266bea = await _0x547347(_0x3f3251, _0x49cca4);
-        if (_0x266bea) {
-          _0x513ddc("账号[" + this.index + "][" + this.userId + "]  " + _0x266bea.toast + " " + _0x266bea.amount);
-          if (_0x266bea.amount === 1 || _0x266bea.amount.amount === 50) {
-            console.log("账号[" + this.index + "][" + this.userId + "]  已黑鸡，停止运行");
-            this.stopped = true;
-            return;
+        const p = P.readFileSync(Q, "utf8");
+        const F = JSON.parse(p);
+        if (F[this.wxid] && F[this.wxid].ck) {
+          {
+            this.ck = F[this.wxid].ck;
           }
         } else {
-          _0x513ddc("账号[" + this.index + "][" + this.userId + "]  解密失败 ❌ 了呢,原因" + _0x266bea.msg);
-          console.log(_0x266bea);
+          {
+            console.log(A + "：未找到对应wxid的CK，需要获取code");
+            await this.huoqucode();
+          }
         }
       }
-    } catch (_0x3e13f1) {
-      {
-        console.log(_0x3e13f1);
-      }
+    } catch (C) {
+      console.log(A + "：读取文件失败", C);
+      await this.huoqucode();
     }
   }
-  async sign(_0x4218e0, _0x173f6e, _0x5090a4) {
-    if (this.stopped) {
-      console.log("账号[" + this.index + "][" + this.userId + "]  已停止，跳过执行");
-      return;
-    }
-    try {
+  async task(A, P, Q, k) {
+    const E = {
+      Rsncx: "当前使用CK模式",
+      WaYkW: function (V, C) {
+        return V * C;
+      },
+      FVHEM: function (V, C) {
+        return V + C;
+      },
+      WRBDy: "http://",
+      UTchy: function (V, C) {
+        return V(C);
+      },
+      JeboA: "node-rsa",
+      mZfvy: "-----BEGIN PUBLIC KEY-----\n",
+      dFKhv: "\n-----END PUBLIC KEY-----",
+      DlPBm: "pkcs1",
+      bOOlw: "base64",
+      LGeWT: "utf8",
+      lqEuN: function (V, C) {
+        return V === C;
+      },
+      JCEau: "rptWV",
+      Zjshz: "xVNea",
+      wVqfy: function (V, C) {
+        return V == C;
+      },
+      gDnGv: function (V, C) {
+        return V === C;
+      },
+      BpiXQ: "lloQA",
+      NGiqL: "VeUZu",
+      SdhAP: "BUyrL",
+      WcXvf: "zMXOV",
+      uAmhj: function (V, C) {
+        return V === C;
+      },
+      epUzn: "JQIWz",
+      qYGwI: "asWsO",
+      WnmuA: function (V, C) {
+        return V === C;
+      },
+      nlOrG: "yjVMD",
+      fHbTK: "LzYEk",
+      nafBX: function (V, C) {
+        return V !== C;
+      },
+      qctHX: "vkqpM",
+      UyZwp: function (V, C) {
+        return V !== C;
+      },
+      SMfse: "dWQSr",
+      vpyIU: "hyWlS",
+      JJdxl: function (V, C) {
+        return V == C;
+      },
+      CvmDW: "ORePK",
+      xypAF: "EzTmj",
+      GKdwT: "BnWvr",
+      JuhOo: "snoeW",
+      dpQpT: function (V, C) {
+        return V(C);
+      },
+      SRgqs: "object",
+      HsYoF: "0123456789",
+      YGqvd: function (V, C) {
+        return V < C;
+      },
+      RFJpm: "QWERTYUIOPASDFGHJKLZXCVBNM01234567890123456789",
+      UZsgO: "rvVxo",
+      tcuxy: "delete",
+      kItNd: "request",
+      lkTJn: function (V, C) {
+        return V && C;
+      },
+      IXGqJ: function (V, C) {
+        return V === C;
+      },
+      BHGdz: "post",
+      uboqu: function (V, C) {
+        return V === C;
+      },
+      pVdDJ: "QjEXa",
+      MBBxT: "Content-Type",
+      IUdgB: "content-type",
+      Gvvbj: "Content-Length",
+      AhZeR: "content-length",
+      Okxgf: "application/json;charset=utf-8",
+      zcALM: "application/x-www-form-urlencoded",
+      dsEJj: function (V, C) {
+        return V === C;
+      },
+      pPJky: "get",
+      Jmwxa: "ONEmr",
+      jGReS: "PMUCB",
+      ymwgW: function (V, C) {
+        return V >= C;
+      },
+      dGEVQ: function (V, C) {
+        return V !== C;
+      },
+      htTLm: "GUZJR",
+      ZMjTN: "EkkYS",
+      MPmJk: "DGjjt",
+      vexhV: "NkLyO",
+      SpAkZ: "Host"
+    };
+    A = A === "delete" ? A.toUpperCase() : A;
+    const p = require("request");
+    const F = {
+      proxy: "http://" + this.dlip
+    };
+    const Z = {
+      url: P,
+      headers: Q,
+      timeout: 20000,
+      ...(O && F)
+    };
+    if (A === "post") {
       {
-        const _0x400f64 = {
-          "Content-Type": "application/json"
-        };
-        let _0x567a6f = {
-          method: "post",
-          url: "http://111.231.107.4:6689/sign",
-          headers: _0x400f64,
-          body: "{\"data\":" + _0x4218e0 + "}"
-        };
-        let _0x46a840 = await _0x547347(_0x567a6f, _0x5090a4);
-        if (_0x46a840) {
-          let _0x4d6d77 = _0x46a840;
-          console.log("随机等待" + _0x46e2f1() + "秒");
-          await _0x2cf93a(_0x46e2f1());
-          if (this.stopped) {
-            console.log("账号[" + this.index + "][" + this.userId + "]  已停止，跳过后续执行");
-            return;
-          }
-          await this.task(_0x4218e0, _0x173f6e, _0x4d6d77);
-        } else {
-          _0x513ddc("账号[" + this.index + "][" + this.userId + "]  sign加密失败 ❌ 了呢,原因" + _0x46a840.msg);
-          console.log(_0x46a840);
+        ["Content-Type", "content-type", "Content-Length", "content-length"].forEach(V => delete Q[V]);
+        Q["content-type"] = $.safeGet(k) ? "application/json;charset=utf-8" : "application/x-www-form-urlencoded";
+        if (k) {
+          Q["content-length"] = $.lengthInUtf8Bytes(k);
         }
       }
-    } catch (_0xe145a) {
+    } else {
+      A === "get" && ["Content-Type", "content-type", "Content-Length", "content-length"].forEach(J => delete Q[J]);
+    }
+    if (A.indexOf("T") >= 0) {
       {
-        console.log(_0xe145a);
+        Z.form = JSON.parse(k);
       }
+    } else {
+      Z.body = k;
     }
-  }
-}
-!(async () => {
-  if (!(await _0x4bbb48())) {
-    return;
-  }
-  if (_0x4ee2de.length > 0) {
-    await _0x972199();
-  }
-  await _0x1afe3e(msg);
-})().catch(_0x4d6261 => console.log(_0x4d6261)).finally(() => _0x394785.done());
-async function _0x4bbb48() {
-  if (_0x1ebc51) {
-    let _0x1de082 = _0x572cc3[0];
-    for (let _0x52d6d4 of _0x572cc3) if (_0x1ebc51.indexOf(_0x52d6d4) > -1) {
-      _0x1de082 = _0x52d6d4;
-      break;
-    }
-    for (let _0x36f124 of _0x1ebc51.split(_0x1de082)) _0x36f124 && _0x4ee2de.push(new _0x89aecd(_0x36f124));
-    _0x722626 = _0x4ee2de.length;
-  } else {
-    console.log("未找到CK");
-    return;
-  }
-  console.log("共找到" + _0x722626 + "个账号");
-  return true;
-}
-function _0x588679() {
-  const _0x4b6019 = 100000000;
-  const _0x34a564 = 999999999;
-  const _0x3b606d = _0x34a564 - _0x4b6019 + 1;
-  const _0x1d9dcd = Math.floor(Math.random() * _0x3b606d) + _0x4b6019;
-  return _0x1d9dcd;
-}
-function _0x46e2f1() {
-  const _0x1cdf74 = 6;
-  const _0x4283aa = 10;
-  const _0x3c70d4 = _0x4283aa - _0x1cdf74 + 1;
-  const _0x4f9814 = Math.floor(Math.random() * _0x3c70d4) + _0x1cdf74;
-  return _0x4f9814;
-}
-async function _0x547347(_0x343840, _0x5dd676) {
-  var _0x81b286 = require("request");
-  return new Promise(_0xbc9ddc => {
-    if (!_0x5dd676) {
-      let _0x3b9fb4 = arguments.callee.toString();
-      let _0xeee73e = /function\s*(\w*)/i;
-      let _0x38d09e = _0xeee73e.exec(_0x3b9fb4);
-      _0x5dd676 = _0x38d09e[1];
-    }
-    _0x81b286(_0x343840, function (_0x2a6c4a, _0x1b93a4) {
-      if (_0x2a6c4a) {
-        throw new Error(_0x2a6c4a);
-      }
-      let _0x482a67 = _0x1b93a4.body;
-      try {
-        if (typeof _0x482a67 == "string") {
-          if (_0x20d89f(_0x482a67)) {
-            let _0x4d90d8 = JSON.parse(_0x482a67);
-            _0xbc9ddc(_0x4d90d8);
-          } else {
-            let _0x4580ff = _0x482a67;
-            _0xbc9ddc(_0x4580ff);
-          }
-          function _0x20d89f(_0x17da97) {
-            {
-              if (typeof _0x17da97 == "string") {
-                try {
+    Q.Host = P.replace("//", "/").split("/")[1];
+    return new Promise(async c => {
+      {
+        p[A.toLowerCase()](Z, async (o, W, N) => {
+          {
+            try {
+              {
+                b0 == 1 && (console.log("==================请求=================="), console.log(JSON.stringify(Z)), console.log("==================返回=================="), console.log(N));
+              }
+            } catch (v) {} finally {
+              {
+                if (!o) {
                   {
-                    if (typeof JSON.parse(_0x17da97) == "object") {
-                      return true;
+                    if ($.safeGet(N)) {
+                      {
+                        N = JSON.parse(N);
+                      }
+                    } else {
+                      {
+                        N = N;
+                      }
                     }
                   }
-                } catch (_0x53739a) {
+                } else {
                   {
-                    return false;
+                    if (O == undefined) {
+                      {
+                        console.log("请检查网络设置");
+                        N = JSON.parse("{\"code\":\"99\"}");
+                      }
+                    } else {
+                      {
+                        await this.hqdl();
+                        N = await this.task(A, P, Q, k);
+                      }
+                    }
+                  }
+                }
+                return c(N);
+              }
+            }
+          }
+        });
+      }
+    });
+  }
+}
+$ = b2();
+!(async () => {
+  console.log("🔔[" + NAME + "] 📅 " + $.timenow(3) + ":" + $.timenow(4) + ":" + $.timenow(5));
+  await $.ExamineCookie();
+  const A = !!O;
+  console.log("当前使用" + (A ? "代理" : "本地") + "网络运行脚本");
+  this.dlqk = A ? 1 : 0;
+  if (!R) {
+    {
+      for (let P of $.cookie_list) {
+        {
+          console.log("-".repeat(20));
+          if (!b0 && G !== "1") {
+            {
+              const Q = $.RT(150000, 490000);
+              console.log("随机延迟" + Math.round(Q * 0.001) + "秒");
+              await $.wait(Q);
+            }
+          }
+          A && (await P.hqdl());
+          await P.moshi();
+          await P.login();
+          P.isLogin && (await P.user_task_list(), await P.xinxi());
+        }
+      }
+    }
+  } else {
+    {
+      if (!b0 && G !== "1") {
+        {
+          const J = $.RT(150000, 490000);
+          console.log("随机延迟" + Math.round(J * 0.001) + "秒");
+          await $.wait(J);
+        }
+      }
+      A && (await $.Multithreading("hqdl"));
+      console.log("\n-------- 用户信息 --------");
+      await $.Multithreading("moshi");
+      await $.Multithreading("login");
+      let V = $.cookie_list.filter(n => n.isLogin == true);
+      if (V.length == 0) {
+        {
+          console.log("Cookie格式错误 或 账号被禁封");
+          return;
+        }
+      } else {
+        {
+          console.log("\n-------- 任务列表 --------");
+          await $.Multithreading("user_task_list");
+          console.log("\n-------- 运行结果 --------");
+        }
+      }
+      for (let U of $.cookie_list) {
+        {
+          U.xinxi();
+        }
+      }
+    }
+  }
+})().catch(b => {
+  console.log(b);
+}).finally(() => {});
+function b2() {
+  const P = {
+    XGvNS: function (E, p) {
+      return E !== p;
+    },
+    xAOnM: "ZPWXj",
+    DqpRW: "BIYKd",
+    SKEfK: function (E, p) {
+      return E === p;
+    },
+    mqEhr: "QOmae",
+    bEviX: "XIBFF",
+    wsbPm: "Brpcj",
+    ICOha: function (E, p) {
+      return E === p;
+    },
+    fekrP: "RHtyJ",
+    Jyrek: "Content-Type",
+    hjghS: "content-type",
+    nLuYb: "Content-Length",
+    giPlZ: "content-length",
+    rySnJ: "cMiZs",
+    XSTDM: "OiDZl",
+    bZEyX: "(((.+)+)+)+$",
+    xIYkv: function (E, p) {
+      return E === p;
+    },
+    ptEul: "bGndI",
+    nGjsA: "sZXUe",
+    lFgCO: "2|1|4|3|0|5",
+    DkLkd: function (E, p) {
+      return E(p);
+    },
+    TiFZL: "request",
+    OXpKj: function (E, p) {
+      return E(p);
+    },
+    ccgkB: "node-rsa",
+    yNnqQ: function (E, p) {
+      return E(p);
+    },
+    GFBRP: "crypto-js",
+    ZbQzx: "jsrsasign",
+    uenEI: "utf8",
+    gUzuW: function (E, p) {
+      return E !== p;
+    },
+    TLfxD: "MQXyh",
+    dYmuf: "okDZP",
+    vZeVE: function (E, p) {
+      return E === p;
+    },
+    ciUMl: "psrGL",
+    IxqgM: "kzLbs",
+    myAGU: function (E, p) {
+      return E + p;
+    },
+    Fuycm: "****",
+    DszUw: function (E, p) {
+      return E == p;
+    },
+    WbUPr: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 MicroMessenger/7.0.20.1781(0x6700143B) NetType/WIFI MiniProgramEnv/Windows WindowsWechat/WMPF WindowsWechat(0x63090b13) XWEB/9129",
+    CZDli: "https://servicewechat.com/wxebc856cb722e51d1/2/page-frame.html",
+    BoIFv: "zh-CN,zh;q=0.9",
+    pooVZ: "HepSC",
+    Wmwaz: function (E, p) {
+      return E === p;
+    },
+    jtPDd: "HqLAy",
+    DBesU: "lrjNw",
+    DZcBs: "hIWle",
+    kTrZY: "nZFXt",
+    KxJsw: "Content-type",
+    KiNcq: "content-Type",
+    fWzQu: "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm0123456789",
+    dDEht: function (E, p) {
+      return E < p;
+    },
+    UZgdU: function (E, p) {
+      return E * p;
+    },
+    KgGvL: function (E, p) {
+      return E + p;
+    },
+    wmFhn: "WlvNh",
+    SZYlW: "qCerf",
+    AmZsY: function (E, p) {
+      return E !== p;
+    },
+    pYFYQ: "lzrjP",
+    DSdYy: "uBxsp",
+    uciaU: "fdIzN",
+    wLSMI: "LTLDQ",
+    ZyLZv: "oLlWK",
+    Kcymb: function (E, p) {
+      return E === p;
+    },
+    xpvex: "BZNAZ",
+    EsTOj: "hgGTj",
+    jEEpD: function (E, p) {
+      return E !== p;
+    },
+    ebviH: "vIQNg",
+    obgzZ: "3|0|1|4|2",
+    ataLZ: "application/json;charset=UTF-8",
+    FLFVo: "application/x-www-form-urlencoded",
+    LjpHT: function (E, p) {
+      return E + p;
+    },
+    NpbQH: function (E, p) {
+      return E + p;
+    },
+    dLSNB: function (E, p) {
+      return E * p;
+    },
+    hDuRA: function (E, p) {
+      return E - p;
+    },
+    GuLLw: function (E, p) {
+      return E === p;
+    },
+    QiTnz: function (E, p) {
+      return E(p);
+    },
+    CozHW: function (E, p) {
+      return E(p);
+    },
+    LuVbp: function (E, p) {
+      return E(p);
+    },
+    waIQw: function (E, p) {
+      return E !== p;
+    },
+    LwBDq: "nrwqS",
+    yRbjP: function (E, p) {
+      return E < p;
+    },
+    Hfscs: "fUTlT",
+    lBbwe: "http://",
+    VZmaS: "hKvjv",
+    rIKTO: function (E, p) {
+      return E + p;
+    },
+    lZEzx: function (E, p) {
+      return E !== p;
+    },
+    rFLuk: "lBKZk",
+    qhZQo: "udgLi",
+    BRZOx: "proxy",
+    COKRX: "0|5|4|2|1|3",
+    oSaYO: function (E, p) {
+      return E(p);
+    },
+    GdGhz: function (E, p) {
+      return E < p;
+    },
+    HepkD: function (E, p) {
+      return E + p;
+    },
+    IexWM: function (E, p) {
+      return E + p;
+    },
+    JeIzz: function (E, p) {
+      return E / p;
+    },
+    BkmVo: function (E, p) {
+      return E * p;
+    },
+    GuGgM: function (E, p) {
+      return E === p;
+    },
+    qOKha: function (E, p) {
+      return E + p;
+    },
+    hMspM: "   API请求失败，请检查网络重试\n",
+    wTAXa: "IvUcf",
+    zDnkR: "YQAwR",
+    Dbkcn: "genfV",
+    WxWSf: "eIsnx",
+    JvhaL: "WBZTR",
+    ADzcz: "ICuGX",
+    Vzbno: function (E, p) {
+      return E == p;
+    },
+    ivzOL: "YsJEi",
+    kEeaf: "fmlre",
+    sQkAW: "OXfKJ",
+    xCjGn: "qXzIq",
+    IeZmc: "VTdwW",
+    Esfqe: "SRVId",
+    ceIRX: "ojKiV",
+    zKERS: "fMYcH",
+    xyZgu: "vuLum",
+    TAFEs: function (E, p) {
+      return E != p;
+    },
+    xBBHK: "CNrCm",
+    EiERx: "FdXRn",
+    CZMYS: function (E, p) {
+      return E !== p;
+    },
+    pygUC: "ZVtBu",
+    SHstS: "moPkh",
+    HXHGO: "sGgqo",
+    AUPUF: "ztCHF",
+    vJvJS: function (E, p) {
+      return E + p;
+    },
+    JMaeO: function (E, p) {
+      return E === p;
+    },
+    IgNoB: "GnPvZ",
+    tjjSB: "bMudE",
+    urDsH: "delete",
+    SDicf: function (E, p) {
+      return E !== p;
+    },
+    kDLor: "AXNxk",
+    AlmyQ: "PuRes",
+    fkHQB: function (E, p) {
+      return E !== p;
+    },
+    ygfxu: "WUNla",
+    HQEOB: function (E, p) {
+      return E == p;
+    },
+    LeUBC: "post",
+    dyMiX: function (E, p) {
+      return E === p;
+    },
+    uNQCR: "uvVlM",
+    QlJaK: "XbCXh",
+    SlIfO: function (E, p) {
+      return E === p;
+    },
+    cZeFQ: "wzJkk",
+    SadIM: "LEbMp",
+    SaAKy: function (E, p) {
+      return E !== p;
+    },
+    xjCDy: "toVLO",
+    UNAtj: "ljViL",
+    woswG: function (E, p) {
+      return E == p;
+    },
+    YbVvC: "get",
+    fHZqL: "ctrdn",
+    faaeR: "Host",
+    SyMSd: "replace",
+    XXRfj: "split",
+    MdWJk: function (E, p) {
+      return E === p;
+    },
+    nyrfh: "BBymN",
+    PZLQq: "TOabI",
+    PzSoA: function (E, p) {
+      return E + p;
+    },
+    hQGQL: function (E, p) {
+      return E + p;
+    },
+    vBOcw: function (E, p) {
+      return E === p;
+    },
+    mxOyx: "UTSVQ",
+    yMHce: function (E, p, F) {
+      return E(p, F);
+    },
+    LIBzu: function (E, p) {
+      return E * p;
+    },
+    gRaQe: function (E, p) {
+      return E !== p;
+    },
+    bNYsb: "FDalg",
+    mvGxk: "TNteB",
+    mxTMl: function (E, p) {
+      return E >= p;
+    },
+    nUwxn: function (E, p) {
+      return E - p;
+    },
+    YEnLA: function (E, p) {
+      return E * p;
+    },
+    uIwMH: function (E, p) {
+      return E * p;
+    },
+    kskaU: function (E, p) {
+      return E * p;
+    },
+    oazWg: "dGYzZ",
+    pEYfW: function (E, p) {
+      return E === p;
+    },
+    kfcPi: "tEguM",
+    ZjoHC: function (E, p) {
+      return E / p;
+    },
+    wTqua: "uJbHn",
+    cGSOC: "eXKgE",
+    IdxXj: function (E, p) {
+      return E === p;
+    },
+    YNbzn: "JOigG",
+    vtsoC: "mPvxR",
+    TtYYX: function (E, p) {
+      return E == p;
+    },
+    RKUkg: "WPGSI",
+    fOsxl: "bDHbk",
+    kHXXT: function (E, p) {
+      return E + p;
+    },
+    LbUMW: function (E, p) {
+      return E + p;
+    },
+    QfbeA: function (E, p) {
+      return E + p;
+    },
+    UBgKk: function (E, p) {
+      return E < p;
+    },
+    eksHN: function (E, p) {
+      return E + p;
+    },
+    hRZWP: function (E, p) {
+      return E + p;
+    },
+    MAMYH: function (E, p) {
+      return E + p;
+    },
+    xUYPT: function (E, p) {
+      return E + p;
+    },
+    zlACw: function (E, p) {
+      return E + p;
+    },
+    IQHpD: function (E, p) {
+      return E === p;
+    },
+    LWxze: "PoeEo",
+    KUEhC: function (E, p) {
+      return E == p;
+    },
+    BAPWJ: "zKPNw",
+    tBzjB: "BhvBQ",
+    Fpmay: function (E, p) {
+      return E < p;
+    },
+    MSMkO: function (E, p) {
+      return E + p;
+    },
+    QJvlk: function (E, p) {
+      return E + p;
+    },
+    QmkzC: function (E, p) {
+      return E + p;
+    },
+    RpMfo: function (E, p) {
+      return E === p;
+    },
+    VDChy: "YbwLN",
+    xpwcg: "HiKty",
+    OmaAp: function (E, p) {
+      return E < p;
+    },
+    mlrol: function (E, p) {
+      return E === p;
+    },
+    IpyuN: "ewCBx",
+    YFtag: "mFvzm",
+    GDqsr: function (E, p) {
+      return E !== p;
+    },
+    WBomN: "fKgtj",
+    tfSUR: "sWCJF",
+    LqNbo: "VrmRZ",
+    lsXMK: "mgdqh",
+    AIafn: function (E, p) {
+      return E + p;
+    },
+    gozCq: function (E, p) {
+      return E + p;
+    },
+    KquYT: function (E, p) {
+      return E === p;
+    },
+    suLcc: "CRGiu",
+    guvKg: "kTsEm",
+    BrsIC: "rBJJL",
+    bQsTE: function (E, p) {
+      return E == p;
+    },
+    AGAuo: "object",
+    pBCLv: "SEjps",
+    JiuFf: function (E, p) {
+      return E === p;
+    },
+    wLjtU: "CHolz",
+    ecvkV: function (E, p) {
+      return E == p;
+    },
+    ORjcY: function (E, p) {
+      return E !== p;
+    },
+    QKaFQ: "ATEEu",
+    zYbha: "CcaTk",
+    zjKHB: "QWERTYUIOPASDFGHJKLZXCVBNM01234567890123456789",
+    NDtgd: "kMMlg",
+    bFImq: function (E, p) {
+      return E * p;
+    },
+    tuTok: "qwertyuiopasdfghjklzxcvbnm0123456789",
+    eWzLl: function (E, p) {
+      return E * p;
+    },
+    fzjEh: "0123456789",
+    wpfMw: function (E, p) {
+      return E * p;
+    },
+    eheQc: function (E, p) {
+      return E | p;
+    },
+    IxQtf: function (E, p) {
+      return E * p;
+    },
+    YeSPR: function (E, p) {
+      return E + p;
+    },
+    NfWVL: function (E, p) {
+      return E + p;
+    },
+    FElFU: function (E, p) {
+      return E + p;
+    },
+    KmmzF: function (E, p) {
+      return E + p;
+    },
+    oztBR: function (E, p) {
+      return E + p;
+    },
+    MZNoB: function (E, p) {
+      return E + p;
+    },
+    wMtEb: function (E, p) {
+      return E + p;
+    },
+    tvDho: function (E) {
+      return E();
+    },
+    jpaNt: function (E) {
+      return E();
+    },
+    MxTJG: function (E) {
+      return E();
+    },
+    VrCFk: function (E) {
+      return E();
+    },
+    sGzBB: function (E, p) {
+      return E < p;
+    },
+    wANHU: function (E, p) {
+      return E + p;
+    },
+    bTOHF: function (E, p) {
+      return E + p;
+    },
+    bnJyd: function (E, p) {
+      return E(p);
+    },
+    qqEuJ: function (E, p) {
+      return E * p;
+    },
+    wFdNJ: function (E, p) {
+      return E - p;
+    },
+    WQmla: function (E, p) {
+      return E * p;
+    },
+    CNPIw: function (E, p) {
+      return E * p;
+    },
+    tZBol: function (E, p) {
+      return E >= p;
+    },
+    ucRCF: function (E, p) {
+      return E * p;
+    },
+    BGDnQ: function (E, p) {
+      return E == p;
+    },
+    GXhga: function (E, p) {
+      return E == p;
+    },
+    tUmIc: function (E, p) {
+      return E == p;
+    },
+    ZYULa: "-----BEGIN PUBLIC KEY-----\n",
+    IEmbT: "\n-----END PUBLIC KEY-----",
+    YmJXl: "pkcs1",
+    ugyTh: "base64",
+    Fuvud: function (E, p) {
+      return E + p;
+    },
+    FCmcW: function (E, p) {
+      return E + p;
+    },
+    rKqmO: "-----BEGIN PRIVATE KEY-----\n",
+    Nutjy: "\n-----END PRIVATE KEY-----",
+    aEgtm: "SHA256withRSA",
+    EqHxy: function (E, p, F) {
+      return E(p, F);
+    }
+  };
+  return new class {
+    constructor() {
+      {
+        this.cookie_list = [];
+        this.message = "";
+        this.CryptoJS = require("crypto-js");
+        this.NodeRSA = require("node-rsa");
+        this.request = require("request");
+        this.Sha_Rsa = require("jsrsasign");
+      }
+    }
+    maskPhone(E) {
+      {
+        if (E && E.length === 11) {
+          {
+            return E.substring(0, 3) + "****" + E.substring(7);
+          }
+        }
+        return E;
+      }
+    }
+    async Multithreading(E, p, F) {
+      const V = {
+        BeEwV: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 MicroMessenger/7.0.20.1781(0x6700143B) NetType/WIFI MiniProgramEnv/Windows WindowsWechat/WMPF WindowsWechat(0x63090b13) XWEB/9129",
+        TkDYi: "https://servicewechat.com/wxebc856cb722e51d1/2/page-frame.html",
+        EzNCk: "zh-CN,zh;q=0.9"
+      };
+      {
+        let C = [];
+        !F && (F = 1);
+        while (F--) {
+          {
+            for (let n of $.cookie_list) {
+              {
+                C.push(n[E](p));
+              }
+            }
+          }
+        }
+        await Promise.allSettled(C);
+      }
+    }
+    ExamineCookie() {
+      const E = {
+        CHBCv: "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm0123456789",
+        VktnQ: function (p, F) {
+          return p < F;
+        },
+        jSJyr: function (p, F) {
+          return p * F;
+        },
+        RbEAf: function (p, F) {
+          return p + F;
+        }
+      };
+      {
+        let p = process.env[VALY] || CK;
+        let F = 0;
+        if (p) {
+          {
+            for (let Z of Y) {
+              {
+                if (p.includes(Z)) {
+                  {
+                    this.splitor = Z;
+                    break;
                   }
                 }
               }
-              return false;
             }
+            for (let J of p.split(this.splitor).filter(n => !!n)) {
+              {
+                $.cookie_list.push(new b1(J));
+              }
+            }
+            F = $.cookie_list.length;
           }
         } else {
-          let _0x321654 = _0x482a67;
-          _0xbc9ddc(_0x321654);
-        }
-      } catch (_0x3a3ac8) {
-        {
-          console.log(_0x2a6c4a, _0x1b93a4);
-          console.log("\n " + _0x5dd676 + "失败了!请稍后尝试!!");
-        }
-      } finally {
-        {
-          _0xbc9ddc();
-        }
-      }
-    });
-  });
-}
-function _0x2cf93a(_0x229ee8) {
-  return new Promise(function (_0x54f3f1) {
-    {
-      setTimeout(_0x54f3f1, _0x229ee8 * 1000);
-    }
-  });
-}
-function _0x513ddc(_0x375da2) {
-  if (_0x394785.isNode()) {
-    if (_0x375da2) {
-      console.log("" + _0x375da2);
-      msg += "\n" + _0x375da2;
-    }
-  } else {
-    console.log("" + _0x375da2);
-    msg += "\n" + _0x375da2;
-  }
-}
-async function _0x1afe3e(_0x290b57) {
-  if (!_0x290b57) {
-    return;
-  }
-  console.log(_0x290b57);
-}
-function _0x2895c9(_0x35f787, _0x2db8cf) {
-  "undefined" != typeof process && JSON.stringify(process.env).indexOf("GITHUB") > -1 && process.exit(0);
-  class _0x56031b {
-    constructor(_0x70e0d2) {
-      {
-        this.env = _0x70e0d2;
-      }
-    }
-    send(_0x251e02, _0xe9db8c = "GET") {
-      {
-        _0x251e02 = "string" == typeof _0x251e02 ? {
-          url: _0x251e02
-        } : _0x251e02;
-        let _0x565ffe = this.get;
-        "POST" === _0xe9db8c && (_0x565ffe = this.post);
-        return new Promise((_0x11934d, _0x281602) => {
           {
-            _0x565ffe.call(this, _0x251e02, (_0x1701a0, _0x4b3a1f, _0x50991a) => {
+            console.log("\n【" + NAME + "】：未填写变量: " + VALY);
+          }
+        }
+        console.log("共找到" + F + "个账号");
+        return $.cookie_list;
+      }
+    }
+    task(E, p, F, Z, V) {
+      const C = {
+        Qhpvi: "0|5|4|2|1|3",
+        LBajm: function (J, n) {
+          return J(n);
+        },
+        YFOVW: "request",
+        vcYYe: "node-rsa",
+        wADUH: "jsrsasign",
+        AJkEt: "crypto-js",
+        FGuAx: function (J, n) {
+          return J < n;
+        },
+        kmFoc: function (J, n) {
+          return J + n;
+        },
+        vvTzH: function (J, n) {
+          return J + n;
+        },
+        bnXHP: function (J, n) {
+          return J / n;
+        },
+        kDzkA: function (J, n) {
+          return J * n;
+        },
+        rsmce: "Content-Type",
+        gLmfo: "application/x-www-form-urlencoded",
+        gFueq: function (J, n) {
+          return J * n;
+        },
+        ttFjY: function (J, n) {
+          return J === n;
+        },
+        VCVgp: function (J, n) {
+          return J + n;
+        },
+        mvnGT: "****",
+        iOfWO: "application/json;charset=UTF-8",
+        hrlFL: function (J, n) {
+          return J + n;
+        },
+        VxMOA: "   API请求失败，请检查网络重试\n",
+        hOtNg: function (J, n) {
+          return J === n;
+        },
+        nJzpA: "IvUcf",
+        vlSIq: "YQAwR",
+        tfSRP: function (J, n) {
+          return J !== n;
+        },
+        ITolG: "genfV",
+        HpbhS: "eIsnx",
+        gEEno: "WBZTR",
+        KmtTz: "ICuGX",
+        JtmJm: function (J, n) {
+          return J == n;
+        },
+        iVECX: "YsJEi",
+        stwUj: "fmlre",
+        afJlZ: "OXfKJ",
+        pYwEp: function (J, n) {
+          return J === n;
+        },
+        wdMxn: "qXzIq",
+        tzsaL: function (J, n) {
+          return J === n;
+        },
+        KwrAr: "VTdwW",
+        HjfQR: function (J, n) {
+          return J + n;
+        },
+        DzRUi: function (J, n) {
+          return J !== n;
+        },
+        lhNGr: "SRVId",
+        IQxqO: "ojKiV",
+        woDTo: "fMYcH",
+        ThlmO: "vuLum",
+        bNRVP: function (J, n) {
+          return J != n;
+        },
+        wsRvy: "CNrCm",
+        GiuHe: "FdXRn",
+        uSfeI: function (J, n) {
+          return J !== n;
+        },
+        hPYjo: "ZVtBu",
+        FcnQa: "moPkh",
+        JDCeM: function (J, n) {
+          return J === n;
+        },
+        dztXy: "sGgqo",
+        VRNYV: "ztCHF",
+        hWrom: function (J, n) {
+          return J + n;
+        }
+      };
+      {
+        if (E == "delete") {
+          {
+            E = E.toUpperCase();
+          }
+        } else {
+          E = E;
+        }
+        if (E == "post") {
+          {
+            delete F["content-type"];
+            delete F["Content-type"];
+            delete F["content-Type"];
+            if ($.safeGet(Z)) {
               {
-                _0x1701a0 ? _0x281602(_0x1701a0) : _0x11934d(_0x4b3a1f);
+                F["Content-Type"] = "application/json;charset=UTF-8";
+              }
+            } else {
+              {
+                F["Content-Type"] = "application/x-www-form-urlencoded";
+              }
+            }
+            Z && (F["Content-Length"] = $.lengthInUtf8Bytes(Z));
+          }
+        }
+        if (E == "get") {
+          {
+            delete F["content-type"];
+            delete F["Content-type"];
+            delete F["content-Type"];
+            delete F["Content-Length"];
+          }
+        }
+        F.Host = p.replace("//", "/").split("/")[1];
+        return new Promise(async X => {
+          {
+            if (E.indexOf("T") < 0) {
+              {
+                var v = {
+                  url: p,
+                  headers: F,
+                  body: Z,
+                  proxy: "http://" + V
+                };
+              }
+            } else {
+              {
+                var v = {
+                  url: p,
+                  headers: F,
+                  form: JSON.parse(Z),
+                  proxy: "http://" + V
+                };
+              }
+            }
+            if (!V) {
+              {
+                delete v.proxy;
+              }
+            }
+            this.request[E.toLowerCase()](v, (D, L, y) => {
+              {
+                try {
+                  {
+                    if (y) {
+                      {}
+                    }
+                  }
+                } catch (j) {
+                  {
+                    console.log(j, p + "\n" + F);
+                  }
+                } finally {
+                  {
+                    let a = "";
+                    if (!D) {
+                      {
+                        if ($.safeGet(y)) {
+                          {
+                            a = JSON.parse(y);
+                          }
+                        } else {
+                          if (y.indexOf("/") != -1 && y.indexOf("+") != -1) {
+                            {
+                              a = $.decrypts(y);
+                            }
+                          } else {
+                            a = y;
+                          }
+                        }
+                      }
+                    } else {
+                      a = p + "   API请求失败，请检查网络重试\n" + D;
+                    }
+                    return X(a);
+                  }
+                }
               }
             });
           }
         });
       }
     }
-    get(_0x3e50c8) {
+    lengthInUtf8Bytes(E) {
       {
-        return this.send.call(this.env, _0x3e50c8);
+        let F = encodeURIComponent(E).match(/%[89ABab]/g);
+        return E.length + (F ? F.length : 0);
       }
     }
-    post(_0xac2c95) {
+    randomArr(E) {
       {
-        return this.send.call(this.env, _0xac2c95, "POST");
+        return E[parseInt(Math.random() * E.length, 10)];
       }
     }
-  }
-  return new class {
-    constructor(_0x9ac714, _0x57e255) {
+    wait(E) {
       {
-        this.name = _0x9ac714;
-        this.http = new _0x56031b(this);
-        this.data = null;
-        this.dataFile = "box.dat";
-        this.logs = [];
-        this.isMute = false;
-        this.isNeedRewrite = false;
-        this.logSeparator = "\n";
-        this.startTime = new Date().getTime();
-        Object.assign(this, _0x57e255);
-        this.log("", "🔔" + this.name + ", 开始!");
+        return new Promise(p => setTimeout(p, E));
       }
     }
-    isNode() {
+    time(E) {
       {
-        return "undefined" != typeof module && !!module.exports;
-      }
-    }
-    isQuanX() {
-      {
-        return "undefined" != typeof $task;
-      }
-    }
-    isSurge() {
-      {
-        return "undefined" != typeof $httpClient && "undefined" == typeof $loon;
-      }
-    }
-    isLoon() {
-      {
-        return "undefined" != typeof $loon;
-      }
-    }
-    toObj(_0x52d411, _0x5ac546 = null) {
-      {
-        try {
+        if (E == 10) {
           {
-            return JSON.parse(_0x52d411);
+            return Math.round(+new Date() / 1000);
           }
-        } catch {
+        } else {
           {
-            return _0x5ac546;
+            return +new Date();
           }
         }
       }
     }
-    toStr(_0x2f66bc, _0x4e1419 = null) {
-      {
-        try {
-          {
-            return JSON.stringify(_0x2f66bc);
-          }
-        } catch {
-          {
-            return _0x4e1419;
-          }
+    timenow(E) {
+      const p = {
+        BLvIp: function (Z, V) {
+          return Z == V;
         }
-      }
-    }
-    getjson(_0x5cd1e5, _0x5f40ac) {
+      };
       {
-        let _0x478600 = _0x5f40ac;
-        const _0x481834 = this.getdata(_0x5cd1e5);
-        if (_0x481834) {
-          try {
+        let V = new Date();
+        if (E == undefined) {
+          {
+            let J = new Date();
+            let n = J.getFullYear() + "-";
+            let c = (J.getMonth() + 1 < 10 ? "0" + (J.getMonth() + 1) : J.getMonth() + 1) + "-";
+            let U = J.getDate() < 10 ? "0" + J.getDate() : J.getDate() + " ";
+            let o = J.getHours() + ":";
+            let W = J.getMinutes() + ":";
+            let d = J.getSeconds() + 1 < 10 ? "0" + J.getSeconds() : J.getSeconds();
+            return n + c + U + o + W + d;
+          }
+        } else {
+          if (E == 0) {
             {
-              _0x478600 = JSON.parse(this.getdata(_0x5cd1e5));
+              return V.getFullYear();
             }
-          } catch {}
+          } else {
+            if (E == 1) {
+              {
+                return V.getMonth() + 1 < 10 ? "0" + (V.getMonth() + 1) : V.getMonth() + 1;
+              }
+            } else {
+              if (E == 2) {
+                return V.getDate() < 10 ? "0" + V.getDate() : V.getDate();
+              } else {
+                if (E == 3) {
+                  {
+                    return V.getHours();
+                  }
+                } else {
+                  if (E == 4) {
+                    return V.getMinutes();
+                  } else {
+                    if (E == 5) {
+                      {
+                        return V.getSeconds() + 1 < 10 ? "0" + V.getSeconds() : V.getSeconds();
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
-        return _0x478600;
       }
     }
-    setjson(_0x3c5800, _0x3850f0) {
+    safeGet(E) {
       {
         try {
           {
-            return this.setdata(JSON.stringify(_0x3c5800), _0x3850f0);
+            if (typeof JSON.parse(E) == "object") {
+              return true;
+            }
           }
-        } catch {
+        } catch (Z) {
           {
             return false;
           }
         }
       }
     }
-    getScript(_0x5444a0) {
-      {
-        return new Promise(_0x13252a => {
-          {
-            const _0x58e247 = {
-              url: _0x5444a0
-            };
-            this.get(_0x58e247, (_0x30c949, _0x46a4e6, _0x578d70) => _0x13252a(_0x578d70));
-          }
-        });
-      }
-    }
-    runScript(_0x3ea192, _0x2fcd18) {
-      {
-        return new Promise(_0x4ceb05 => {
-          {
-            let _0x4610e2 = this.getdata("@chavy_boxjs_userCfgs.httpapi");
-            _0x4610e2 = _0x4610e2 ? _0x4610e2.replace(/\n/g, "").trim() : _0x4610e2;
-            let _0x21bb59 = this.getdata("@chavy_boxjs_userCfgs.httpapi_timeout");
-            _0x21bb59 = _0x21bb59 ? 1 * _0x21bb59 : 20;
-            _0x21bb59 = _0x2fcd18 && _0x2fcd18.timeout ? _0x2fcd18.timeout : _0x21bb59;
-            const _0x56ab6e = {
-              script_text: _0x3ea192,
-              mock_type: "cron",
-              timeout: _0x21bb59
-            };
-            const [_0x2a05b4, _0x5e43e0] = _0x4610e2.split("@");
-            const _0x4007d3 = {
-              url: "http://" + _0x5e43e0 + "/v1/scripting/evaluate",
-              body: _0x56ab6e,
-              headers: {
-                "X-Key": _0x2a05b4,
-                Accept: "*/*"
-              }
-            };
-            this.post(_0x4007d3, (_0xf6f9f3, _0x3f6957, _0x1f2515) => _0x4ceb05(_0x1f2515));
-          }
-        }).catch(_0x479a20 => this.logErr(_0x479a20));
-      }
-    }
-    loaddata() {
-      {
-        if (!this.isNode()) {
-          return {};
-        }
+    SJS(E, p) {
+      if (p == 0) {
         {
-          {
-            this.fs = this.fs ? this.fs : require("fs");
-            this.path = this.path ? this.path : require("path");
-            const _0x5df7c0 = this.path.resolve(this.dataFile);
-            const _0x481948 = this.path.resolve(process.cwd(), this.dataFile);
-            const _0x4c11aa = this.fs.existsSync(_0x5df7c0);
-            const _0x4dcc5f = !_0x4c11aa && this.fs.existsSync(_0x481948);
-            if (!_0x4c11aa && !_0x4dcc5f) {
-              return {};
-            }
+          let F = "QWERTYUIOPASDFGHJKLZXCVBNM01234567890123456789";
+          let Z = F.length;
+          let V = "";
+          for (let C = 0; C < E; C++) {
             {
-              {
-                const _0x429302 = _0x4c11aa ? _0x5df7c0 : _0x481948;
-                try {
-                  {
-                    return JSON.parse(this.fs.readFileSync(_0x429302));
-                  }
-                } catch (_0x4347e4) {
-                  {
-                    return {};
-                  }
-                }
-              }
+              V += F.charAt(Math.floor(Math.random() * Z));
             }
           }
+          return V;
         }
-      }
-    }
-    writedata() {
-      {
-        if (this.isNode()) {
-          this.fs = this.fs ? this.fs : require("fs");
-          this.path = this.path ? this.path : require("path");
-          const _0x1e61a6 = this.path.resolve(this.dataFile);
-          const _0x40d97c = this.path.resolve(process.cwd(), this.dataFile);
-          const _0x47e064 = this.fs.existsSync(_0x1e61a6);
-          const _0x1d0467 = !_0x47e064 && this.fs.existsSync(_0x40d97c);
-          const _0x883a86 = JSON.stringify(this.data);
-          _0x47e064 ? this.fs.writeFileSync(_0x1e61a6, _0x883a86) : _0x1d0467 ? this.fs.writeFileSync(_0x40d97c, _0x883a86) : this.fs.writeFileSync(_0x1e61a6, _0x883a86);
-        }
-      }
-    }
-    lodash_get(_0x329cd9, _0x54e2b1, _0x5e5e33) {
-      {
-        const _0x49b491 = _0x54e2b1.replace(/\[(\d+)\]/g, ".$1").split(".");
-        let _0x56a6e8 = _0x329cd9;
-        for (const _0x4a8980 of _0x49b491) if (_0x56a6e8 = Object(_0x56a6e8)[_0x4a8980], undefined === _0x56a6e8) {
-          return _0x5e5e33;
-        }
-        return _0x56a6e8;
-      }
-    }
-    lodash_set(_0x45a13f, _0x5d11cd, _0x3603d0) {
-      {
-        return Object(_0x45a13f) !== _0x45a13f ? _0x45a13f : (Array.isArray(_0x5d11cd) || (_0x5d11cd = _0x5d11cd.toString().match(/[^.[\]]+/g) || []), _0x5d11cd.slice(0, -1).reduce((_0xae75a0, _0x65ae03, _0x274363) => Object(_0xae75a0[_0x65ae03]) === _0xae75a0[_0x65ae03] ? _0xae75a0[_0x65ae03] : _0xae75a0[_0x65ae03] = Math.abs(_0x5d11cd[_0x274363 + 1]) >> 0 == +_0x5d11cd[_0x274363 + 1] ? [] : {}, _0x45a13f)[_0x5d11cd[_0x5d11cd.length - 1]] = _0x3603d0, _0x45a13f);
-      }
-    }
-    getdata(_0x4158a2) {
-      {
-        let _0x10264f = this.getval(_0x4158a2);
-        if (/^@/.test(_0x4158a2)) {
-          const [, _0x3da66c, _0x402533] = /^@(.*?)\.(.*?)$/.exec(_0x4158a2);
-          const _0x5122a5 = _0x3da66c ? this.getval(_0x3da66c) : "";
-          if (_0x5122a5) {
-            try {
-              {
-                const _0x20ad3a = JSON.parse(_0x5122a5);
-                _0x10264f = _0x20ad3a ? this.lodash_get(_0x20ad3a, _0x402533, "") : _0x10264f;
-              }
-            } catch (_0x22e329) {
-              {
-                _0x10264f = "";
-              }
-            }
-          }
-        }
-        return _0x10264f;
-      }
-    }
-    setdata(_0x1d446e, _0x2a93ef) {
-      {
-        let _0x46cb6e = false;
-        if (/^@/.test(_0x2a93ef)) {
-          const [, _0x52b50e, _0x1adc11] = /^@(.*?)\.(.*?)$/.exec(_0x2a93ef);
-          const _0x44f8dc = this.getval(_0x52b50e);
-          const _0x4b41f7 = _0x52b50e ? "null" === _0x44f8dc ? null : _0x44f8dc || "{}" : "{}";
-          try {
-            {
-              const _0x17f211 = JSON.parse(_0x4b41f7);
-              this.lodash_set(_0x17f211, _0x1adc11, _0x1d446e);
-              _0x46cb6e = this.setval(JSON.stringify(_0x17f211), _0x52b50e);
-            }
-          } catch (_0xc645b7) {
-            {
-              const _0x52a1b5 = {};
-              this.lodash_set(_0x52a1b5, _0x1adc11, _0x1d446e);
-              _0x46cb6e = this.setval(JSON.stringify(_0x52a1b5), _0x52b50e);
-            }
-          }
-        } else {
-          _0x46cb6e = this.setval(_0x1d446e, _0x2a93ef);
-        }
-        return _0x46cb6e;
-      }
-    }
-    getval(_0x292054) {
-      {
-        return this.isSurge() || this.isLoon() ? $persistentStore.read(_0x292054) : this.isQuanX() ? $prefs.valueForKey(_0x292054) : this.isNode() ? (this.data = this.loaddata(), this.data[_0x292054]) : this.data && this.data[_0x292054] || null;
-      }
-    }
-    setval(_0x4cf800, _0x337907) {
-      {
-        return this.isSurge() || this.isLoon() ? $persistentStore.write(_0x4cf800, _0x337907) : this.isQuanX() ? $prefs.setValueForKey(_0x4cf800, _0x337907) : this.isNode() ? (this.data = this.loaddata(), this.data[_0x337907] = _0x4cf800, this.writedata(), true) : this.data && this.data[_0x337907] || null;
-      }
-    }
-    initGotEnv(_0x30c05c) {
-      {
-        this.got = this.got ? this.got : require("got");
-        this.cktough = this.cktough ? this.cktough : require("tough-cookie");
-        this.ckjar = this.ckjar ? this.ckjar : new this.cktough.CookieJar();
-        _0x30c05c && (_0x30c05c.headers = _0x30c05c.headers ? _0x30c05c.headers : {}, undefined === _0x30c05c.headers.Cookie && undefined === _0x30c05c.cookieJar && (_0x30c05c.cookieJar = this.ckjar));
-      }
-    }
-    get(_0x5742e6, _0x4b1593 = () => {}) {
-      {
-        const _0x1f8cf4 = {
-          "X-Surge-Skip-Scripting": false
-        };
-        const _0x78a777 = {
-          hints: false
-        };
-        _0x5742e6.headers && (delete _0x5742e6.headers["Content-Type"], delete _0x5742e6.headers["Content-Length"]);
-        this.isSurge() || this.isLoon() ? (this.isSurge() && this.isNeedRewrite && (_0x5742e6.headers = _0x5742e6.headers || {}, Object.assign(_0x5742e6.headers, _0x1f8cf4)), $httpClient.get(_0x5742e6, (_0x124ea6, _0x57b620, _0x5baf59) => {
-          {
-            !_0x124ea6 && _0x57b620 && (_0x57b620.body = _0x5baf59, _0x57b620.statusCode = _0x57b620.status);
-            _0x4b1593(_0x124ea6, _0x57b620, _0x5baf59);
-          }
-        })) : this.isQuanX() ? (this.isNeedRewrite && (_0x5742e6.opts = _0x5742e6.opts || {}, Object.assign(_0x5742e6.opts, _0x78a777)), $task.fetch(_0x5742e6).then(_0x2b3213 => {
-          {
-            const {
-              statusCode: _0x20bc27,
-              statusCode: _0x1f1715,
-              headers: _0x5089e0,
-              body: _0x417c7e
-            } = _0x2b3213;
-            const _0x84c9c = {
-              status: _0x20bc27,
-              statusCode: _0x1f1715,
-              headers: _0x5089e0,
-              body: _0x417c7e
-            };
-            _0x4b1593(null, _0x84c9c, _0x417c7e);
-          }
-        }, _0x1af06b => _0x4b1593(_0x1af06b))) : this.isNode() && (this.initGotEnv(_0x5742e6), this.got(_0x5742e6).on("redirect", (_0x4ad48a, _0x582547) => {
-          {
-            try {
-              {
-                if (_0x4ad48a.headers["set-cookie"]) {
-                  const _0x5c1bb2 = _0x4ad48a.headers["set-cookie"].map(this.cktough.Cookie.parse).toString();
-                  _0x5c1bb2 && this.ckjar.setCookieSync(_0x5c1bb2, null);
-                  _0x582547.cookieJar = this.ckjar;
-                }
-              }
-            } catch (_0x1d8244) {
-              {
-                this.logErr(_0x1d8244);
-              }
-            }
-          }
-        }).then(_0x4730c2 => {
-          {
-            const {
-              statusCode: _0x1dd7b7,
-              statusCode: _0x4f0673,
-              headers: _0x5ceb6f,
-              body: _0x540f62
-            } = _0x4730c2;
-            const _0x2727d9 = {
-              status: _0x1dd7b7,
-              statusCode: _0x4f0673,
-              headers: _0x5ceb6f,
-              body: _0x540f62
-            };
-            _0x4b1593(null, _0x2727d9, _0x540f62);
-          }
-        }, _0x24c9a3 => {
-          {
-            const {
-              message: _0x253935,
-              response: _0x494331
-            } = _0x24c9a3;
-            _0x4b1593(_0x253935, _0x494331, _0x494331 && _0x494331.body);
-          }
-        }));
-      }
-    }
-    post(_0x35bcdb, _0x46ced6 = () => {}) {
-      const _0xc80b1 = {
-        "X-Surge-Skip-Scripting": false
-      };
-      const _0x18c099 = {
-        hints: false
-      };
-      if (_0x35bcdb.body && _0x35bcdb.headers && !_0x35bcdb.headers["Content-Type"] && (_0x35bcdb.headers["Content-Type"] = "application/x-www-form-urlencoded"), _0x35bcdb.headers && delete _0x35bcdb.headers["Content-Length"], this.isSurge() || this.isLoon()) {
-        this.isSurge() && this.isNeedRewrite && (_0x35bcdb.headers = _0x35bcdb.headers || {}, Object.assign(_0x35bcdb.headers, _0xc80b1));
-        $httpClient.post(_0x35bcdb, (_0x3f7f4b, _0x5d2ce9, _0x5655b1) => {
-          {
-            !_0x3f7f4b && _0x5d2ce9 && (_0x5d2ce9.body = _0x5655b1, _0x5d2ce9.statusCode = _0x5d2ce9.status);
-            _0x46ced6(_0x3f7f4b, _0x5d2ce9, _0x5655b1);
-          }
-        });
       } else {
-        if (this.isQuanX()) {
-          _0x35bcdb.method = "POST";
-          this.isNeedRewrite && (_0x35bcdb.opts = _0x35bcdb.opts || {}, Object.assign(_0x35bcdb.opts, _0x18c099));
-          $task.fetch(_0x35bcdb).then(_0x33fe1a => {
-            {
-              const {
-                statusCode: _0x3e1bb3,
-                statusCode: _0x3dba01,
-                headers: _0x3ea863,
-                body: _0x29efd4
-              } = _0x33fe1a;
-              const _0x9b9799 = {
-                status: _0x3e1bb3,
-                statusCode: _0x3dba01,
-                headers: _0x3ea863,
-                body: _0x29efd4
-              };
-              _0x46ced6(null, _0x9b9799, _0x29efd4);
-            }
-          }, _0x4ca15d => _0x46ced6(_0x4ca15d));
+        if (p == 1) {
+          let c = "qwertyuiopasdfghjklzxcvbnm0123456789";
+          let U = c.length;
+          let o = "";
+          for (let W = 0; W < E; W++) {
+            o += c.charAt(Math.floor(Math.random() * U));
+          }
+          return o;
         } else {
-          if (this.isNode()) {
-            this.initGotEnv(_0x35bcdb);
-            const {
-              url: _0x4ba3c8,
-              ..._0x284ab4
-            } = _0x35bcdb;
-            this.got.post(_0x4ba3c8, _0x284ab4).then(_0x372316 => {
-              {
-                const {
-                  statusCode: _0x27ca44,
-                  statusCode: _0x5b091e,
-                  headers: _0x432106,
-                  body: _0x33d8ee
-                } = _0x372316;
-                const _0x1c163d = {
-                  status: _0x27ca44,
-                  statusCode: _0x5b091e,
-                  headers: _0x432106,
-                  body: _0x33d8ee
-                };
-                _0x46ced6(null, _0x1c163d, _0x33d8ee);
-              }
-            }, _0x12b26c => {
-              const {
-                message: _0x1f27ae,
-                response: _0x9e0c6d
-              } = _0x12b26c;
-              _0x46ced6(_0x1f27ae, _0x9e0c6d, _0x9e0c6d && _0x9e0c6d.body);
-            });
+          if (p == 2) {
+            let N = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm0123456789";
+            let d = N.length;
+            let X = "";
+            for (let v = 0; v < E; v++) {
+              X += N.charAt(Math.floor(Math.random() * d));
+            }
+            return X;
+          } else {
+            let r = "0123456789";
+            let T = r.length;
+            let q = "";
+            for (let l = 0; l < E; l++) {
+              q += r.charAt(Math.floor(Math.random() * T));
+            }
+            return q;
           }
         }
       }
     }
-    time(_0x43631a, _0x59d1d7 = null) {
-      const _0x446188 = _0x59d1d7 ? new Date(_0x59d1d7) : new Date();
-      let _0x2b582d = {
-        "M+": _0x446188.getMonth() + 1,
-        "d+": _0x446188.getDate(),
-        "H+": _0x446188.getHours(),
-        "m+": _0x446188.getMinutes(),
-        "s+": _0x446188.getSeconds(),
-        "q+": Math.floor((_0x446188.getMonth() + 3) / 3),
-        S: _0x446188.getMilliseconds()
-      };
-      /(y+)/.test(_0x43631a) && (_0x43631a = _0x43631a.replace(RegExp.$1, (_0x446188.getFullYear() + "").substr(4 - RegExp.$1.length)));
-      for (let _0x24eed8 in _0x2b582d) new RegExp("(" + _0x24eed8 + ")").test(_0x43631a) && (_0x43631a = _0x43631a.replace(RegExp.$1, 1 == RegExp.$1.length ? _0x2b582d[_0x24eed8] : ("00" + _0x2b582d[_0x24eed8]).substr(("" + _0x2b582d[_0x24eed8]).length)));
-      return _0x43631a;
+    udid(E) {
+      function F() {
+        return ((1 + Math.random()) * 65536 | 0).toString(16).substring(1);
+      }
+      let Z = F() + F() + "-" + F() + "-" + F() + "-" + F() + "-" + F() + F() + F();
+      return E == 0 ? Z.toUpperCase() : Z.toLowerCase();
     }
-    msg(_0x4c7683 = _0x35f787, _0x55fc62 = "", _0x4150c2 = "", _0x2e46d3) {
-      const _0x5e2a2a = _0x5a3be7 => {
-        if (!_0x5a3be7) {
-          return _0x5a3be7;
-        }
-        if ("string" == typeof _0x5a3be7) {
-          return this.isLoon() ? _0x5a3be7 : this.isQuanX() ? {
-            "open-url": _0x5a3be7
-          } : this.isSurge() ? {
-            url: _0x5a3be7
-          } : undefined;
-        }
-        if ("object" == typeof _0x5a3be7) {
-          if (this.isLoon()) {
-            let _0x5788bc = _0x5a3be7.openUrl || _0x5a3be7.url || _0x5a3be7["open-url"];
-            let _0x32cd00 = _0x5a3be7.mediaUrl || _0x5a3be7["media-url"];
-            const _0x3251a9 = {
-              openUrl: _0x5788bc,
-              mediaUrl: _0x32cd00
-            };
-            return _0x3251a9;
+    encodeUnicode(E) {
+      var p = [];
+      for (var F = 0; F < E.length; F++) {
+        p[F] = ("00" + E.charCodeAt(F).toString(16)).slice(-4);
+      }
+      return "\\u" + p.join("\\u");
+    }
+    decodeUnicode(E) {
+      E = E.replace(/\\u/g, "%u");
+      return unescape(unescape(E));
+    }
+    RT(E, p) {
+      return Math.round(Math.random() * (p - E) + E);
+    }
+    arrNull(E) {
+      var p = E.filter(F => {
+        return F && F.trim();
+      });
+      return p;
+    }
+    nowtime() {
+      return new Date(new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000 + 28800000);
+    }
+    timecs() {
+      let E = $.nowtime();
+      JSON.stringify(E).indexOf(" ") >= 0 && (E = E.replace(" ", "T"));
+      return new Date(E).getTime() - 28800000;
+    }
+    rtjson(E, p, F, Z) {
+      return Z == 0 ? JSON.stringify(E.split(p).reduce((V, C) => {
+        let J = C.split(F);
+        V[J[0].trim()] = J[1].trim();
+        return V;
+      }, {})) : E.split(p).reduce((V, C) => {
+        let J = C.split(F);
+        V[J[0].trim()] = J[1].trim();
+        return V;
+      }, {});
+    }
+    MD5Encrypt(E, p) {
+      if (E == 0) {
+        return this.CryptoJS.MD5(p).toString().toLowerCase();
+      } else {
+        if (E == 1) {
+          return this.CryptoJS.MD5(p).toString().toUpperCase();
+        } else {
+          if (E == 2) {
+            return this.CryptoJS.MD5(p).toString().substring(8, 24).toLowerCase();
+          } else {
+            if (E == 3) {
+              return this.CryptoJS.MD5(p).toString().substring(8, 24).toUpperCase();
+            }
           }
-          if (this.isQuanX()) {
-            let _0x2bd374 = _0x5a3be7["open-url"] || _0x5a3be7.url || _0x5a3be7.openUrl;
-            let _0x2623aa = _0x5a3be7["media-url"] || _0x5a3be7.mediaUrl;
-            const _0x4d0250 = {
-              "open-url": _0x2bd374,
-              "media-url": _0x2623aa
-            };
-            return _0x4d0250;
-          }
-          if (this.isSurge()) {
-            let _0x30a0ac = _0x5a3be7.url || _0x5a3be7.openUrl || _0x5a3be7["open-url"];
-            const _0x5a58b5 = {
-              url: _0x30a0ac
-            };
-            return _0x5a58b5;
-          }
         }
-      };
-      if (this.isMute || (this.isSurge() || this.isLoon() ? $notification.post(_0x4c7683, _0x55fc62, _0x4150c2, _0x5e2a2a(_0x2e46d3)) : this.isQuanX() && $notify(_0x4c7683, _0x55fc62, _0x4150c2, _0x5e2a2a(_0x2e46d3))), !this.isMuteLog) {
-        let _0x19c49a = ["", "==============📣系统通知📣=============="];
-        _0x19c49a.push(_0x4c7683);
-        _0x55fc62 && _0x19c49a.push(_0x55fc62);
-        _0x4150c2 && _0x19c49a.push(_0x4150c2);
-        console.log(_0x19c49a.join("\n"));
-        this.logs = this.logs.concat(_0x19c49a);
       }
     }
-    log(..._0xf8cfe1) {
-      _0xf8cfe1.length > 0 && (this.logs = [...this.logs, ..._0xf8cfe1]);
-      console.log(_0xf8cfe1.join(this.logSeparator));
+    SHA_Encrypt(E, p, F) {
+      return E == 0 ? this.CryptoJS[p](F).toString(this.CryptoJS.enc.Base64) : this.CryptoJS[p](F).toString();
     }
-    logErr(_0x494ff5, _0x4c5422) {
-      const _0x3bdbed = !this.isSurge() && !this.isQuanX() && !this.isLoon();
-      _0x3bdbed ? this.log("", "❗️" + this.name + ", 错误!", _0x494ff5.stack) : this.log("", "❗️" + this.name + ", 错误!", _0x494ff5);
+    HmacSHA_Encrypt(E, p, F, Z) {
+      return E == 0 ? this.CryptoJS[p](F, Z).toString(this.CryptoJS.enc.Base64) : this.CryptoJS[p](F, Z).toString();
     }
-    wait(_0x4d0528) {
-      return new Promise(_0x301b41 => setTimeout(_0x301b41, _0x4d0528));
+    Base64(E, p) {
+      return E == 0 ? this.CryptoJS.enc.Base64.stringify(this.CryptoJS.enc.Utf8.parse(p)) : this.CryptoJS.enc.Utf8.stringify(this.CryptoJS.enc.Base64.parse(p));
     }
-    done(_0x110dca = {}) {
-      const _0x55a428 = new Date().getTime();
-      const _0x378f09 = (_0x55a428 - this.startTime) / 1000;
-      this.log("", "🔔" + this.name + ", 结束! 🕛 " + _0x378f09 + " 秒");
-      this.log();
-      (this.isSurge() || this.isQuanX() || this.isLoon()) && $done(_0x110dca);
+    DecryptCrypto(E, p, F, Z, V, C, J) {
+      if (E == 0) {
+        const n = this.CryptoJS[p].encrypt(this.CryptoJS.enc.Utf8.parse(V), this.CryptoJS.enc.Utf8.parse(C), {
+          iv: this.CryptoJS.enc.Utf8.parse(J),
+          mode: this.CryptoJS.mode[F],
+          padding: this.CryptoJS.pad[Z]
+        });
+        return n.toString();
+      } else {
+        const c = this.CryptoJS[p].decrypt(V, this.CryptoJS.enc.Utf8.parse(C), {
+          iv: this.CryptoJS.enc.Utf8.parse(J),
+          mode: this.CryptoJS.mode[F],
+          padding: this.CryptoJS.pad[Z]
+        });
+        return c.toString(this.CryptoJS.enc.Utf8);
+      }
     }
-  }(_0x35f787, _0x2db8cf);
+    RSA(E, p) {
+      const F = require("node-rsa");
+      let Z = new F("-----BEGIN PUBLIC KEY-----\n" + p + "\n-----END PUBLIC KEY-----");
+      const V = {
+        encryptionScheme: "pkcs1"
+      };
+      Z.setOptions(V);
+      return Z.encrypt(E, "base64", "utf8");
+    }
+    SHA_RSA(E, p) {
+      let F = this.Sha_Rsa.KEYUTIL.getKey("-----BEGIN PRIVATE KEY-----\n" + $.getNewline(p, 76) + "\n-----END PRIVATE KEY-----");
+      const Z = {
+        alg: "SHA256withRSA"
+      };
+      let V = new this.Sha_Rsa.KJUR.crypto.Signature(Z);
+      V.init(F);
+      V.updateString(E);
+      let C = V.sign();
+      let J = this.Sha_Rsa.hextob64u(C);
+      return J;
+    }
+  }();
+}
+async function b3(A, P) {
+  const k = require("node-rsa");
+  let E = new k("-----BEGIN PUBLIC KEY-----\n" + P + "\n-----END PUBLIC KEY-----");
+  const p = {
+    encryptionScheme: "pkcs1"
+  };
+  E.setOptions(p);
+  return E.encrypt(A, "base64", "utf8");
+}
+function b4(b) {
+  const P = new Date();
+  const Q = P.getHours();
+  const k = P.getMinutes();
+  const E = P.getSeconds();
+  const p = b === 0 ? String(Q).padStart(2, "0") : String(Q);
+  const F = b === 0 ? String(k).padStart(2, "0") : String(k);
+  const Z = b === 0 ? String(E).padStart(2, "0") : String(E);
+  return p + ":" + F + ":" + Z;
+}
+function b5(b) {
+  let P = "";
+  const Q = new Date();
+  const k = Q.getFullYear();
+  b == 0 ? P = String(Q.getMonth() + 1).padStart(2, "0") : P = String(Q.getMonth() + 1);
+  const E = String(Q.getDate()).padStart(2, "0");
+  return k + "-" + P + "-" + E;
 }
