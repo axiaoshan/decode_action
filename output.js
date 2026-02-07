@@ -1,337 +1,648 @@
-//Tue Jan 20 2026 05:18:12 GMT+0000 (Coordinated Universal Time)
+//Sat Feb 07 2026 07:09:31 GMT+0000 (Coordinated Universal Time)
 //Base:https://github.com/echo094/decode-js
 //Modify:https://github.com/smallfawn/decode_action
-const _Item_BetaCapsule = function () {
-  return function (bytecode, _Kaiju_Juggler_539) {
-    {
-      const _Ultra_King_EmeriumRay = [];
-      let _Ultra_Ultraman_Slugger = 0;
-      while (_Ultra_Ultraman_Slugger < bytecode.length) {
-        {
-          const _Kaiju_Zog_755 = bytecode[_Ultra_Ultraman_Slugger++];
-          switch (_Kaiju_Zog_755) {
-            case 158:
-              _Ultra_King_EmeriumRay.push(bytecode[_Ultra_Ultraman_Slugger++]);
-              break;
-            case 43:
-              {
-                {
-                  const _Ultra_Mebius_SolgentRay = _Ultra_King_EmeriumRay.pop();
-                  const _Kaiju_Bemular_702 = _Ultra_King_EmeriumRay.pop();
-                  _Ultra_King_EmeriumRay.push(_Ultra_Mebius_SolgentRay + _Kaiju_Bemular_702);
-                }
-              }
-              break;
-            case 96:
-              {
-                {
-                  const _Ultra_Ginga_SpaciumBeam = _Ultra_King_EmeriumRay.pop();
-                  const _Kaiju_Tartarus_218 = _Ultra_King_EmeriumRay.pop();
-                  _Ultra_King_EmeriumRay.push(_Kaiju_Tartarus_218 - _Ultra_Ginga_SpaciumBeam);
-                }
-              }
-              break;
-            case 60:
-              {
-                const _Ultra_Victory_WreckingBurst = _Ultra_King_EmeriumRay.pop();
-                const _Kaiju_Grimdo_855 = _Ultra_King_EmeriumRay.pop();
-                _Ultra_King_EmeriumRay.push(_Ultra_Victory_WreckingBurst ^ _Kaiju_Grimdo_855);
-              }
-              break;
-            case 58:
-              return _Ultra_King_EmeriumRay.pop();
-            default:
-              _Ultra_King_EmeriumRay.push(_Kaiju_Juggler_539 ^ _Kaiju_Zog_755);
-          }
-        }
-      }
-    }
-  };
-}();
-const _Item_GutsSparklence = function () {
-  try {
-    {
-      const _Ultra_Victory_ZepellionRay = Math.sin.toString().indexOf("[native code]") !== -1;
-      if (!_Ultra_Victory_ZepellionRay) {
-        return 57005;
-      }
-      return 48879;
-    }
-  } catch (_Ultra_King_LeoKick) {
-    return 0;
-  }
-}();
-const _M78_Link_e11506 = function () {
-  const _Ultra_Decker_StriumRay = typeof console !== "undefined" && console.log ? console : {
-    log: function () {}
-  };
-  const _Ultra_Dyna_M87Ray = /(token|key|auth|password|secret|cookie)[=:\s]*[\w\-\.]{10,}/gi;
-  return function (..._Kaiju_HyperZetton_924) {
-    try {
-      const _Kaiju_Gatanothor_491 = _Kaiju_HyperZetton_924.map(_Kaiju_Mephilas_114 => {
-        {
-          if (typeof _Kaiju_Mephilas_114 === "string") {
-            return _Kaiju_Mephilas_114.replace(_Ultra_Dyna_M87Ray, "$1=***[SECURE]***");
-          }
-          return _Kaiju_Mephilas_114;
-        }
-      });
-      _Ultra_Decker_StriumRay.log.apply(_Ultra_Decker_StriumRay, _Kaiju_Gatanothor_491);
-    } catch (_Kaiju_Greeza_780) {}
-  };
-}();
 const fs = require("fs");
+const path = require("path");
+const crypto = require("crypto");
 const axios = require("axios");
-const CryptoJS = require("crypto-js");
-(function checkIntegrity() {
-  try {
-    {
-      const _Ultra_Blazar_SpaciumBeam = fs.readFileSync(__filename, "utf-8");
-      const _Kaiju_RedKing_965 = _Ultra_Blazar_SpaciumBeam.split(/\r?\n/);
-      const targetLine = _Kaiju_RedKing_965[2] || "";
-      if (!targetLine.includes("shardCode=f2m8PqcbK")) {
-        {
-          _M78_Link_e11506("\n❌ 头部注释被篡改，保护机制触发，程序退出。\n");
-          process.exit(1);
+const {
+  machineIdSync
+} = require("node-machine-id");
+class AuthService {
+  constructor(_0x45ec39 = {}) {
+    this.onStatusChange = _0x45ec39.onStatusChange || null;
+    this.onInvalid = _0x45ec39.onInvalid || null;
+    this.configFile = path.join(__dirname, "auth_config.json");
+    this.stateFile = path.join(__dirname, "auth_state.json");
+    this.deviceIdFile = path.join(__dirname, "auth_device_id.txt");
+    this.failedValidations = 0;
+    this.heartbeatTimer = null;
+    this.config = this.loadConfig();
+    this.configValidation = this.validateConfig(this.config);
+    this.deviceId = this.loadDeviceId();
+    this.state = this.loadState();
+    this.state.authorized && this.state.token && this.startHeartbeat();
+  }
+  loadConfig() {
+    const _0x2b4091 = {
+      appId: "6986093f",
+      secretKey: "zQ96wwUcXAZRVltG",
+      apiUrl: "http://api.kushao.net/v3/",
+      mode: 0,
+      changeMode: 1,
+      heartDuration: 600,
+      authKey: ""
+    };
+    if (!fs.existsSync(this.configFile)) {
+      return _0x2b4091;
+    }
+    try {
+      const _0xc7ffa7 = fs.readFileSync(this.configFile, "utf8");
+      const _0x4bd102 = JSON.parse(_0xc7ffa7) || {};
+      return {
+        ..._0x2b4091,
+        apiUrl: _0x4bd102.apiUrl || _0x2b4091.apiUrl,
+        authKey: _0x4bd102.authKey || ""
+      };
+    } catch (_0x2f8627) {
+      return _0x2b4091;
+    }
+  }
+  validateConfig(_0x56d274) {
+    if (!_0x56d274 || typeof _0x56d274 !== "object") {
+      return {
+        ok: false,
+        error: "配置为空"
+      };
+    }
+    if (!_0x56d274.appId || String(_0x56d274.appId).trim() === "") {
+      return {
+        ok: false,
+        error: "appId 不能为空"
+      };
+    }
+    const _0x1dc3a1 = String(_0x56d274.secretKey || "");
+    if (!_0x1dc3a1) {
+      return {
+        ok: false,
+        error: "secretKey 不能为空"
+      };
+    }
+    if (_0x1dc3a1.length !== 16) {
+      return {
+        ok: false,
+        error: "secretKey 长度必须为 16 位"
+      };
+    }
+    if (!_0x56d274.apiUrl || String(_0x56d274.apiUrl).trim() === "") {
+      return {
+        ok: false,
+        error: "认证线路不能为空"
+      };
+    }
+    const _0x3b3a70 = Number(_0x56d274.mode);
+    if (![0, 1].includes(_0x3b3a70)) {
+      return {
+        ok: false,
+        error: "模式参数错误，仅支持 0 或 1"
+      };
+    }
+    const _0xf68421 = Number(_0x56d274.heartDuration);
+    if (!Number.isFinite(_0xf68421) || _0xf68421 < 200 || _0xf68421 > 3500) {
+      return {
+        ok: false,
+        error: "心跳间隔必须为 200–3500 秒"
+      };
+    }
+    return {
+      ok: true
+    };
+  }
+  updateConfig(_0x52aea7 = {}) {
+    const _0x8e6cb7 = {
+      ...this.config,
+      apiUrl: _0x52aea7.apiUrl !== undefined ? _0x52aea7.apiUrl : this.config.apiUrl,
+      authKey: _0x52aea7.authKey !== undefined ? _0x52aea7.authKey : this.config.authKey
+    };
+    const _0x370746 = this.validateConfig(_0x8e6cb7);
+    this.configValidation = _0x370746;
+    if (!_0x370746.ok) {
+      return _0x370746;
+    }
+    this.config = _0x8e6cb7;
+    try {
+      fs.writeFileSync(this.configFile, JSON.stringify({
+        apiUrl: this.config.apiUrl,
+        authKey: this.config.authKey
+      }, null, 2), "utf8");
+    } catch (_0x30a8b6) {
+      return {
+        ok: false,
+        error: _0x30a8b6.message
+      };
+    }
+    this.state.authorized && this.startHeartbeat();
+    return {
+      ok: true
+    };
+  }
+  getConfig() {
+    return {
+      apiUrl: this.config.apiUrl,
+      authKey: this.config.authKey || ""
+    };
+  }
+  loadDeviceId() {
+    try {
+      if (fs.existsSync(this.deviceIdFile)) {
+        const _0x7b081f = fs.readFileSync(this.deviceIdFile, "utf8").trim();
+        if (_0x7b081f) {
+          return _0x7b081f;
         }
       }
-    }
-  } catch (_Kaiju_Grimdo_68) {}
-})();
-const CONFIG = {
-  DEFAULT_UA: "okhttp/4.10.0",
-  MIN_WATCH: 10,
-  RETRY: 3,
-  INTERVAL: 3000
-};
-const log = _Ultra_Taiga_Slugger => {
-  const _Kaiju_Mephilas_162 = new Date().toLocaleTimeString();
-  _M78_Link_e11506("[" + _Kaiju_Mephilas_162 + "] " + _Ultra_Taiga_Slugger);
-};
-const sleep = _Ultra_Orb_SpaciumBeam => new Promise(_Kaiju_Mephilas_688 => setTimeout(_Kaiju_Mephilas_688, _Ultra_Orb_SpaciumBeam));
-function encryptId(_Kaiju_Baltan_313, code) {
-  try {
-    {
-      const _Ultra_Blazar_PhotonEdge = CryptoJS.enc.Utf8.parse(code.substring(0, 8));
-      return CryptoJS.DES.encrypt(String(_Kaiju_Baltan_313), _Ultra_Blazar_PhotonEdge, {
-        mode: CryptoJS.mode.ECB,
-        padding: CryptoJS.pad.Pkcs7
-      }).toString();
-    }
-  } catch (_Kaiju_Grimdo_468) {
-    return null;
-  }
-}
-function encryptPwd(_Ultra_Ginga_SolgentRay) {
-  return CryptoJS.MD5(String(_Ultra_Ginga_SolgentRay)).toString().toUpperCase();
-}
-async function request(_Ultra_Taro_EmeriumRay, _Kaiju_Gatanothor_653, _Kaiju_RedKing_28 = "POST", data = null, _Kaiju_Tartarus_411 = null) {
-  let _Kaiju_Tartarus_774 = CONFIG.RETRY;
-  while (_Kaiju_Tartarus_774 >= 0) {
+    } catch (_0x10529b) {}
+    let _0x27f61a = "";
     try {
-      const _Kaiju_Baltan_611 = _Kaiju_RedKing_28 === "POST" && (!data || Object.keys(data).length === 0);
-      let _Kaiju_Baltan_503 = {};
-      if (typeof _Kaiju_Gatanothor_653 === "string") {
-        {
-          _Kaiju_Baltan_503 = {
-            Host: "gw.jiudageapp.com",
-            platform: "Android",
-            version: "v1.6.2",
-            authorization: _Kaiju_Gatanothor_653,
-            "user-agent": CONFIG.DEFAULT_UA,
-            "content-type": "application/json;charset=UTF-8",
-            "accept-encoding": "gzip"
+      _0x27f61a = machineIdSync({
+        original: true
+      });
+    } catch (_0x1445f1) {
+      _0x27f61a = Date.now() + "_" + Math.random();
+    }
+    const _0x1495be = this.sha1(_0x27f61a);
+    try {
+      fs.writeFileSync(this.deviceIdFile, _0x1495be, "utf8");
+    } catch (_0x994a53) {}
+    return _0x1495be;
+  }
+  loadState() {
+    if (!fs.existsSync(this.stateFile)) {
+      return {
+        authorized: false,
+        code: null,
+        message: "未验证",
+        token: null,
+        remark: "",
+        expireAt: null,
+        surplusCount: null,
+        lastVerifiedAt: null,
+        lastVerifySuccess: false
+      };
+    }
+    try {
+      const _0x40eda2 = fs.readFileSync(this.stateFile, "utf8");
+      const _0x56a70c = JSON.parse(_0x40eda2) || {};
+      return {
+        authorized: !!_0x56a70c.authorized,
+        code: _0x56a70c.code ?? null,
+        message: _0x56a70c.message || "未验证",
+        token: _0x56a70c.token || null,
+        remark: _0x56a70c.remark || "",
+        expireAt: _0x56a70c.expireAt || null,
+        surplusCount: _0x56a70c.surplusCount || null,
+        lastVerifiedAt: _0x56a70c.lastVerifiedAt || null,
+        lastAccount: _0x56a70c.lastAccount,
+        lastPassword: _0x56a70c.lastPassword,
+        lastVerifySuccess: _0x56a70c.lastVerifySuccess !== undefined ? _0x56a70c.lastVerifySuccess : !!_0x56a70c.authorized
+      };
+    } catch (_0x1751f3) {
+      return {
+        authorized: false,
+        code: null,
+        message: "未验证",
+        token: null,
+        remark: "",
+        expireAt: null,
+        surplusCount: null,
+        lastVerifiedAt: null,
+        lastVerifySuccess: false
+      };
+    }
+  }
+  saveState() {
+    try {
+      fs.writeFileSync(this.stateFile, JSON.stringify(this.state, null, 2), "utf8");
+    } catch (_0x21bea1) {}
+  }
+  sha1(_0x9739ec) {
+    return crypto.createHash("sha1").update(String(_0x9739ec)).digest("hex");
+  }
+  aesEncrypt(_0x4dd124) {
+    if (!this.configValidation.ok) {
+      throw new Error(this.configValidation.error || "配置错误");
+    }
+    const _0x45483e = Buffer.from(this.config.secretKey, "utf8");
+    const _0x3dc987 = crypto.createCipheriv("aes-128-ecb", _0x45483e, null);
+    _0x3dc987.setAutoPadding(true);
+    const _0x594b28 = Buffer.concat([_0x3dc987.update(String(_0x4dd124), "utf8"), _0x3dc987.final()]);
+    return _0x594b28.toString("base64");
+  }
+  aesDecrypt(_0x5707e5) {
+    if (!this.configValidation.ok) {
+      throw new Error(this.configValidation.error || "配置错误");
+    }
+    const _0x668ed = Buffer.from(this.config.secretKey, "utf8");
+    const _0x2cadd7 = crypto.createDecipheriv("aes-128-ecb", _0x668ed, null);
+    _0x2cadd7.setAutoPadding(true);
+    const _0x371191 = Buffer.concat([_0x2cadd7.update(String(_0x5707e5), "base64"), _0x2cadd7.final()]);
+    return _0x371191.toString("utf8");
+  }
+  getTimestamp() {
+    return String(Math.floor(Date.now() / 1000));
+  }
+  buildUrl(_0x261ba2) {
+    const _0x337ad5 = this.config.apiUrl.endsWith("/") ? this.config.apiUrl : this.config.apiUrl + "/";
+    return "" + _0x337ad5 + _0x261ba2;
+  }
+  async request(_0x28b5b4, _0x42ee4d) {
+    if (!this.configValidation.ok) {
+      return {
+        code: "403",
+        msg: this.configValidation.error || "配置错误"
+      };
+    }
+    if (!this.config.apiUrl) {
+      return {
+        code: this.aesEncrypt("403"),
+        msg: this.aesEncrypt("未配置认证线路")
+      };
+    }
+    const _0x1ddf33 = _0x42ee4d.join("|");
+    const _0x3c98f7 = this.aesEncrypt(_0x1ddf33);
+    const _0x267376 = [_0x28b5b4, ..._0x42ee4d, this.config.secretKey];
+    const _0x40704f = this.sha1(_0x267376.join(""));
+    try {
+      const _0x407909 = await axios.post(this.buildUrl(_0x28b5b4), {
+        data: _0x3c98f7,
+        sign: _0x40704f
+      }, {
+        headers: {
+          "User-Agent": "Node_" + this.config.appId
+        },
+        timeout: 10000
+      });
+      return _0x407909.data;
+    } catch (_0x24f1fe) {
+      return {
+        code: this.aesEncrypt("403"),
+        msg: this.aesEncrypt(_0x24f1fe.message)
+      };
+    }
+  }
+  async verify(_0x5c4b5d, _0x55bb67 = "") {
+    if (!this.configValidation.ok) {
+      return {
+        code: "403",
+        msg: this.configValidation.error || "配置错误"
+      };
+    }
+    const _0xdcc9ac = String(_0x5c4b5d || "").trim();
+    const _0xb0058d = String(_0x55bb67 || "").trim();
+    if (!_0xdcc9ac) {
+      return {
+        code: "400",
+        msg: "卡密/账号不能为空"
+      };
+    }
+    const _0x11ec6e = this.getTimestamp();
+    const _0x984830 = "License/verify/" + this.config.appId;
+    const _0x2fbe68 = [this.config.mode, _0xdcc9ac, _0xb0058d, this.deviceId, Number(_0x11ec6e)];
+    const _0x5286e3 = await this.request(_0x984830, _0x2fbe68);
+    _0x5286e3.code = this.aesDecrypt(_0x5286e3.code);
+    if (_0x5286e3.code === "200") {
+      const _0x28c4f0 = this.aesDecrypt(_0x5286e3.token);
+      const _0x2f144c = this.aesDecrypt(_0x5286e3.remark);
+      const _0x381c3c = this.aesDecrypt(_0x5286e3.timeStamp);
+      let _0x226e43 = [];
+      let _0x15e5f = null;
+      let _0x175712 = null;
+      if (this.config.mode === 0) {
+        const _0x61c509 = this.aesDecrypt(_0x5286e3.endDate);
+        _0x15e5f = _0x61c509;
+        _0x226e43 = [_0x5286e3.code, _0x61c509, _0x28c4f0, _0x2f144c, _0x381c3c, this.config.secretKey];
+        _0x5286e3.msg = "有效期到：" + _0x61c509;
+      } else {
+        const _0x3d1d47 = this.aesDecrypt(_0x5286e3.surplusCount);
+        _0x175712 = _0x3d1d47;
+        _0x226e43 = [_0x5286e3.code, _0x3d1d47, _0x28c4f0, _0x2f144c, _0x381c3c, this.config.secretKey];
+        _0x5286e3.msg = "您还剩余：" + _0x3d1d47 + " 次可用次数";
+      }
+      if (_0x5286e3.sign !== this.sha1(_0x226e43.join(""))) {
+        return {
+          code: "503",
+          msg: "签名错误"
+        };
+      }
+      if (Math.abs(Number(_0x381c3c) - Number(_0x11ec6e)) > 100) {
+        return {
+          code: "502",
+          msg: "签名过期"
+        };
+      }
+      this.state = {
+        authorized: true,
+        code: _0x5286e3.code,
+        message: _0x5286e3.msg,
+        token: _0x28c4f0,
+        remark: _0x2f144c,
+        expireAt: _0x15e5f,
+        surplusCount: _0x175712,
+        lastVerifiedAt: new Date().toISOString(),
+        lastAccount: _0xdcc9ac,
+        lastPassword: _0xb0058d,
+        lastVerifySuccess: true
+      };
+      this.saveState();
+      this.failedValidations = 0;
+      this.startHeartbeat();
+      this.emitStatusChange();
+      return {
+        ...this.state
+      };
+    }
+    let _0xc36749 = "";
+    try {
+      _0xc36749 = this.aesDecrypt(_0x5286e3.msg);
+    } catch (_0x5db3ee) {
+      _0xc36749 = _0x5286e3.msg || "验证失败";
+    }
+    this.invalidate(_0xc36749 || "验证失败", _0x5286e3.code);
+    return {
+      code: _0x5286e3.code,
+      msg: _0xc36749 || "验证失败"
+    };
+  }
+  async changeDevice(_0x1cb954 = "") {
+    return {
+      code: "409",
+      msg: "已禁用换机功能"
+    };
+  }
+  async heartBeat(_0x277101 = {}) {
+    if (!this.state.token) {
+      return {
+        ok: false,
+        code: "401",
+        message: "未验证"
+      };
+    }
+    if (!this.configValidation.ok) {
+      return {
+        ok: false,
+        code: "403",
+        message: this.configValidation.error || "配置错误"
+      };
+    }
+    const _0x26917a = this.getTimestamp();
+    const _0x5ec4fa = "License/heartBeat/" + this.config.appId;
+    const _0xbd0689 = [this.state.token, this.deviceId, Number(_0x26917a)];
+    const _0x1185ee = await this.request(_0x5ec4fa, _0xbd0689);
+    _0x1185ee.code = this.aesDecrypt(_0x1185ee.code);
+    const _0xbec22a = new Set(["100", "101", "103", "201", "203", "502", "503", "504", "600", "601"]);
+    if (_0x1185ee.code === "200") {
+      this.failedValidations = 0;
+      const _0x3ed807 = this.aesDecrypt(_0x1185ee.timeStamp);
+      if (this.config.mode === 0) {
+        const _0x1fe999 = this.aesDecrypt(_0x1185ee.endDate);
+        const _0x3ced2d = [_0x1185ee.code, _0x1fe999, _0x3ed807, this.config.secretKey];
+        if (_0x1185ee.sign !== this.sha1(_0x3ced2d.join(""))) {
+          return this.invalidate("签名错误", "503");
+        }
+        this.state.expireAt = _0x1fe999;
+      } else {
+        const _0x2504e9 = this.aesDecrypt(_0x1185ee.surplusCount);
+        const _0x390e50 = [_0x1185ee.code, _0x2504e9, _0x3ed807, this.config.secretKey];
+        if (_0x1185ee.sign !== this.sha1(_0x390e50.join(""))) {
+          return this.invalidate("签名错误", "503");
+        }
+        this.state.surplusCount = _0x2504e9;
+      }
+      if (Math.abs(Number(_0x3ed807) - Number(_0x26917a)) > 100) {
+        return this.invalidate("签名过期", "502");
+      }
+      this.saveState();
+      this.emitStatusChange();
+      return {
+        ok: true,
+        status: this.getStatus()
+      };
+    }
+    if (_0xbec22a.has(String(_0x1185ee.code))) {
+      let _0x75c394 = "";
+      try {
+        _0x75c394 = this.aesDecrypt(_0x1185ee.msg);
+      } catch (_0x2e4f31) {
+        _0x75c394 = "";
+      }
+      this.invalidate(_0x75c394 || "心跳失败", _0x1185ee.code);
+      return {
+        ok: false,
+        code: _0x1185ee.code,
+        message: _0x75c394 || "心跳失败",
+        invalidated: true
+      };
+    }
+    this.failedValidations += 1;
+    if (this.failedValidations >= 3) {
+      let _0x4e3703 = "";
+      try {
+        _0x4e3703 = this.aesDecrypt(_0x1185ee.msg);
+      } catch (_0xaebfdb) {
+        _0x4e3703 = "";
+      }
+      this.invalidate(_0x4e3703 || "心跳失败", _0x1185ee.code);
+      return {
+        ok: false,
+        code: _0x1185ee.code,
+        message: _0x4e3703 || "心跳失败",
+        invalidated: true
+      };
+    }
+    let _0x16133d = "";
+    try {
+      _0x16133d = this.aesDecrypt(_0x1185ee.msg);
+    } catch (_0x3db449) {
+      _0x16133d = "";
+    }
+    return {
+      ok: false,
+      code: _0x1185ee.code,
+      message: _0x16133d || "心跳失败",
+      retryable: true
+    };
+  }
+  startHeartbeat() {
+    this.stopHeartbeat();
+    const _0x54c07a = Math.max(200, Number(this.config.heartDuration || 600)) * 1000;
+    this.heartbeatTimer = setInterval(() => {
+      this.heartBeat();
+    }, _0x54c07a);
+  }
+  stopHeartbeat() {
+    this.heartbeatTimer && (clearInterval(this.heartbeatTimer), this.heartbeatTimer = null);
+  }
+  invalidate(_0x5901e0, _0x4b119e) {
+    this.stopHeartbeat();
+    this.state.authorized = false;
+    this.state.code = _0x4b119e || "401";
+    this.state.message = _0x5901e0 || "验证失败";
+    this.state.token = null;
+    this.state.lastVerifiedAt = new Date().toISOString();
+    this.state.lastVerifySuccess = false;
+    this.saveState();
+    this.emitStatusChange();
+    this.onInvalid && this.onInvalid(this.state);
+  }
+  logout() {
+    this.stopHeartbeat();
+    this.state = {
+      authorized: false,
+      code: null,
+      message: "已退出验证",
+      token: null,
+      remark: "",
+      expireAt: null,
+      surplusCount: null,
+      lastVerifiedAt: new Date().toISOString(),
+      lastVerifySuccess: false
+    };
+    this.saveState();
+    this.emitStatusChange();
+  }
+  emitStatusChange() {
+    this.onStatusChange && this.onStatusChange(this.getStatus());
+  }
+  getStatus() {
+    const _0x541bac = {
+      authorized: !!this.state.authorized,
+      code: this.state.code,
+      message: this.state.message,
+      remark: this.state.remark || "",
+      expireAt: this.state.expireAt || null,
+      surplusCount: this.state.surplusCount || null,
+      lastVerifiedAt: this.state.lastVerifiedAt || null
+    };
+    const _0x5e491d = this.getAuthorizationStatus();
+    _0x541bac.authorized = _0x5e491d.authorized;
+    _0x5e491d.message && (_0x541bac.message = _0x5e491d.message, _0x541bac.code = _0x5e491d.code || _0x541bac.code);
+    return _0x541bac;
+  }
+  isAuthorized() {
+    return this.getAuthorizationStatus().authorized;
+  }
+  async ensureAuthorized(_0x1c7a88 = {}) {
+    const _0x37fcec = _0x1c7a88.mode || "start";
+    const _0x433b8b = _0x1c7a88.account;
+    const _0x8adb29 = _0x1c7a88.password || "";
+    if (!this.configValidation.ok) {
+      return {
+        ok: false,
+        code: "403",
+        message: this.configValidation.error || "配置错误"
+      };
+    }
+    if (!this.state.authorized) {
+      if (_0x433b8b) {
+        const _0x282405 = await this.verify(_0x433b8b, _0x8adb29);
+        if (_0x282405 && _0x282405.authorized) {
+          return {
+            ok: true,
+            status: this.getStatus()
           };
         }
-      } else {
-        _Kaiju_Baltan_503 = _Kaiju_Gatanothor_653;
+        return {
+          ok: false,
+          code: _0x282405.code || "401",
+          message: _0x282405.msg || "未验证"
+        };
       }
-      const _Ultra_Nexus_M87Ray = {
-        url: _Ultra_Taro_EmeriumRay,
-        method: _Kaiju_RedKing_28,
-        headers: _Kaiju_Baltan_503,
-        params: _Kaiju_Tartarus_411,
-        data: _Kaiju_Baltan_611 ? "" : data || {},
-        timeout: 15000
+      if (this.state.lastAccount) {
+        const _0x2855cb = await this.verify(this.state.lastAccount, this.state.lastPassword || "");
+        if (_0x2855cb && _0x2855cb.authorized) {
+          return {
+            ok: true,
+            status: this.getStatus()
+          };
+        }
+        return {
+          ok: false,
+          code: _0x2855cb.code || "401",
+          message: _0x2855cb.msg || "未验证"
+        };
+      }
+      return {
+        ok: false,
+        code: "401",
+        message: "未验证"
       };
-      if (_Kaiju_Baltan_611) {
-        _Ultra_Nexus_M87Ray.transformRequest = [(_Kaiju_Belial_448, _Kaiju_Eleking_377) => {
-          delete _Kaiju_Eleking_377["Content-Type"];
-          return _Kaiju_Belial_448;
-        }];
-      }
-      const _Ultra_Jack_SolgentRay = await axios(_Ultra_Nexus_M87Ray);
-      return _Ultra_Jack_SolgentRay.data;
-    } catch (_Kaiju_Empera_194) {
-      if (_Kaiju_Tartarus_774 === 0) {
-        throw _Kaiju_Empera_194;
-      }
-      _Kaiju_Tartarus_774--;
-      await sleep(1500);
     }
+    if (!this.state.token) {
+      return {
+        ok: false,
+        code: "401",
+        message: "未验证"
+      };
+    }
+    if (_0x433b8b && _0x433b8b !== this.state.lastAccount) {
+      const _0x3aae94 = await this.verify(_0x433b8b, _0x8adb29);
+      if (_0x3aae94 && _0x3aae94.authorized) {
+        return {
+          ok: true,
+          status: this.getStatus()
+        };
+      }
+      return {
+        ok: false,
+        code: _0x3aae94.code || "401",
+        message: _0x3aae94.msg || "未验证"
+      };
+    }
+    if (!this.state.lastVerifySuccess) {
+      return {
+        ok: false,
+        code: "401",
+        message: "请先完成网络验证"
+      };
+    }
+    const _0x480597 = await this.heartBeat({
+      mode: _0x37fcec
+    });
+    if (_0x480597 && _0x480597.ok) {
+      return {
+        ok: true,
+        status: this.getStatus()
+      };
+    }
+    return {
+      ok: false,
+      code: _0x480597?.["code"] || "401",
+      message: _0x480597?.["message"] || "验证失败"
+    };
+  }
+  getAuthorizationStatus() {
+    if (!this.state.authorized) {
+      return {
+        authorized: false
+      };
+    }
+    if (!this.state.token) {
+      return {
+        authorized: false,
+        message: "未验证",
+        code: "401"
+      };
+    }
+    if (!this.configValidation.ok) {
+      return {
+        authorized: false,
+        message: this.configValidation.error || "配置错误",
+        code: "403"
+      };
+    }
+    if (Number(this.config.mode) === 0) {
+      if (this.state.expireAt) {
+        const _0x199730 = Date.parse(String(this.state.expireAt).replace(/-/g, "/"));
+        if (Number.isFinite(_0x199730) && Date.now() > _0x199730) {
+          return {
+            authorized: false,
+            message: "授权已过期",
+            code: "101"
+          };
+        }
+      }
+    } else {
+      const _0x246619 = Number(this.state.surplusCount || 0);
+      if (_0x246619 <= 0) {
+        return {
+          authorized: false,
+          message: "次数不足",
+          code: "201"
+        };
+      }
+    }
+    return {
+      authorized: true
+    };
   }
 }
-async function doLogin(_Kaiju_Tartarus_480, _Ultra_80_CosmoMiracleRay) {
-  log("检测到账密格式，正在登录 (" + _Kaiju_Tartarus_480 + ")...");
-  const _Kaiju_Zog_40 = {
-    platform: "Android",
-    version: "v1.6.2",
-    "user-agent": CONFIG.DEFAULT_UA,
-    "content-type": "application/json;charset=UTF-8"
-  };
-  const _Kaiju_Bemular_202 = {
-    phone: _Kaiju_Tartarus_480,
-    password: encryptPwd(_Ultra_80_CosmoMiracleRay)
-  };
-  try {
-    {
-      const _Kaiju_Gomora_784 = await request("https://gw.jiudageapp.com/api/web/auth/pwdLogin", _Kaiju_Zog_40, "POST", _Kaiju_Bemular_202);
-      if (_Kaiju_Gomora_784.code == 200 && _Kaiju_Gomora_784.result && _Kaiju_Gomora_784.result.token) {
-        log("✅ 登录成功，获取到 Token");
-        return _Kaiju_Gomora_784.result.token;
-      } else {
-        {
-          throw new Error(_Kaiju_Gomora_784.message || "登录失败");
-        }
-      }
-    }
-  } catch (_Kaiju_Gomora_790) {
-    {
-      log("❌ 登录异常: " + _Kaiju_Gomora_790.message);
-      return null;
-    }
-  }
-}
-async function runAccount(_Kaiju_Gatanothor_536, _Ultra_King_LightningNoa) {
-  _M78_Link_e11506("\n========== 账号 " + (_Kaiju_Gatanothor_536 + 1) + " ==========");
-  let token = "";
-  const _Kaiju_Belial_263 = _Ultra_King_LightningNoa.split("#");
-  if (_Kaiju_Belial_263.length >= 2 && /^\d{11}$/.test(_Kaiju_Belial_263[0])) {
-    {
-      token = await doLogin(_Kaiju_Belial_263[0], _Kaiju_Belial_263[1]);
-      if (!token) {
-        return;
-      }
-    }
-  } else {
-    token = _Kaiju_Belial_263[0];
-  }
-  try {
-    {
-      log("正在获取任务...");
-      const info = await request("https://gw.jiudageapp.com/api/web/member/getMemberCenterInfo", token);
-      if (!info || info.code != 200) {
-        {
-          log("❌ 获取失败: " + (info ? info.message : "接口无响应/Token失效"));
-          return;
-        }
-      }
-      const result = info.result || info.data || {};
-      const inviteCode = result.inviteCode;
-      const _Kaiju_HyperZetton_575 = result.videoCount || 0;
-      const _Ultra_Legend_PhotonEdge = result.watchedVideoCount || 0;
-      const _Kaiju_Greeza_792 = result.unlockTaskState;
-      const memberPhone = result.memberPhone || result.nickName || "未知用户";
-      const _Ultra_Blazar_CosmoMiracleRay = result.contribution || 0;
-      if (!inviteCode) {
-        {
-          log("❌ 致命错误: 未获取到邀请码 (Key)，无法加密，请检查账号状态");
-          return;
-        }
-      }
-      if (_Kaiju_Greeza_792 != 1) {
-        log("❌ 任务未开启或状态异常 (State: " + _Kaiju_Greeza_792 + ")");
-        return;
-      }
-      log("用户: " + memberPhone + " | 进度: " + _Ultra_Legend_PhotonEdge + "/" + _Kaiju_HyperZetton_575 + " | 贡献: " + _Ultra_Blazar_CosmoMiracleRay);
-      if (_Ultra_Legend_PhotonEdge >= _Kaiju_HyperZetton_575) {
-        {
-          log("✅ 今日任务已全部完成");
-          return;
-        }
-      }
-      const _Kaiju_Tregear_95 = _Kaiju_HyperZetton_575 - _Ultra_Legend_PhotonEdge;
-      for (let _Kaiju_HyperZetton_463 = 0; _Kaiju_HyperZetton_463 < _Kaiju_Tregear_95; _Kaiju_HyperZetton_463++) {
-        {
-          const _Ultra_Decker_CosmoMiracleRay = _Ultra_Legend_PhotonEdge + _Kaiju_HyperZetton_463 + 1;
-          _M78_Link_e11506("\n--- 任务 " + _Ultra_Decker_CosmoMiracleRay + " / " + _Kaiju_HyperZetton_575 + " ---");
-          const _Ultra_Taiga_LeoKick = await request("https://gw.jiudageapp.com/api/web/member/get/internalAdvertisement", token);
-          const _Kaiju_Tregear_812 = _Ultra_Taiga_LeoKick.result || (_Ultra_Taiga_LeoKick.data?.["list"] ? _Ultra_Taiga_LeoKick.data.list[0] : null);
-          if (!_Kaiju_Tregear_812) {
-            log("⚠️ 暂无广告可获取");
-            break;
-          }
-          const {
-            id: _Kaiju_Belial_285,
-            videoId: videoId,
-            videoUrl: _Ultra_Dyna_StriumRay,
-            title: _Ultra_Cosmos_CosmoMiracleRay
-          } = _Kaiju_Tregear_812;
-          const _Ultra_Zero_M87Ray = _Kaiju_Belial_285 || videoId;
-          log("广告: " + _Ultra_Cosmos_CosmoMiracleRay);
-          let _Ultra_Cosmos_PhotonEdge = 30;
-          if (_Ultra_Dyna_StriumRay && _Ultra_Dyna_StriumRay.startsWith("http")) {
-            try {
-              {
-                const _Kaiju_Baltan_606 = await axios.head(_Ultra_Dyna_StriumRay, {
-                  timeout: 5000
-                });
-                const _Ultra_Zero_StriumRay = (_Kaiju_Baltan_606.headers["content-length"] || 0) / 1024 / 1024;
-                _Ultra_Cosmos_PhotonEdge = Math.max(Math.ceil(8 * _Ultra_Zero_StriumRay), CONFIG.MIN_WATCH);
-                log("大小: " + _Ultra_Zero_StriumRay.toFixed(2) + "MB -> 观看: " + _Ultra_Cosmos_PhotonEdge + "s");
-              }
-            } catch {
-              log("获取大小失败，使用默认时长");
-            }
-          }
-          log("⏳ 模拟观看中...");
-          await sleep(_Ultra_Cosmos_PhotonEdge * 1000);
-          const _Kaiju_Tartarus_206 = encryptId(_Ultra_Zero_M87Ray, inviteCode);
-          if (!_Kaiju_Tartarus_206) {
-            log("❌ 加密失败 (Key无效)，跳过");
-            continue;
-          }
-          const _Ultra_Blazar_ZepellionRay = await request("https://gw.jiudageapp.com/api/web/newPeopleUnlock/receiveWelfareNineteenV2", token, "POST", null, {
-            videoId: _Kaiju_Tartarus_206
-          });
-          if (_Ultra_Blazar_ZepellionRay.code == 200) {
-            {
-              log("✅ 领取成功");
-            }
-          } else {
-            {
-              log("⚠️ 结果: " + _Ultra_Blazar_ZepellionRay.message);
-            }
-          }
-          if (_Kaiju_HyperZetton_463 < _Kaiju_Tregear_95 - 1) {
-            await sleep(CONFIG.INTERVAL);
-          }
-        }
-      }
-    }
-  } catch (_Kaiju_Baltan_955) {
-    {
-      log("❌ 运行异常: " + _Kaiju_Baltan_955.message);
-    }
-  }
-}
-(async () => {
-  _M78_Link_e11506("\n==================================================\n               神秘代码：1067957630                \n==================================================\n    ");
-  const _Ultra_Legend_StriumRay = process.env.DDD_AUTH;
-  if (!_Ultra_Legend_StriumRay) {
-    _M78_Link_e11506("❌ 请设置环境变量 DDD_AUTH");
-    _M78_Link_e11506("💡 格式: Token 或 手机号#密码");
-    return;
-  }
-  const _Kaiju_Gatanothor_182 = _Ultra_Legend_StriumRay.split(/\r?\n/).map(_Kaiju_Greeza_965 => _Kaiju_Greeza_965.trim()).filter(_Ultra_Gaia_SpaciumBeam => _Ultra_Gaia_SpaciumBeam && !_Ultra_Gaia_SpaciumBeam.startsWith("#"));
-  _M78_Link_e11506("▶️ 共 " + _Kaiju_Gatanothor_182.length + " 个账号");
-  for (let _Kaiju_Eleking_119 = 0; _Kaiju_Eleking_119 < _Kaiju_Gatanothor_182.length; _Kaiju_Eleking_119++) {
-    {
-      await runAccount(_Kaiju_Eleking_119, _Kaiju_Gatanothor_182[_Kaiju_Eleking_119]);
-      if (_Kaiju_Eleking_119 < _Kaiju_Gatanothor_182.length - 1) {
-        await sleep(5000);
-      }
-    }
-  }
-  _M78_Link_e11506("\n✅ 全部结束");
-})();
+module.exports = AuthService;
